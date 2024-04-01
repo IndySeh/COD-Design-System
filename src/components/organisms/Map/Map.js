@@ -224,7 +224,7 @@ export default class Map extends HTMLElement {
       }
 
       case 'data-center': {
-        let tempCenter = newValue.split(',');
+        const tempCenter = newValue.split(',');
         this.map.setCenter([tempCenter[0], tempCenter[1]]);
         break;
       }
