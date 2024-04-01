@@ -54,7 +54,7 @@ export default {
         'universal-access',
         'universal-access-circle',
         'wifi',
-        'wifi-off'
+        'wifi-off',
       ].sort(),
     },
     size: {
