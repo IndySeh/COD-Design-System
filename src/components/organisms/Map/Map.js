@@ -10,6 +10,8 @@ export default class Map extends HTMLElement {
       'data-map-mode',
       'data-map-layers',
       'data-active-layers',
+      'data-zoom',
+      'data-center'
     ];
   }
 
@@ -213,6 +215,17 @@ export default class Map extends HTMLElement {
       }
 
       case 'data-active-layers': {
+        break;
+      }
+
+      case 'data-zoom': {
+        this.map.setZoom(newValue);
+        break;
+      }
+
+      case 'data-center': {
+        let tempCenter = newValue.split(",");
+        this.map.setCenter([tempCenter[0], tempCenter[1]]);
         break;
       }
 
