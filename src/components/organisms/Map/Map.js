@@ -11,7 +11,7 @@ export default class Map extends HTMLElement {
       'data-map-layers',
       'data-active-layers',
       'data-zoom',
-      'data-center'
+      'data-center',
     ];
   }
 
@@ -224,7 +224,7 @@ export default class Map extends HTMLElement {
       }
 
       case 'data-center': {
-        let tempCenter = newValue.split(",");
+        let tempCenter = newValue.split(',');
         this.map.setCenter([tempCenter[0], tempCenter[1]]);
         break;
       }
