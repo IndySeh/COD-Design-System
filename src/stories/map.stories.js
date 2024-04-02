@@ -11,6 +11,13 @@ export const Location = () =>
     data-map-state="loaded"
   ></cod-map>`;
 
+export const CustomCenter = () =>
+  html`<cod-map
+    data-center="-83.103111,42.31103400000001"
+    data-zoom="12"
+    data-map-state="loaded"
+  ></cod-map>`;
+
 export const Layers = () =>
   html`<cod-map
     data-map-state="loaded"
