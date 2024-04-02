@@ -5,10 +5,16 @@
 - Create component for new Action Button [by @sreidthomas](https://github.com/CityOfDetroit/COD-Design-System/pull/167)
 - Create calendar component [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/187)
 - Add icons to icon component [by @jedgar1mx](https://github.com/CityOfDetroit/COD-Design-System/pull/191)
+- Add more icons to icon component [by @jedgar1mx](https://github.com/CityOfDetroit/COD-Design-System/pull/196)
+
+#### 🏠 Internal
+
+- Use slots in accordion header [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/179)
 
 #### 🐛 Bug Fix
 
 - Prevent hypothetical XSS [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/185)
+- Fix zoom and center on map [by @jedgar1mx](https://github.com/CityOfDetroit/COD-Design-System/pull/195)
 
 #### Authors: 1
 
