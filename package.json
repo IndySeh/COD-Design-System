@@ -1,6 +1,6 @@
 {
   "name": "cod-design-system",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "City of Detroit design system",
   "main": "dist/index.js",
   "repository": {
