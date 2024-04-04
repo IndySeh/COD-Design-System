@@ -11,7 +11,7 @@ fi
 
 compile_sass () {
     echo "Compiling bootstrap SASS..."
-    yarn sass ${PROJECT_ROOT}src/scss/themed-bootstrap.scss ${PROJECT_ROOT}src/shared/themed-bootstrap.css
+    yarn sass -I ${PROJECT_ROOT}/node_modules/ ${PROJECT_ROOT}src/scss/themed-bootstrap.scss ${PROJECT_ROOT}src/shared/themed-bootstrap.css
     if [ $? -ne 0 ];
     then
         echo "Failed to compile bootstrap... Aborting."

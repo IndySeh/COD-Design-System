@@ -63,7 +63,7 @@ $utilities: map-merge(
   )
 );
 
-@import '../../node_modules/bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 // Override bootstrap _root.scss.
 @import './host';
 @import 'detroitmi-style-guide';

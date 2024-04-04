@@ -27,6 +27,8 @@ export default {
         'danger',
         'light',
         'dark',
+        'accent-primary',
+        'accent-secondary',
       ],
     },
     onClick: { action: 'onClick' },

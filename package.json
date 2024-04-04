@@ -97,7 +97,7 @@
     "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.43.4",
+    "sass": "^1.71.0",
     "sass-loader": "^12.3.0",
     "start-server-and-test": "^1.14.0",
     "storybook": "^7.3.2",

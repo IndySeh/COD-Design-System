@@ -4,9 +4,6 @@
 // https://getbootstrap.com/docs/5.3/customize/sass
 // https://github.com/twbs/bootstrap/blob/v5.3.2/scss/_variables.scss
 
-@import '../../node_modules/bootstrap/scss/functions'; // Bootstrap functions.
-@import '../../node_modules/bootstrap/scss/mixins'; // Bootstrap mixins.
-
 $prefix: bs-;
 
 // Override aspect ratios array to add more ratios.
