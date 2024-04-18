@@ -215,6 +215,7 @@ export default class Map extends HTMLElement {
       }
 
       case 'data-active-layers': {
+        console.log(newValue);
         break;
       }
 
