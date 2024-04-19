@@ -160,36 +160,26 @@ export default class Map extends HTMLElement {
             tempMap.map.getCanvas().style.cursor = '';
           });
         }else{
-          console.log('reloading map');
-          console.log(clickableLayers);
           clickableLayers.forEach(layer => {
             tempMap.map.on('click', layer, function (e) {
               let popupStructure;
-              console.log(e.features[0]);
-              switch (e.features[0].layer.interaction) {
-    
-                case 'popup':
-                  popupStructure = JSON.parse(
-                    tempMap.getAttribute('data-popup-structure'),
-                  );
-                  tempMap.buildPopup(e.features[0].layer.source, popupStructure, tempMap, e);
-                  break;
-    
-                case 'panel': {
-                  const parentComponentName = tempMap.getAttribute(
-                    'data-parent-component',
-                  );
-                  const app = document.getElementsByTagName(parentComponentName);
-                  app[0].setAttribute(
-                    'data-panel-data',
-                    JSON.stringify(e.features[0]),
-                  );
-                  app[0].setAttribute('data-app-state', 'active-panel');
-                  break;
-                }
-    
-                default:
-                  break;
+              let popupLayers = tempMap.getAttribute('data-popup-layers');
+              popupLayers = (popupLayers !== null) ? JSON.parse(popupLayers) : [];
+              if(popupLayers.includes(e.features[0].layer.id)){
+                popupStructure = JSON.parse(
+                  tempMap.getAttribute('data-popup-structure'),
+                );
+                tempMap.buildPopup(e.features[0].layer.source, popupStructure, tempMap, e);
+              }else{
+                const parentComponentName = tempMap.getAttribute(
+                  'data-parent-component',
+                );
+                const app = document.getElementsByTagName(parentComponentName);
+                app[0].setAttribute(
+                  'data-panel-data',
+                  JSON.stringify(e.features[0]),
+                );
+                app[0].setAttribute('data-app-state', 'active-panel');
               }
             });
             
@@ -258,7 +248,6 @@ export default class Map extends HTMLElement {
               source.layers.forEach((layer) => {
                 const tmpLayer = this.buildLayer(layer);
                 this.map.addLayer(tmpLayer);
-                console.log(tmpLayer.clickable);
                 (tmpLayer.clickable) ? this.updateClickableLayers(tmpLayer) : 0; 
               });
             });
@@ -296,7 +285,6 @@ export default class Map extends HTMLElement {
   }
 
   updateClickableLayers(layer){
-    console.log(layer);
     let clickableLayers = (this.getAttribute('data-clickable-layers') === null) ? '' : this.getAttribute('data-clickable-layers');
     let tempClickableLayers = clickableLayers.split(',');
     clickableLayers = [];
