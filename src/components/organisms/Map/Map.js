@@ -150,6 +150,7 @@ export default class Map extends HTMLElement {
                 break;
             }
           });
+
           this.map.on('mouseenter', 'data-points', function () {
             tempMap.map.getCanvas().style.cursor = 'pointer';
           });
@@ -162,12 +163,40 @@ export default class Map extends HTMLElement {
           console.log('reloading map');
           console.log(clickableLayers);
           clickableLayers.forEach(layer => {
+            tempMap.map.on('click', layer, function (e) {
+              let popupStructure;
+              console.log(e.features[0]);
+              switch (e.features[0].layer.interaction) {
+    
+                case 'popup':
+                  popupStructure = JSON.parse(
+                    tempMap.getAttribute('data-popup-structure'),
+                  );
+                  tempMap.buildPopup(e.features[0].layer.source, popupStructure, tempMap, e);
+                  break;
+    
+                case 'panel': {
+                  const parentComponentName = tempMap.getAttribute(
+                    'data-parent-component',
+                  );
+                  const app = document.getElementsByTagName(parentComponentName);
+                  app[0].setAttribute(
+                    'data-panel-data',
+                    JSON.stringify(e.features[0]),
+                  );
+                  app[0].setAttribute('data-app-state', 'active-panel');
+                  break;
+                }
+    
+                default:
+                  break;
+              }
+            });
+            
             tempMap.map.on('mouseenter', layer, function () {
               tempMap.map.getCanvas().style.cursor = 'pointer'
             });
-          });
 
-          clickableLayers.forEach(layer => {
             tempMap.map.on('mouseleave', layer, function () {
               tempMap.map.getCanvas().style.cursor = ''
             });
@@ -264,58 +293,6 @@ export default class Map extends HTMLElement {
       default:
         break;
     }
-  }
-
-  makeClickable(layers){
-    console.log(layers);
-    const tempMap = this;
-    // this.map.on('click', layers, function (e) {
-    //   let activeData;
-    //   let popupStructure;
-    //   switch (tempMap.getAttribute('data-map-mode')) {
-    //     case 'my-home-info':
-    //       popupStructure = JSON.parse(
-    //         tempMap.getAttribute('data-popup-structure'),
-    //       );
-    //       activeData = tempMap.getAttribute('data-map-active-data');
-    //       tempMap.buildPopup(activeData, popupStructure, tempMap, e);
-    //       break;
-
-    //     case 'popup':
-    //       popupStructure = JSON.parse(
-    //         tempMap.getAttribute('data-popup-structure'),
-    //       );
-    //       activeData = tempMap.getAttribute('data-map-active-data');
-    //       tempMap.buildPopup(activeData, popupStructure, tempMap, e);
-    //       break;
-
-    //     case 'map-panel': {
-    //       const parentComponentName = tempMap.getAttribute(
-    //         'data-parent-component',
-    //       );
-    //       const app = document.getElementsByTagName(parentComponentName);
-    //       app[0].setAttribute(
-    //         'data-panel-data',
-    //         JSON.stringify(e.features[0]),
-    //       );
-    //       app[0].setAttribute('data-app-state', 'active-panel');
-    //       break;
-    //     }
-
-    //     default:
-    //       break;
-    //   }
-    // });
-    this.map.on('style.load', () => {
-      this.map.on('mouseenter', layers, function () {
-        tempMap.map.getCanvas().style.cursor = 'pointer';
-      });
-
-      // Change it back to a pointer when it leaves.
-      this.map.on('mouseleave', layers, function () {
-        tempMap.map.getCanvas().style.cursor = '';
-      });
-    });
   }
 
   updateClickableLayers(layer){
