@@ -10,6 +10,7 @@ export default class Map extends HTMLElement {
       'data-map-mode',
       'data-map-layers',
       'data-active-layers',
+      'data-clickable-layers',
       'data-zoom',
       'data-center',
     ];
@@ -57,101 +58,150 @@ export default class Map extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'data-map-state': {
-        const locationPoint = JSON.parse(this.getAttribute('data-location'));
-        this.map.addControl(new maplibregl.NavigationControl());
-        this.map.on('style.load', () => {
-          this.map.resize();
-
-          if (locationPoint) {
-            const coord = [locationPoint.location.x, locationPoint.location.y];
-            const marker = new maplibregl.Marker();
-            marker.setLngLat(coord);
-            marker.addTo(this.map);
-            this.map.flyTo({
-              // These options control the ending camera position: centered at
-              // the target, at zoom level 9, and north up.
-              center: coord,
-              zoom: 12,
-              bearing: 0,
-
-              // These options control the flight curve, making it move
-              // slowly and zoom out almost completely before starting
-              // to pan.
-              speed: 1.5, // make the flying slow
-              curve: 1, // change the speed at which it zooms out
-
-              // This can be any easing function: it takes a number between
-              // 0 and 1 and returns another number between 0 and 1.
-              easing: function (t) {
-                return t;
-              },
-
-              // this animation is considered essential with respect to prefers-reduced-motion
-              essential: true,
-            });
-          }
-
-          const mapData = JSON.parse(this.getAttribute('data-map-data'));
-          if (mapData) {
-            this.map.addSource('data-points', {
-              type: 'geojson',
-              data: mapData.source,
-            });
-            mapData.layers.forEach((layer) => {
-              const tmpLayer = this.buildLayer(layer);
-              this.map.addLayer(tmpLayer);
-            });
-          }
-        });
-        // Creating this temp variable for workaround with dealing with "this" encapsulation
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line no-case-declarations
         const tempMap = this;
-        this.map.on('click', 'data-points', function (e) {
-          let activeData;
-          let popupStructure;
-          switch (tempMap.getAttribute('data-map-mode')) {
-            case 'my-home-info':
-              popupStructure = JSON.parse(
-                tempMap.getAttribute('data-popup-structure'),
-              );
-              activeData = tempMap.getAttribute('data-map-active-data');
-              tempMap.buildPopup(activeData, popupStructure, tempMap, e);
-              break;
+        const locationPoint = JSON.parse(this.getAttribute('data-location'));
+        let clickableLayers = this.getAttribute('data-clickable-layers');
+        clickableLayers =
+          clickableLayers !== null ? clickableLayers.split(',') : [];
 
-            case 'popup':
-              popupStructure = JSON.parse(
-                tempMap.getAttribute('data-popup-structure'),
-              );
-              activeData = tempMap.getAttribute('data-map-active-data');
-              tempMap.buildPopup(activeData, popupStructure, tempMap, e);
-              break;
+        if (newValue === 'init') {
+          this.map.addControl(new maplibregl.NavigationControl());
+          this.map.on('style.load', () => {
+            this.map.resize();
 
-            case 'map-panel': {
-              const parentComponentName = tempMap.getAttribute(
-                'data-parent-component',
-              );
-              const app = document.getElementsByTagName(parentComponentName);
-              app[0].setAttribute(
-                'data-panel-data',
-                JSON.stringify(e.features[0]),
-              );
-              app[0].setAttribute('data-app-state', 'active-panel');
-              break;
+            if (locationPoint) {
+              const coord = [
+                locationPoint.location.x,
+                locationPoint.location.y,
+              ];
+              const marker = new maplibregl.Marker();
+              marker.setLngLat(coord);
+              marker.addTo(this.map);
+              this.map.flyTo({
+                // These options control the ending camera position: centered at
+                // the target, at zoom level 9, and north up.
+                center: coord,
+                zoom: 12,
+                bearing: 0,
+
+                // These options control the flight curve, making it move
+                // slowly and zoom out almost completely before starting
+                // to pan.
+                speed: 1.5, // make the flying slow
+                curve: 1, // change the speed at which it zooms out
+
+                // This can be any easing function: it takes a number between
+                // 0 and 1 and returns another number between 0 and 1.
+                easing: function (t) {
+                  return t;
+                },
+
+                // this animation is considered essential with respect to prefers-reduced-motion
+                essential: true,
+              });
             }
 
-            default:
-              break;
-          }
-        });
-        this.map.on('mouseenter', 'data-points', function () {
-          tempMap.map.getCanvas().style.cursor = 'pointer';
-        });
+            const mapData = JSON.parse(this.getAttribute('data-map-data'));
+            if (mapData) {
+              this.map.addSource('data-points', {
+                type: 'geojson',
+                data: mapData.source,
+              });
+              mapData.layers.forEach((layer) => {
+                const tmpLayer = this.buildLayer(layer);
+                this.map.addLayer(tmpLayer);
+              });
+            }
+          });
+          // Creating this temp variable for workaround with dealing with "this" encapsulation
+          // TODO: See CityOfDetroit/detroitmi#1099
+          // eslint-disable-next-line no-case-declarations
 
-        // Change it back to a pointer when it leaves.
-        this.map.on('mouseleave', 'data-points', function () {
-          tempMap.map.getCanvas().style.cursor = '';
-        });
+          this.map.on('click', 'data-points', function (e) {
+            let activeData;
+            let popupStructure;
+            switch (tempMap.getAttribute('data-map-mode')) {
+              case 'my-home-info':
+                popupStructure = JSON.parse(
+                  tempMap.getAttribute('data-popup-structure'),
+                );
+                activeData = tempMap.getAttribute('data-map-active-data');
+                tempMap.buildPopup(activeData, popupStructure, tempMap, e);
+                break;
+
+              case 'popup':
+                popupStructure = JSON.parse(
+                  tempMap.getAttribute('data-popup-structure'),
+                );
+                activeData = tempMap.getAttribute('data-map-active-data');
+                tempMap.buildPopup(activeData, popupStructure, tempMap, e);
+                break;
+
+              case 'map-panel': {
+                const parentComponentName = tempMap.getAttribute(
+                  'data-parent-component',
+                );
+                const app = document.getElementsByTagName(parentComponentName);
+                app[0].setAttribute(
+                  'data-panel-data',
+                  JSON.stringify(e.features[0]),
+                );
+                app[0].setAttribute('data-app-state', 'active-panel');
+                break;
+              }
+
+              default:
+                break;
+            }
+          });
+
+          this.map.on('mouseenter', 'data-points', function () {
+            tempMap.map.getCanvas().style.cursor = 'pointer';
+          });
+
+          // Change it back to a pointer when it leaves.
+          this.map.on('mouseleave', 'data-points', function () {
+            tempMap.map.getCanvas().style.cursor = '';
+          });
+        } else {
+          clickableLayers.forEach((layer) => {
+            tempMap.map.on('click', layer, function (e) {
+              let popupStructure;
+              let popupLayers = tempMap.getAttribute('data-popup-layers');
+              popupLayers = popupLayers !== null ? JSON.parse(popupLayers) : [];
+              if (popupLayers.includes(e.features[0].layer.id)) {
+                popupStructure = JSON.parse(
+                  tempMap.getAttribute('data-popup-structure'),
+                );
+                tempMap.buildPopup(
+                  e.features[0].layer.source,
+                  popupStructure,
+                  tempMap,
+                  e,
+                );
+              } else {
+                const parentComponentName = tempMap.getAttribute(
+                  'data-parent-component',
+                );
+                const app = document.getElementsByTagName(parentComponentName);
+                app[0].setAttribute(
+                  'data-panel-data',
+                  JSON.stringify(e.features[0]),
+                );
+                app[0].setAttribute('data-app-state', 'active-panel');
+              }
+            });
+
+            tempMap.map.on('mouseenter', layer, function () {
+              tempMap.map.getCanvas().style.cursor = 'pointer';
+            });
+
+            tempMap.map.on('mouseleave', layer, function () {
+              tempMap.map.getCanvas().style.cursor = '';
+            });
+          });
+        }
+
         break;
       }
 
@@ -207,6 +257,7 @@ export default class Map extends HTMLElement {
               source.layers.forEach((layer) => {
                 const tmpLayer = this.buildLayer(layer);
                 this.map.addLayer(tmpLayer);
+                tmpLayer.clickable ? this.updateClickableLayers(tmpLayer) : 0;
               });
             });
           });
@@ -215,6 +266,11 @@ export default class Map extends HTMLElement {
       }
 
       case 'data-active-layers': {
+        break;
+      }
+
+      case 'data-clickable-layers': {
+        this.setAttribute('data-map-state', 'reload');
         break;
       }
 
@@ -232,6 +288,20 @@ export default class Map extends HTMLElement {
       default:
         break;
     }
+  }
+
+  updateClickableLayers(layer) {
+    let clickableLayers =
+      this.getAttribute('data-clickable-layers') === null
+        ? ''
+        : this.getAttribute('data-clickable-layers');
+    const tempClickableLayers = clickableLayers.split(',');
+    clickableLayers = [];
+    clickableLayers = tempClickableLayers;
+    clickableLayers.push(layer.id);
+    clickableLayers = clickableLayers.filter((l) => l !== '');
+    clickableLayers = clickableLayers.join(',');
+    this.setAttribute('data-clickable-layers', clickableLayers);
   }
 
   buildLayer(layer) {
@@ -271,6 +341,7 @@ export default class Map extends HTMLElement {
         return {
           id: layer.name,
           type: layer.type,
+          clickable: layer.clickable,
           source: layer.source,
           layout: layer.active
             ? { visibility: 'visible' }
@@ -286,6 +357,7 @@ export default class Map extends HTMLElement {
         return {
           id: layer.name,
           type: layer.type,
+          clickable: layer.clickable,
           source: layer.source,
           layout: layer.active
             ? { visibility: 'visible' }
