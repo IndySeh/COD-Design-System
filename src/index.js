@@ -2,25 +2,6 @@
 // Import to release
 // ============================================================
 
-// Importing organisms
-import './components/organisms/Card/cod-card';
-import './components/organisms/Carousel/cod-carousel';
-import './components/organisms/Form/cod-form';
-import './components/organisms/Modal/cod-modal';
-import './components/organisms/Map/cod-map';
-import './components/organisms/Navbar/cod-navbar';
-import './components/organisms/Offcanvas/cod-offcanvas';
-import './components/organisms/Table/cod-table';
-
-// Import molecules
-import './components/molecules/Accordion/cod-accordion';
-import './components/molecules/ButtonGroup/cod-button-group';
-import './components/molecules/Dropdown/cod-dropdown';
-import './components/molecules/FormCheckGroup/cod-form-check-group';
-import './components/molecules/ListGroup/cod-listgroup';
-import './components/molecules/Nav/cod-nav';
-import './components/molecules/Pagination/cod-pagination';
-
 // Importing atoms
 import './components/atoms/AccordionBody/cod-accordion-body';
 import './components/atoms/AccordionHeader/cod-accordion-header';
@@ -63,3 +44,25 @@ import './components/atoms/TableCell/cod-table-cell';
 import './components/atoms/TableCellHeader/cod-table-cell-header';
 import './components/atoms/TableHeader/cod-table-header';
 import './components/atoms/TableRow/cod-table-row';
+import './components/atoms/ActionButton/cod-action-button';
+import './components/atoms/InfoButton/cod-info-button';
+
+// Importing organisms
+import './components/organisms/Card/cod-card';
+import './components/organisms/Carousel/cod-carousel';
+import './components/organisms/Form/cod-form';
+import './components/organisms/Modal/cod-modal';
+import './components/organisms/Map/cod-map';
+import './components/organisms/Navbar/cod-navbar';
+import './components/organisms/Offcanvas/cod-offcanvas';
+import './components/organisms/ImgSlider/cod-img-slider';
+import './components/organisms/Table/cod-table';
+
+// Import molecules
+import './components/molecules/Accordion/cod-accordion';
+import './components/molecules/ButtonGroup/cod-button-group';
+import './components/molecules/Dropdown/cod-dropdown';
+import './components/molecules/FormCheckGroup/cod-form-check-group';
+import './components/molecules/ListGroup/cod-listgroup';
+import './components/molecules/Nav/cod-nav';
+import './components/molecules/Pagination/cod-pagination';

@@ -206,7 +206,7 @@ export const List = () => html`
   <cod-accordion data-id="accordionListExample" data-ol="true">
     <cod-accordion-item>
       <cod-accordion-header>
-        <span>Accordion Item</span>
+        <h5 class="mb-0">Accordion Item</h5>
       </cod-accordion-header>
       <cod-accordion-body>
         <p>
@@ -223,7 +223,7 @@ export const List = () => html`
     </cod-accordion-item>
     <cod-accordion-item data-li-bg="success" data-li-text="dark">
       <cod-accordion-header>
-        <span>Accordion Item</span>
+        <h5 class="mb-0">Accordion Item</h5>
       </cod-accordion-header>
       <cod-accordion-body>
         <p>
@@ -240,7 +240,7 @@ export const List = () => html`
     </cod-accordion-item>
     <cod-accordion-item data-li-bg="warning" data-li-text="dark">
       <cod-accordion-header>
-        <span>Accordion Item</span>
+        <h5 class="mb-0">Accordion Item</h5>
       </cod-accordion-header>
       <cod-accordion-body>
         <p>

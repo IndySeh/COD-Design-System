@@ -1,3 +1,74 @@
+# v1.0.19 (Wed March 27 2024)
+
+#### 🚀 Enhancement
+
+- Create component for new Action Button [by @sreidthomas](https://github.com/CityOfDetroit/COD-Design-System/pull/167)
+- Create calendar component [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/187)
+- Add icons to icon component [by @jedgar1mx](https://github.com/CityOfDetroit/COD-Design-System/pull/191)
+- Add more icons to icon component [by @jedgar1mx](https://github.com/CityOfDetroit/COD-Design-System/pull/196)
+
+#### 🏠 Internal
+
+- Use slots in accordion header [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/179)
+
+#### 🐛 Bug Fix
+
+- Prevent hypothetical XSS [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/185)
+- Fix zoom and center on map [by @jedgar1mx](https://github.com/CityOfDetroit/COD-Design-System/pull/195)
+
+#### Authors: 1
+
+- Shakira Reid-Thomas ([@sreidthomas](https://github.com/sreidthomas))
+- J Edgar Montes ([@jedgar1mx](https://github.com/jedgar1mx))
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.18...1.0.19
+
+---
+
+# v1.0.18 (Mon March 11 2024)
+
+#### 🚀 Enhancement
+
+- Additional features for [cod-map](https://github.com/CityOfDetroit/COD-Design-System/pull/172)
+
+#### 🔩 Dependency Updates
+
+- Refactor [bootstrap theme SASS](https://github.com/CityOfDetroit/COD-Design-System/pull/178)
+
+#### Authors: 1
+
+- J Edgar Montes ([@jedgar1mx](https://github.com/jedgar1mx))
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.17...1.0.18
+
+---
+
+# v1.0.17 (Tues March 5 2024)
+
+#### 🚀 Enhancement
+
+- Add [cod-img-slider](https://github.com/CityOfDetroit/COD-Design-System/pull/176)
+
+#### Authors: 1
+
+- J Edgar Montes ([@jedgar1mx](https://github.com/jedgar1mx))
+
+---
+
+#### 🐛 Bug Fix
+
+- Fix [header background height](https://github.com/CityOfDetroit/COD-Design-System/pull/165)
+- Add [info button and action button to production build](https://github.com/CityOfDetroit/COD-Design-System/pull/166)
+- Add mixins for [handling observed attributes & CSS classes](https://github.com/CityOfDetroit/COD-Design-System/pull/140)
+
+#### Authors: 1
+
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+---
+
 # v1.0.15 (Mon Feb 19 2024)
 
 #### 🚀 Enhancement

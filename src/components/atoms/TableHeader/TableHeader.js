@@ -1,10 +1,13 @@
 import styles from '!!raw-loader!./TableHeader.css';
 import varStyles from '!!raw-loader!../../../shared/variables.css';
 import bootstrapStyles from '!!raw-loader!../../../shared/themed-bootstrap.css';
+
 import {
   cellHeaderBlockClass,
   stackedTableClass,
+  handleTableStacked,
 } from '../../../shared/js/utilities';
+import observedAttributeMixin from '../../../shared/js/observed-attribute-mixin';
 
 const template = document.createElement('template');
 
@@ -12,7 +15,13 @@ template.innerHTML = `
 <slot></slot>
 `;
 
-export default class TableHeader extends HTMLElement {
+class TableHeader extends HTMLElement {
+  static observedClassAttributes = {
+    'data-stacked': stackedTableClass,
+    'data-label-block': cellHeaderBlockClass,
+  };
+  static observedAttributes = Object.keys(this.observedClassAttributes);
+
   constructor() {
     // Always call super first in constructor
     super();
@@ -43,10 +52,7 @@ export default class TableHeader extends HTMLElement {
         this.getAttribute('data-scrollable') === 'true'
           ? node.setAttribute('data-scrollable', 'true')
           : 0;
-
-        if (this.isStacked()) {
-          node.setIsStacked(true /* isStacked */, this.isCellHeaderBlock());
-        }
+        handleTableStacked(this, node);
 
         this.tableHeader.append(node);
       });
@@ -66,25 +72,22 @@ export default class TableHeader extends HTMLElement {
     shadow.appendChild(this.tableHeader);
   }
 
-  setIsStacked(isStacked, isCellHeaderBlock) {
-    if (isStacked) {
-      this.tableHeader.classList.add(stackedTableClass);
-    } else {
-      this.tableHeader.classList.remove(stackedTableClass);
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name in TableHeader.observedClassAttributes) {
+      this.handleObservedClassAttribute(
+        name,
+        newValue,
+        this.tableHeader,
+        TableHeader.observedClassAttributes[name],
+        () => {
+          return this.shadowRoot.querySelectorAll('cod-table-row');
+        },
+      );
     }
-
-    if (isCellHeaderBlock) {
-      this.tableHeader.classList.add(cellHeaderBlockClass);
-    } else {
-      this.tableHeader.classList.remove(cellHeaderBlockClass);
-    }
-  }
-
-  isStacked() {
-    return this.tableHeader.classList.contains(stackedTableClass);
-  }
-
-  isCellHeaderBlock() {
-    return this.tableHeader.classList.contains(cellHeaderBlockClass);
   }
 }
+
+// Apply mixins.
+Object.assign(TableHeader.prototype, observedAttributeMixin);
+
+export { TableHeader as default };

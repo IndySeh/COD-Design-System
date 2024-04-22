@@ -1,6 +1,6 @@
 {
   "name": "cod-design-system",
-  "version": "1.0.15",
+  "version": "1.0.19",
   "description": "City of Detroit design system",
   "main": "dist/index.js",
   "repository": {
@@ -39,6 +39,8 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
     "bootstrap": "5.3.0-alpha3",
     "maplibre-gl": "^2.4.0"
   },
@@ -95,7 +97,7 @@
     "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.43.4",
+    "sass": "^1.71.0",
     "sass-loader": "^12.3.0",
     "start-server-and-test": "^1.14.0",
     "storybook": "^7.3.2",

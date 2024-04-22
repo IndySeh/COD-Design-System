@@ -3855,6 +3855,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fullcalendar/core@npm:^6.1.11":
+  version: 6.1.11
+  resolution: "@fullcalendar/core@npm:6.1.11"
+  dependencies:
+    preact: ~10.12.1
+  checksum: 0078a6f96b06a637de08ba28a317bbcbf7768f53ce7891faa2a656ca2bed0e887e555d6f3203b77d6c271ccb128fa85d592411fcfd87746514a5cec68376ad87
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/daygrid@npm:^6.1.11":
+  version: 6.1.11
+  resolution: "@fullcalendar/daygrid@npm:6.1.11"
+  peerDependencies:
+    "@fullcalendar/core": ~6.1.11
+  checksum: 6eb5606de58b7a8ec30d96618a6d15b2c0d7108c94593ff94e81a8d87ce8efb1f29f3849c6c3f2b8ae56198ffe6235e2ec0e4a1270993c022dc194016e595685
+  languageName: node
+  linkType: hard
+
 "@hapi/hoek@npm:^9.0.0":
   version: 9.3.0
   resolution: "@hapi/hoek@npm:9.3.0"
@@ -9613,6 +9631,8 @@ __metadata:
     "@babel/preset-env": ^7.16.0
     "@babel/preset-typescript": ^7.21.0
     "@babel/runtime": ^7.15.4
+    "@fullcalendar/core": ^6.1.11
+    "@fullcalendar/daygrid": ^6.1.11
     "@storybook/addon-a11y": ^7.3.2
     "@storybook/addon-actions": ^7.3.2
     "@storybook/addon-coverage": ^0.0.9
@@ -9658,7 +9678,7 @@ __metadata:
     raw-loader: ^4.0.2
     react: ^18.2.0
     react-dom: ^18.2.0
-    sass: ^1.43.4
+    sass: ^1.71.0
     sass-loader: ^12.3.0
     start-server-and-test: ^1.14.0
     storybook: ^7.3.2
@@ -18871,6 +18891,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"preact@npm:~10.12.1":
+  version: 10.12.1
+  resolution: "preact@npm:10.12.1"
+  checksum: 0de99f477563ab7f94a0f964952ad216375973c0dcd9eb49881f8eb5effc5ed6948da062548c87d5bb0d82f1a1e516b649020e760eab3a0503dfdd8e64d34a26
+  languageName: node
+  linkType: hard
+
 "prelude-ls@npm:^1.2.1":
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
@@ -20058,16 +20085,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.43.4":
-  version: 1.62.0
-  resolution: "sass@npm:1.62.0"
+"sass@npm:^1.71.0":
+  version: 1.72.0
+  resolution: "sass@npm:1.72.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: d5f606aa25afdf3ed9f316602811a40cf3b29f64cb70ea02f4198ae4288f9687de6fcef9f4fd2d58e06c28282d859aa249bdbf7d7d97a3a6a582eeaa8e5607fa
+  checksum: f420079c7d51660b7256ee52463c1499ede36f7fd5c8ef50c687451777ad641509001454dea45244073cedd7c00e7a3bc1c362e55206ac6686171b994edb41e4
   languageName: node
   linkType: hard
 

@@ -27,6 +27,8 @@ export default {
         'danger',
         'light',
         'dark',
+        'accent-primary',
+        'accent-secondary',
       ],
     },
     onClick: { action: 'onClick' },
@@ -147,6 +149,19 @@ Icon.args = {
   icon: 'house',
   iconSize: 'small',
   iconOrder: 'left',
+};
+
+export const IconCenterSquare = Template.bind({});
+IconCenterSquare.args = {
+  primary: true,
+  label: '',
+  size: 'lg',
+  backgroundColor: 'primary',
+  icon: 'house',
+  iconSize: 'medium',
+  shape: 'square',
+  ariaLabel: 'Home',
+  extraClasses: 'icon-center',
 };
 
 export const Close = Template.bind({});

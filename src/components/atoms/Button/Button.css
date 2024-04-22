@@ -76,3 +76,9 @@ cod-icon {
   top: 0.1em;
   margin: 0 0.5em;
 }
+
+.icon-center span cod-icon {
+  top: 0.2em;
+  right: 0.1em;
+  margin: 0;
+}

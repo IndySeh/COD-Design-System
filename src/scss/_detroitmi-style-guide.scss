@@ -1,0 +1,21 @@
+// City of Detroit's Style Guide stylesheets.
+// Any styles needed to conform the the city style guide
+// that cannot be implemented through bootstrap customization
+// should be placed in this file.
+// -----------------------------------------------------------------------------
+
+// Global typeface settings for the theme.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 900;
+}

@@ -1,0 +1,8 @@
+/* Highlighted styles */
+.icon-container.highlighted {
+  background-image: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2049%2019%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cellipse%20cx%3D%2224.5%22%20cy%3D%229.5%22%20rx%3D%2224.5%22%20ry%3D%229.5%22%20fill%3D%22%239FD5B3%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-size: 100% auto;
+  padding-bottom: 0.9%;
+}

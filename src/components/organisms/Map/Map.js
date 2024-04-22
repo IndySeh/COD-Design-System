@@ -5,7 +5,14 @@ import styles from '!!raw-loader!./Map.css';
 import maplibreStyles from '!!raw-loader!../../../../node_modules/maplibre-gl/dist/maplibre-gl.css';
 export default class Map extends HTMLElement {
   static get observedAttributes() {
-    return ['data-map-state', 'data-map-mode'];
+    return [
+      'data-map-state',
+      'data-map-mode',
+      'data-map-layers',
+      'data-active-layers',
+      'data-zoom',
+      'data-center',
+    ];
   }
 
   constructor() {
@@ -32,11 +39,16 @@ export default class Map extends HTMLElement {
     this.mapWrapper.appendChild(mapContainer);
     shadow.appendChild(this.mapWrapper);
 
+    // Check for custom center point
+    let center = this.getAttribute('data-center');
+    center !== null ? (center = center.split(',')) : 0;
+    const zoom = this.getAttribute('data-zoom');
+
     this.map = new maplibregl.Map({
       container: mapContainer,
       style: mapStyle,
-      center: [-83.1, 42.36],
-      zoom: 9,
+      center: center !== null ? [center[0], center[1]] : [-83.1, 42.36],
+      zoom: zoom !== null ? zoom : 9,
     });
   }
 
@@ -46,12 +58,12 @@ export default class Map extends HTMLElement {
     switch (name) {
       case 'data-map-state': {
         const locationPoint = JSON.parse(this.getAttribute('data-location'));
-        const coord = [locationPoint.location.x, locationPoint.location.y];
         this.map.addControl(new maplibregl.NavigationControl());
         this.map.on('style.load', () => {
           this.map.resize();
 
           if (locationPoint) {
+            const coord = [locationPoint.location.x, locationPoint.location.y];
             const marker = new maplibregl.Marker();
             marker.setLngLat(coord);
             marker.addTo(this.map);
@@ -83,22 +95,11 @@ export default class Map extends HTMLElement {
           if (mapData) {
             this.map.addSource('data-points', {
               type: 'geojson',
-              data: mapData.data,
+              data: mapData.source,
             });
-            this.map.addLayer({
-              id: 'data-points',
-              type: 'circle',
-              source: 'data-points',
-              paint: {
-                'circle-radius': {
-                  base: 5,
-                  stops: [
-                    [12, 5],
-                    [22, 120],
-                  ],
-                },
-                'circle-color': '#004544',
-              },
+            mapData.layers.forEach((layer) => {
+              const tmpLayer = this.buildLayer(layer);
+              this.map.addLayer(tmpLayer);
             });
           }
         });
@@ -107,8 +108,41 @@ export default class Map extends HTMLElement {
         // eslint-disable-next-line no-case-declarations
         const tempMap = this;
         this.map.on('click', 'data-points', function (e) {
-          const activeData = tempMap.getAttribute('data-map-active-data');
-          tempMap.buildPopup(activeData, e.features[0], tempMap, e);
+          let activeData;
+          let popupStructure;
+          switch (tempMap.getAttribute('data-map-mode')) {
+            case 'my-home-info':
+              popupStructure = JSON.parse(
+                tempMap.getAttribute('data-popup-structure'),
+              );
+              activeData = tempMap.getAttribute('data-map-active-data');
+              tempMap.buildPopup(activeData, popupStructure, tempMap, e);
+              break;
+
+            case 'popup':
+              popupStructure = JSON.parse(
+                tempMap.getAttribute('data-popup-structure'),
+              );
+              activeData = tempMap.getAttribute('data-map-active-data');
+              tempMap.buildPopup(activeData, popupStructure, tempMap, e);
+              break;
+
+            case 'map-panel': {
+              const parentComponentName = tempMap.getAttribute(
+                'data-parent-component',
+              );
+              const app = document.getElementsByTagName(parentComponentName);
+              app[0].setAttribute(
+                'data-panel-data',
+                JSON.stringify(e.features[0]),
+              );
+              app[0].setAttribute('data-app-state', 'active-panel');
+              break;
+            }
+
+            default:
+              break;
+          }
         });
         this.map.on('mouseenter', 'data-points', function () {
           tempMap.map.getCanvas().style.cursor = 'pointer';
@@ -143,6 +177,7 @@ export default class Map extends HTMLElement {
             closeMapBtn.setAttribute('data-img-alt', '');
             closeMapBtn.setAttribute('data-icon', '');
             closeMapBtn.setAttribute('data-shape', 'square');
+            closeMapBtn.setAttribute('data-extra-classes', 'fw-bold');
             this.mapWrapper.appendChild(closeMapBtn);
             app[0] ? app[0].setAttribute('data-map-state', 'init') : 0;
             break;
@@ -158,48 +193,133 @@ export default class Map extends HTMLElement {
         break;
       }
 
+      case 'data-map-layers': {
+        let sources = this.getAttribute('data-map-layers');
+        const tmpMap = this.map;
+        if (sources) {
+          this.map.on('style.load', () => {
+            sources = JSON.parse(sources);
+            sources.forEach((source) => {
+              tmpMap.addSource(source.name, {
+                type: 'geojson',
+                data: source.source,
+              });
+              source.layers.forEach((layer) => {
+                const tmpLayer = this.buildLayer(layer);
+                this.map.addLayer(tmpLayer);
+              });
+            });
+          });
+        }
+        break;
+      }
+
+      case 'data-active-layers': {
+        break;
+      }
+
+      case 'data-zoom': {
+        this.map.setZoom(newValue);
+        break;
+      }
+
+      case 'data-center': {
+        const tempCenter = newValue.split(',');
+        this.map.setCenter([tempCenter[0], tempCenter[1]]);
+        break;
+      }
+
       default:
         break;
     }
   }
 
-  buildPopup(dataType, data, map, e) {
-    switch (dataType) {
-      case 'schools':
-        new maplibregl.Popup()
-          .setLngLat(e.lngLat)
-          .setHTML(
-            `<strong>School Name:</strong> ${e.features[0].properties.EntityOfficialName}`,
-          )
-          .addTo(map.map);
-        break;
+  buildLayer(layer) {
+    switch (layer.type) {
+      case 'line':
+        return {
+          id: layer.name,
+          type: layer.type,
+          source: layer.source,
+          layout: layer.active
+            ? { visibility: 'visible' }
+            : { visibility: 'none' },
+          paint: layer.width
+            ? { 'line-color': layer.color, 'line-width': layer.width }
+            : { 'line-color': layer.color },
+        };
 
-      case 'demos-data':
-        new maplibregl.Popup()
-          .setLngLat(e.lngLat)
-          .setHTML(
-            `<strong>Demo Address:</strong> ${e.features[0].properties.address}`,
-          )
-          .addTo(map.map);
-        break;
+      case 'text':
+        return {
+          id: layer.name,
+          type: 'symbol',
+          source: layer.source,
+          layout: layer.active
+            ? {
+                visibility: 'visible',
+                'text-field': ['get', layer.text],
+                'text-font': ['Arial Unicode MS Regular'],
+              }
+            : {
+                visibility: 'none',
+                'text-field': ['get', layer.text],
+                'text-font': ['Arial Unicode MS Regular'],
+              },
+        };
 
-      case 'stabilization-data':
-        new maplibregl.Popup()
-          .setLngLat(e.lngLat)
-          .setHTML(
-            `<strong>Stabilization Address:</strong> ${e.features[0].properties.address}`,
-          )
-          .addTo(map.map);
-        break;
+      case 'circle':
+        return {
+          id: layer.name,
+          type: layer.type,
+          source: layer.source,
+          layout: layer.active
+            ? { visibility: 'visible' }
+            : { visibility: 'none' },
+          'fill-sort-key': layer.sort ? layer.sort : 1,
+          paint: {
+            'circle-radius': layer.radius ? layer.radius : 5,
+            'circle-color': layer.color,
+          },
+        };
 
-      case 'improve-det':
-        new maplibregl.Popup()
-          .setLngLat(e.lngLat)
-          .setHTML(
-            `<strong>Issue type:</strong> ${e.features[0].properties.request_type_title}`,
-          )
-          .addTo(map.map);
+      case 'fill':
+        return {
+          id: layer.name,
+          type: layer.type,
+          source: layer.source,
+          layout: layer.active
+            ? { visibility: 'visible' }
+            : { visibility: 'none' },
+          paint: layer.opacity
+            ? { 'fill-color': layer.color, 'fill-opacity': layer.opacity }
+            : { 'fill-color': layer.color },
+        };
+
+      default:
         break;
+    }
+  }
+
+  buildPopup(dataType, structure, map, e) {
+    let popupHTML = '';
+    structure[dataType].forEach((elem) => {
+      popupHTML += this.buildPopupElement(elem, e.features[0].properties);
+    });
+    new maplibregl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML(popupHTML)
+      .addTo(map.map);
+  }
+
+  buildPopupElement(elem, data) {
+    switch (elem.type) {
+      case 'field-value':
+        return `<p><strong>${elem.label}</strong> ${data[elem.value]}</p>`;
+
+      case 'field-link':
+        return `<p><strong>${elem.label}</strong> <a href="${
+          data[elem.link]
+        }" target="_blank">${data[elem.value]}</a></p>`;
 
       default:
         break;

@@ -429,7 +429,14 @@ export const StackedInline = () => html`
         </cod-table-cell>
       </cod-table-row>
       <cod-table-row>
-        <cod-table-cell data-label="Bus Route">3 Grand River</cod-table-cell>
+        <cod-table-cell data-label="Bus Route">
+          <ul>
+            <li>This is one item</li>
+            <li>This is another item</li>
+            <li>This is another item</li>
+            <li>This is another item</li>
+          </ul>
+        </cod-table-cell>
         <cod-table-cell data-label="Route Viewer">
           <a href="https://example.com">View Route</a>
         </cod-table-cell>

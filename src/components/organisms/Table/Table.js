@@ -2,13 +2,45 @@ import styles from '!!raw-loader!./Table.css';
 import varStyles from '!!raw-loader!../../../shared/variables.css';
 import bootstrapStyles from '!!raw-loader!../../../shared/themed-bootstrap.css';
 
+import observedAttributeMixin from '../../../shared/js/observed-attribute-mixin';
+import { handleTableStacked } from '../../../shared/js/utilities';
+
 const template = document.createElement('template');
 
 template.innerHTML = `
 <slot></slot>
 `;
 
-export default class Table extends HTMLElement {
+class Table extends HTMLElement {
+  static observedAttributeCbs = {
+    'data-stacked': (component, oldValue, newValue) => {
+      const tableHeader =
+        component.shadowRoot.querySelector('cod-table-header');
+      const tableBody = component.shadowRoot.querySelector('cod-table-body');
+      if (newValue !== null) {
+        tableHeader?.setAttribute('data-stacked');
+        tableBody?.setAttribute('data-stacked');
+      } else {
+        tableHeader?.removeAttribute('data-stacked');
+        tableBody?.removeAttribute('data-stacked');
+      }
+    },
+    'data-label-block': (component, oldValue, newValue) => {
+      const tableHeader =
+        component.shadowRoot.querySelector('cod-table-header');
+      const tableBody = component.shadowRoot.querySelector('cod-table-body');
+      if (newValue !== null) {
+        tableHeader?.setAttribute('data-label-block');
+        tableBody?.setAttribute('data-label-block');
+      } else {
+        tableHeader?.removeAttribute('data-label-block');
+        tableBody?.removeAttribute('data-label-block');
+      }
+    },
+  };
+
+  static observedAttributes = Object.keys(this.observedAttributeCbs);
+
   constructor() {
     // Always call super first in constructor
     super();
@@ -41,13 +73,7 @@ export default class Table extends HTMLElement {
             this.getAttribute('data-scrollable') === 'true'
               ? node.setAttribute('data-scrollable', 'true')
               : 0;
-
-            this.getAttribute('data-stacked') === 'true'
-              ? node.setIsStacked(
-                  true /* isStacked */,
-                  this.getAttribute('data-label-block') === 'true',
-                )
-              : 0;
+            handleTableStacked(this, node);
 
             this.table.appendChild(node);
             break;
@@ -76,12 +102,7 @@ export default class Table extends HTMLElement {
             this.getAttribute('data-scrollable') === 'true'
               ? node.setAttribute('data-scrollable', 'true')
               : 0;
-            this.getAttribute('data-stacked') === 'true'
-              ? node.setIsStacked(
-                  true /* isStacked */,
-                  this.getAttribute('data-label-block') === 'true',
-                )
-              : 0;
+            handleTableStacked(this, node);
 
             this.table.appendChild(node);
             break;
@@ -138,4 +159,19 @@ export default class Table extends HTMLElement {
       this.shadowRoot.appendChild(this.tableContainer);
     }
   }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name in Table.observedAttributeCbs) {
+      this.handleObservedAttribute(
+        oldValue,
+        newValue,
+        Table.observedAttributeCbs[name],
+      );
+    }
+  }
 }
+
+// Apply mixins.
+Object.assign(Table.prototype, observedAttributeMixin);
+
+export { Table as default };

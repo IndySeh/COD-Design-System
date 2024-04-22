@@ -11,5 +11,6 @@ rules: {
   no-else-return: [error],
   no-implicit-coercion: [warn],
   prefer-const: [error],
-  no-console: [error]
+  no-console: [error],
+  no-unused-vars: [error, { "argsIgnorePattern": "^_" }]
 }

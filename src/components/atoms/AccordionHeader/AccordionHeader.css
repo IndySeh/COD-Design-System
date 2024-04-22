@@ -1,6 +1,4 @@
 .li-num-box {
-  /* TODO: Dynamically update list numbers to match accordion
-    header text styles */
   width: 3rem;
   height: 3rem;
   display: flex;

@@ -1,0 +1,45 @@
+div {
+  font-family: var(--font-family);
+}
+
+.action-button-container,
+.action-button-container > a,
+.action-button-container > a > .abutton {
+  width: 100%;
+  height: 100%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+.top-icon {
+  padding-top: 1em;
+}
+
+.abutton-title {
+  margin-bottom: var(--abutton-title-spacer-y);
+}
+
+.abutton-text:last-child {
+  margin-bottom: 0;
+}
+
+.abutton-body {
+  padding: var(--abutton-spacer-y) var(--abutton-spacer-x);
+  text-align: left;
+}
+
+.abutton {
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+  padding: 1em;
+  --abutton-spacer-y: 1em;
+  --abutton-spacer-x: 1em;
+  --abutton-title-spacer-y: 0.5em;
+}
+
+.btn {
+  --bs-btn-padding-x: 0rem;
+  --bs-btn-padding-y: 0rem;
+}

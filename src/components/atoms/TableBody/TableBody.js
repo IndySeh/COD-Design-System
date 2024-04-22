@@ -4,7 +4,9 @@ import bootstrapStyles from '!!raw-loader!../../../shared/themed-bootstrap.css';
 import {
   cellHeaderBlockClass,
   stackedTableClass,
+  handleTableStacked,
 } from '../../../shared/js/utilities';
+import observedAttributeMixin from '../../../shared/js/observed-attribute-mixin';
 
 const template = document.createElement('template');
 
@@ -12,7 +14,13 @@ template.innerHTML = `
 <slot></slot>
 `;
 
-export default class TableBody extends HTMLElement {
+class TableBody extends HTMLElement {
+  static observedClassAttributes = {
+    'data-stacked': stackedTableClass,
+    'data-label-block': cellHeaderBlockClass,
+  };
+  static observedAttributes = Object.keys(this.observedClassAttributes);
+
   constructor() {
     // Always call super first in constructor
     super();
@@ -55,10 +63,7 @@ export default class TableBody extends HTMLElement {
         this.getAttribute('data-scrollable') === 'true'
           ? node.setAttribute('data-scrollable', 'true')
           : 0;
-
-        if (this.isStacked()) {
-          node.setIsStacked(true /* isStacked */, this.isCellHeaderBlock());
-        }
+        handleTableStacked(this, node);
 
         this.tableBody.append(node);
       });
@@ -78,25 +83,22 @@ export default class TableBody extends HTMLElement {
     shadow.appendChild(this.tableBody);
   }
 
-  setIsStacked(isStacked, isCellHeaderBlock) {
-    if (isStacked) {
-      this.tableBody.classList.add(stackedTableClass);
-    } else {
-      this.tableBody.classList.remove(stackedTableClass);
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name in TableBody.observedClassAttributes) {
+      this.handleObservedClassAttribute(
+        name,
+        newValue,
+        this.tableBody,
+        TableBody.observedClassAttributes[name],
+        () => {
+          return this.shadowRoot.querySelectorAll('cod-table-row');
+        },
+      );
     }
-
-    if (isCellHeaderBlock) {
-      this.tableBody.classList.add(cellHeaderBlockClass);
-    } else {
-      this.tableBody.classList.remove(cellHeaderBlockClass);
-    }
-  }
-
-  isStacked() {
-    return this.tableBody.classList.contains(stackedTableClass);
-  }
-
-  isCellHeaderBlock() {
-    return this.tableBody.classList.contains(cellHeaderBlockClass);
   }
 }
+
+// Apply mixins.
+Object.assign(TableBody.prototype, observedAttributeMixin);
+
+export { TableBody as default };

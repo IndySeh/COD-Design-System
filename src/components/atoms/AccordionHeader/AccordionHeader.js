@@ -5,7 +5,11 @@ import bootstrapStyles from '!!raw-loader!../../../shared/themed-bootstrap.css';
 const template = document.createElement('template');
 
 template.innerHTML = `
-<slot></slot>
+<div>
+  <button type="button" class="accordion-button" data-bs-toggle="collapse">
+    <slot></slot>
+  </button>
+</div>
 `;
 
 export default class AccordionHeader extends HTMLElement {
@@ -19,17 +23,6 @@ export default class AccordionHeader extends HTMLElement {
     // Create a shadow root
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
-    this.accordionHeader = document.createElement('div');
-    this.accordionBtn = document.createElement('button');
-    this.accordionHeader.appendChild(this.accordionBtn);
-    this.shadowRoot.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
-      let tempElements = ev.target.assignedElements();
-      tempElements.forEach((node) => {
-        this.accordionBtn.append(node);
-      });
-    });
 
     // Add styles
     const bootStyles = document.createElement('style');
@@ -44,71 +37,56 @@ export default class AccordionHeader extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    this.accordionBtn.setAttribute('aria-expanded', newValue);
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let tempClasses = this.accordionBtn.className.split(' ');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let popValue = tempClasses.pop();
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
-    popValue != 'collapsed' ? tempClasses.push(popValue) : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
-    if (newValue == 'false') {
-      tempClasses.push('collapsed');
+    if (name === 'data-expanded') {
+      const accordionBtn = this.shadowRoot.querySelector('button');
+      accordionBtn.setAttribute('aria-expanded', newValue);
+      accordionBtn.classList.remove('collapsed');
+      if (newValue === 'false') {
+        accordionBtn.classList.add('collapsed');
+      }
     }
-    this.accordionBtn.className = tempClasses.join(' ');
   }
 
   connectedCallback() {
-    // Nav attributes
-    // TODO: Refactor attribute and class handling.
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let parentID = this.getAttribute('data-parent-id');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let expanded = this.getAttribute('data-expanded');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const accordionBtn = this.shadowRoot.querySelector('button');
+    // Set classes.
+    const extraClasses = this.getAttribute('data-extra-classes');
     const isListItem = this.getAttribute('data-li');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let accordionBtnClasses = ['accordion-button'];
     if (isListItem !== null) {
-      accordionBtnClasses.push('data-li');
+      accordionBtn.classList.add('data-li');
     }
-    this.accordionBtn.setAttribute('type', 'button');
-    this.accordionBtn.setAttribute('data-bs-toggle', 'collapse');
-    this.accordionBtn.setAttribute('aria-controls', parentID);
-    this.accordionBtn.setAttribute('data-bs-target', `#${parentID}`);
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
-    if (expanded == 'true') {
-      this.accordionBtn.setAttribute('aria-expanded', 'true');
+    if (extraClasses) {
+      accordionBtn.classList.add(...extraClasses.split(' '));
+    }
+
+    // Set attributes.
+    const parentID = this.getAttribute('data-parent-id');
+    accordionBtn.setAttribute('aria-controls', parentID);
+    accordionBtn.setAttribute('data-bs-target', `#${parentID}`);
+    const expanded = this.getAttribute('data-expanded');
+    if (expanded === 'true') {
+      accordionBtn.classList.remove('collapsed');
+      accordionBtn.setAttribute('aria-expanded', 'true');
     } else {
-      accordionBtnClasses.push('collapsed');
-      this.accordionBtn.setAttribute('aria-expanded', 'false');
-    }
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
-    extraClasses != undefined && extraClasses != null
-      ? accordionBtnClasses.push(extraClasses)
-      : 0;
-    this.accordionBtn.className = accordionBtnClasses.join(' ');
-    if (!this.shadowRoot.querySelector('div')) {
-      this.shadowRoot.appendChild(this.accordionHeader);
+      accordionBtn.classList.add('collapsed');
+      accordionBtn.setAttribute('aria-expanded', 'false');
     }
   }
 
   addListNumber(index, extraClasses) {
+    const accordionBtn = this.shadowRoot.querySelector('button');
     const numberBox = document.createElement('div');
-    numberBox.innerText = `${index + 1}`;
     extraClasses.push('li-num-box');
     numberBox.className = extraClasses.join(' ');
-    this.accordionBtn.prepend(numberBox);
+    const numberSlot = document.createElement('slot');
+    numberSlot.setAttribute('name', 'li-num-box');
+    numberBox.appendChild(numberSlot);
+    accordionBtn.prepend(numberBox);
+
+    // TODO: Match existing slot element and classes.
+    const number = document.createElement('span');
+    number.innerText = `${index + 1}`;
+    number.setAttribute('slot', 'li-num-box');
+    this.appendChild(number);
   }
 }
