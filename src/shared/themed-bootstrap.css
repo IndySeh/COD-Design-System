@@ -12616,9 +12616,7 @@ strong {
   font-weight: 700;
 }
 
-<<<<<<< HEAD
-=======
-@media (max-width: 991.98px) {
+<<<<<<< HEAD ======= @media (max-width: 991.98px) {
   thead.table-stacked {
     position: absolute;
     left: -10000px;
@@ -12900,6 +12898,3 @@ strong {
     overflow-y: visible;
   }
 }
-
->>>>>>> dev
-/*# sourceMappingURL=themed-bootstrap.css.map */
