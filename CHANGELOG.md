@@ -1,3 +1,17 @@
+# v1.0.20 (Mon Apr 22 2024)
+
+#### 🐛 Bug Fix
+
+- Feature.197 [#203](https://github.com/CityOfDetroit/COD-Design-System/pull/203) ([@jedgar1mx](https://github.com/jedgar1mx))
+- Update UXDS to match detroitmi starterkit themes [#193](https://github.com/CityOfDetroit/COD-Design-System/pull/193) ([@maxatdetroit](https://github.com/maxatdetroit))
+
+#### Authors: 2
+
+- J Edgar Montes ([@jedgar1mx](https://github.com/jedgar1mx))
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+---
+
 # v1.0.19 (Wed March 27 2024)
 
 #### 🚀 Enhancement
