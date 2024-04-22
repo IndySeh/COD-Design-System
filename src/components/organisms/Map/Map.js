@@ -61,15 +61,19 @@ export default class Map extends HTMLElement {
         const tempMap = this;
         const locationPoint = JSON.parse(this.getAttribute('data-location'));
         let clickableLayers = this.getAttribute('data-clickable-layers');
-        clickableLayers = (clickableLayers !== null) ? clickableLayers.split(',') : [];
+        clickableLayers =
+          clickableLayers !== null ? clickableLayers.split(',') : [];
 
-        if(newValue === 'init'){
+        if (newValue === 'init') {
           this.map.addControl(new maplibregl.NavigationControl());
           this.map.on('style.load', () => {
             this.map.resize();
-  
+
             if (locationPoint) {
-              const coord = [locationPoint.location.x, locationPoint.location.y];
+              const coord = [
+                locationPoint.location.x,
+                locationPoint.location.y,
+              ];
               const marker = new maplibregl.Marker();
               marker.setLngLat(coord);
               marker.addTo(this.map);
@@ -79,24 +83,24 @@ export default class Map extends HTMLElement {
                 center: coord,
                 zoom: 12,
                 bearing: 0,
-  
+
                 // These options control the flight curve, making it move
                 // slowly and zoom out almost completely before starting
                 // to pan.
                 speed: 1.5, // make the flying slow
                 curve: 1, // change the speed at which it zooms out
-  
+
                 // This can be any easing function: it takes a number between
                 // 0 and 1 and returns another number between 0 and 1.
                 easing: function (t) {
                   return t;
                 },
-  
+
                 // this animation is considered essential with respect to prefers-reduced-motion
                 essential: true,
               });
             }
-  
+
             const mapData = JSON.parse(this.getAttribute('data-map-data'));
             if (mapData) {
               this.map.addSource('data-points', {
@@ -112,7 +116,7 @@ export default class Map extends HTMLElement {
           // Creating this temp variable for workaround with dealing with "this" encapsulation
           // TODO: See CityOfDetroit/detroitmi#1099
           // eslint-disable-next-line no-case-declarations
-          
+
           this.map.on('click', 'data-points', function (e) {
             let activeData;
             let popupStructure;
@@ -124,7 +128,7 @@ export default class Map extends HTMLElement {
                 activeData = tempMap.getAttribute('data-map-active-data');
                 tempMap.buildPopup(activeData, popupStructure, tempMap, e);
                 break;
-  
+
               case 'popup':
                 popupStructure = JSON.parse(
                   tempMap.getAttribute('data-popup-structure'),
@@ -132,7 +136,7 @@ export default class Map extends HTMLElement {
                 activeData = tempMap.getAttribute('data-map-active-data');
                 tempMap.buildPopup(activeData, popupStructure, tempMap, e);
                 break;
-  
+
               case 'map-panel': {
                 const parentComponentName = tempMap.getAttribute(
                   'data-parent-component',
@@ -145,7 +149,7 @@ export default class Map extends HTMLElement {
                 app[0].setAttribute('data-app-state', 'active-panel');
                 break;
               }
-  
+
               default:
                 break;
             }
@@ -154,23 +158,28 @@ export default class Map extends HTMLElement {
           this.map.on('mouseenter', 'data-points', function () {
             tempMap.map.getCanvas().style.cursor = 'pointer';
           });
-  
+
           // Change it back to a pointer when it leaves.
           this.map.on('mouseleave', 'data-points', function () {
             tempMap.map.getCanvas().style.cursor = '';
           });
-        }else{
-          clickableLayers.forEach(layer => {
+        } else {
+          clickableLayers.forEach((layer) => {
             tempMap.map.on('click', layer, function (e) {
               let popupStructure;
               let popupLayers = tempMap.getAttribute('data-popup-layers');
-              popupLayers = (popupLayers !== null) ? JSON.parse(popupLayers) : [];
-              if(popupLayers.includes(e.features[0].layer.id)){
+              popupLayers = popupLayers !== null ? JSON.parse(popupLayers) : [];
+              if (popupLayers.includes(e.features[0].layer.id)) {
                 popupStructure = JSON.parse(
                   tempMap.getAttribute('data-popup-structure'),
                 );
-                tempMap.buildPopup(e.features[0].layer.source, popupStructure, tempMap, e);
-              }else{
+                tempMap.buildPopup(
+                  e.features[0].layer.source,
+                  popupStructure,
+                  tempMap,
+                  e,
+                );
+              } else {
                 const parentComponentName = tempMap.getAttribute(
                   'data-parent-component',
                 );
@@ -182,13 +191,13 @@ export default class Map extends HTMLElement {
                 app[0].setAttribute('data-app-state', 'active-panel');
               }
             });
-            
+
             tempMap.map.on('mouseenter', layer, function () {
-              tempMap.map.getCanvas().style.cursor = 'pointer'
+              tempMap.map.getCanvas().style.cursor = 'pointer';
             });
 
             tempMap.map.on('mouseleave', layer, function () {
-              tempMap.map.getCanvas().style.cursor = ''
+              tempMap.map.getCanvas().style.cursor = '';
             });
           });
         }
@@ -248,7 +257,7 @@ export default class Map extends HTMLElement {
               source.layers.forEach((layer) => {
                 const tmpLayer = this.buildLayer(layer);
                 this.map.addLayer(tmpLayer);
-                (tmpLayer.clickable) ? this.updateClickableLayers(tmpLayer) : 0; 
+                tmpLayer.clickable ? this.updateClickableLayers(tmpLayer) : 0;
               });
             });
           });
@@ -257,14 +266,11 @@ export default class Map extends HTMLElement {
       }
 
       case 'data-active-layers': {
-        console.log(newValue);
         break;
       }
 
       case 'data-clickable-layers': {
-        let clickableLayers = newValue;
-        clickableLayers = (clickableLayers !== null) ? clickableLayers.split(',') : [];
-        this.setAttribute('data-map-state','reload');
+        this.setAttribute('data-map-state', 'reload');
         break;
       }
 
@@ -284,9 +290,12 @@ export default class Map extends HTMLElement {
     }
   }
 
-  updateClickableLayers(layer){
-    let clickableLayers = (this.getAttribute('data-clickable-layers') === null) ? '' : this.getAttribute('data-clickable-layers');
-    let tempClickableLayers = clickableLayers.split(',');
+  updateClickableLayers(layer) {
+    let clickableLayers =
+      this.getAttribute('data-clickable-layers') === null
+        ? ''
+        : this.getAttribute('data-clickable-layers');
+    const tempClickableLayers = clickableLayers.split(',');
     clickableLayers = [];
     clickableLayers = tempClickableLayers;
     clickableLayers.push(layer.id);
@@ -332,7 +341,7 @@ export default class Map extends HTMLElement {
         return {
           id: layer.name,
           type: layer.type,
-          clickable : layer.clickable,
+          clickable: layer.clickable,
           source: layer.source,
           layout: layer.active
             ? { visibility: 'visible' }
@@ -348,7 +357,7 @@ export default class Map extends HTMLElement {
         return {
           id: layer.name,
           type: layer.type,
-          clickable : layer.clickable,
+          clickable: layer.clickable,
           source: layer.source,
           layout: layer.active
             ? { visibility: 'visible' }

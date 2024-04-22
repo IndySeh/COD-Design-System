@@ -38,13 +38,14 @@ export const Popups = () =>
     data-map-state="init"
   ></cod-map>`;
 
-  export const MultiPopups = () =>
+export const MultiPopups = () =>
   html`<cod-map
     id="cod-map"
     data-map-mode="popup"
     data-center="-83.103111,42.31103400000001"
     data-zoom="12"
-    data-popup-layers='["d-6"]';
+    data-popup-layers='["d-6"]'
+    ;
     data-popup-structure='{"schools":[{"type":"field-value","label":"Name:","value":"EntityOfficialName"}],"d-6":[{"type":"field-value","label":"Name:","value":"Facility"}]}'
     data-map-active-data="schools"
     data-map-layers='[{"name":"d-6","layers":[{"name":"d-6","type":"circle","clickable":true,"radius":6,"color":"#481718","active":true,"sort":10,"source":"d-6"}],"source":"https://services2.arcgis.com/qvkbeam7Wirps6zC/ArcGIS/rest/services/D6CRG_Facilities/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token="}]'
