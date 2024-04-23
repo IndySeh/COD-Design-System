@@ -10,7 +10,7 @@ fi
 
 compile_bootstrap () {
     echo "Compiling bootstrap SASS..."
-    yarn sass "${PROJECT_ROOT}src/scss/themed-bootstrap.scss" "${PROJECT_ROOT}src/shared/themed-bootstrap.css"
+    yarn sass -I ${PROJECT_ROOT}/node_modules/ "${PROJECT_ROOT}src/scss/themed-bootstrap.scss" "${PROJECT_ROOT}src/shared/themed-bootstrap.css"
     if [ $? -ne 0 ];
     then
         echo "Failed to compile bootstrap... Aborting."
@@ -87,7 +87,7 @@ compile_components() {
         output_css_file="${component_scss_path%.*}.css"
 
         # Run yarn sass command for each .scss file
-        yarn sass "$component_scss_path" "$output_css_file"
+        yarn sass -I ${PROJECT_ROOT}/node_modules/ "$component_scss_path" "$output_css_file"
 
         # Apply replace_rem_w_em and format_bootstrap functions to the generated CSS file
         replace_rem_w_em "$output_css_file"
