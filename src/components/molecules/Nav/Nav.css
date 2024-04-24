@@ -6,3 +6,35 @@
   --bs-nav-link-padding-x: 0.75em;
   --bs-btn-padding-x: var(--bs-nav-link-padding-x);
 }
+
+.navbar-expand-xs.nav {
+  flex-direction: row;
+}
+
+@media (min-width: 576px) {
+  .navbar-expand-sm.nav {
+    flex-direction: row;
+  }
+}
+@media (min-width: 768px) {
+  .navbar-expand-md.nav {
+    flex-direction: row;
+  }
+}
+@media (min-width: 992px) {
+  .navbar-expand-lg.nav {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar-expand-xl.nav {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1400px) {
+  .navbar-expand-xxl.nav {
+    flex-direction: row;
+  }
+}
+
+/*# sourceMappingURL=Nav.css.map */

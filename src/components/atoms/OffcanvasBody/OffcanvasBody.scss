@@ -1,4 +1,6 @@
-@import '../../../../node_modules/bootstrap/scss/mixins/breakpoints';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins/breakpoints';
 
 @each $breakpoint-name, $_ in $grid-breakpoints {
   @include media-breakpoint-up($breakpoint-name) {

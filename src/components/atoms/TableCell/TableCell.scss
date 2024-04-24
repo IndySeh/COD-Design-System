@@ -1,6 +1,25 @@
 @use '../../../scss/mixins/table';
-@import '../../../../node_modules/bootstrap/scss/mixins/breakpoints';
-@import '../../../../node_modules/bootstrap/scss/variables';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins/breakpoints';
+
+td {
+  display: block;
+  padding: 0.5rem 0.5rem;
+  background-color: var(--bs-table-bg);
+  border-bottom: solid var(--bs-border-width) var(--bs-secondary);
+  box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+  height: 100%;
+}
+
+td.table-striped,
+td.table-striped-columns {
+  --bs-table-accent-bg: var(--bs-table-striped-bg);
+}
+
+td.table-scrollable {
+  width: 5em;
+}
 
 @include media-breakpoint-down(lg) {
   td.table-stacked.cell-header-block {

@@ -1,0 +1,31 @@
+.navbar-expand-xs.offcanvas-header {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .navbar-expand-sm.offcanvas-header {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .navbar-expand-md.offcanvas-header {
+    display: none;
+  }
+}
+@media (min-width: 992px) {
+  .navbar-expand-lg.offcanvas-header {
+    display: none;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar-expand-xl.offcanvas-header {
+    display: none;
+  }
+}
+@media (min-width: 1400px) {
+  .navbar-expand-xxl.offcanvas-header {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=OffcanvasHeader.css.map */

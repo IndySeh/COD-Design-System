@@ -1,3 +1,16 @@
 thead {
   display: block;
 }
+
+@media (max-width: 991.98px) {
+  thead.table-stacked {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+}
+
+/*# sourceMappingURL=TableHeader.css.map */

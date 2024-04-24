@@ -1,3 +1,7 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins/breakpoints';
+
 tr {
   border-color: inherit;
   border-style: solid;
@@ -35,21 +39,22 @@ tr.table-hover:hover {
   --bs-table-accent-bg: var(--bs-table-hover-bg);
 }
 
-@media (max-width: 991.98px) {
+@include media-breakpoint-down(lg) {
   tr.table-stacked {
     display: block;
     border-top-width: 0;
     width: 100%;
-  }
-  tr.table-stacked:not(.cell-header-block) {
-    border-bottom: 2px solid var(--bs-black);
-  }
-  tr.table-stacked.first:not(.cell-header-block) {
-    border-top: 2px solid var(--bs-black);
-  }
-  tr.table-stacked.odd.cell-header-block {
-    border-left: 2px solid var(--bs-black);
+
+    &:not(.cell-header-block) {
+      border-bottom: 2px solid var(--bs-black);
+    }
+
+    &.first:not(.cell-header-block) {
+      border-top: 2px solid var(--bs-black);
+    }
+
+    &.odd.cell-header-block {
+      border-left: 2px solid var(--bs-black);
+    }
   }
 }
-
-/*# sourceMappingURL=TableRow.css.map */
