@@ -28,7 +28,7 @@ export default class Modal extends HTMLElement {
     this.modalDialog.appendChild(this.modalContent);
     this.modal.appendChild(this.modalDialog);
 
-    shadow.addEventListener('slotchange', (e) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         switch (node.tagName) {
@@ -162,7 +162,7 @@ export default class Modal extends HTMLElement {
     this.removeEventListener('click', this._onClick.bind(this));
   }
 
-  _onClick(e) {
+  _onClick() {
     this.getRootNode().host.setAttribute('data-show', 'false');
   }
 }

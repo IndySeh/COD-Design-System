@@ -32,8 +32,6 @@ export default class Geocoder extends HTMLElement {
 
     const input = document.createElement('input');
 
-    const suggestions = document.createElement('ul');
-
     const list = document.createElement('datalist');
 
     const icon = document.createElement('i');
@@ -65,7 +63,6 @@ export default class Geocoder extends HTMLElement {
     form.appendChild(label);
     form.appendChild(input);
     form.appendChild(icon);
-    // form.appendChild(suggestions);
     form.appendChild(list);
     this.form = form;
     geocoderWraper.appendChild(form);
