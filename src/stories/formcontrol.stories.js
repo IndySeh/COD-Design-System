@@ -48,15 +48,21 @@ const Template = (args) => {
   const fcontrol = document.createElement('cod-form-control');
   fcontrol.setAttribute('data-tag', args.tag);
 
-  if (args.size !== null) {
+  // TODO: Fix old ESLint errors - issue #1099
+  // eslint-disable-next-line eqeqeq
+  if (args.size != null) {
     fcontrol.setAttribute('data-size', args.size);
   }
 
-  if (args.rows !== null) {
+  // TODO: Fix old ESLint errors - issue #1099
+  // eslint-disable-next-line eqeqeq
+  if (args.rows != null) {
     fcontrol.setAttribute('data-rows', args.rows);
   }
 
-  if (args.value !== null) {
+  // TODO: Fix old ESLint errors - issue #1099
+  // eslint-disable-next-line eqeqeq
+  if (args.value != null) {
     fcontrol.setAttribute('data-value', args.value);
   }
   fcontrol.setAttribute('data-read-only', args.readOnly);
