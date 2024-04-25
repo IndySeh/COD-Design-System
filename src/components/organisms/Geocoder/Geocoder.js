@@ -48,7 +48,9 @@ export default class Geocoder extends HTMLElement {
           label.innerText = app[0].getAttribute('data-geocoder-label');
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      // Continue regardless of error.
+    }
     label.setAttribute('for', 'geocoder-input');
     input.type = 'text';
     input.setAttribute('list', 'addresses-list');
@@ -275,8 +277,8 @@ export default class Geocoder extends HTMLElement {
           },
         );
 
-        fetch(request).then((res) => {
-          // console.log(res);
+        fetch(request).then((_res) => {
+          // console.log(_res);
         });
       });
   }

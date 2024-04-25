@@ -18,7 +18,7 @@ export default class Form extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.form = document.createElement('form');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       if (tempElements.length) {
         tempElements.forEach((node) => {

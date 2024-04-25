@@ -78,7 +78,7 @@ export default class Carousel extends HTMLElement {
       this.carousel.appendChild(this.carouselInner);
     }
 
-    shadow.addEventListener('slotchange', (e) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       let tempElementsCount = 0;
       tempElements.forEach((node, index) => {
@@ -226,10 +226,8 @@ export default class Carousel extends HTMLElement {
     this.removeEventListener('click', this._onClick.bind(this));
   }
 
-  _onClick(e) {
+  _onClick() {
     const activeItem = this.getRootNode().host.getAttribute('data-active-item');
-
-    const totalItems = this.getRootNode().host.getAttribute('data-total-items');
 
     if (this.getAttribute('data-bs-slide') == undefined) {
       if (this.getAttribute('data-bs-slide-to') > activeItem) {
