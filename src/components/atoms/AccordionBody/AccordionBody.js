@@ -17,7 +17,7 @@ export default class AccordionBody extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.accordionBody = document.createElement('div');
 
-    this.shadowRoot.addEventListener('slotchange', (ev) => {
+    this.shadowRoot.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.accordionBody.append(node);

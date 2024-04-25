@@ -6,8 +6,7 @@ export default class Range extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-
-    const shadow = this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
   }
 
   connectedCallback() {
@@ -21,9 +20,6 @@ export default class Range extends HTMLElement {
     this.shadowRoot.appendChild(bootStyles);
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(rangeStyles);
-    // progress attributes
-
-    const id = this.getAttribute('data-id');
 
     const disabled = this.getAttribute('data-disabled');
 
@@ -39,8 +35,6 @@ export default class Range extends HTMLElement {
     if (disabled == 'true') {
       range.disabled = true;
     }
-
-    console.log(min);
 
     if (min != undefined || min != null) {
       range.setAttribute('min', min);

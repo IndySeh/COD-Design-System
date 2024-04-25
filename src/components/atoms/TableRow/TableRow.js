@@ -31,7 +31,7 @@ class TableRow extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.tableRow = document.createElement('tr');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
         this.getAttribute('data-striped-row') == 'true'

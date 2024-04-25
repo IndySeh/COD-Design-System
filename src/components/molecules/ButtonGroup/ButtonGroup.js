@@ -19,7 +19,7 @@ export default class FormCheckGroup extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.btnGroup = shadow.querySelector('div');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         const nodeClasses = node.className.split(' ');

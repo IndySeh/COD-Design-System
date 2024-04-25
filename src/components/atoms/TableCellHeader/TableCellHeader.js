@@ -28,7 +28,7 @@ class TableCellHeader extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.tableCellHeader = document.createElement('th');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.childNodes);
       tempElements.forEach((node) => {
         this.tableCellHeader.appendChild(node);

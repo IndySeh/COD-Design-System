@@ -30,7 +30,7 @@ class TableHeader extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.tableHeader = document.createElement('thead');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
         if (index === 0) {
