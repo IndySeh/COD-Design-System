@@ -23,19 +23,19 @@ export default class Progress extends HTMLElement {
     this.shadowRoot.appendChild(progressStyles);
     // progress attributes
 
-    let striped = this.getAttribute('data-type');
+    const striped = this.getAttribute('data-type');
 
-    let label = this.getAttribute('data-label');
+    const label = this.getAttribute('data-label');
 
-    let ariaLabel = this.getAttribute('data-aria-label');
+    const ariaLabel = this.getAttribute('data-aria-label');
 
-    let animated = this.getAttribute('data-animated');
+    const animated = this.getAttribute('data-animated');
 
-    let value = this.getAttribute('data-value');
+    const value = this.getAttribute('data-value');
 
-    let backgroundColor = this.getAttribute('data-background-color');
+    const backgroundColor = this.getAttribute('data-background-color');
 
-    let stacked = this.getAttribute('data-multi-bars');
+    const stacked = this.getAttribute('data-multi-bars');
     const progressContainer = document.createElement('div');
 
     if (stacked == 'undefined' || stacked == 'null') {
@@ -67,7 +67,7 @@ export default class Progress extends HTMLElement {
 
   buildBar(bars, barContainer) {
     bars.forEach((bar) => {
-      let tempBar = document.createElement('div');
+      const tempBar = document.createElement('div');
       tempBar.role = 'progressbar';
       tempBar.setAttribute('aria-label', bar.ariaLabel);
       tempBar.setAttribute('aria-valuenow', bar.value);

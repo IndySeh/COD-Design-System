@@ -22,18 +22,18 @@ export default class Badge extends HTMLElement {
     this.shadowRoot.appendChild(badgeStyles);
     // badge attributes
 
-    let tag = this.getAttribute('data-tag');
+    const tag = this.getAttribute('data-tag');
 
-    let backgroundColor = this.getAttribute('data-background-color');
+    const backgroundColor = this.getAttribute('data-background-color');
 
-    let text = this.getAttribute('data-text');
+    const text = this.getAttribute('data-text');
 
-    let hiddenText = this.getAttribute('data-hidden-text');
+    const hiddenText = this.getAttribute('data-hidden-text');
     let pill = this.getAttribute('data-pill');
 
-    let url = this.getAttribute('data-url');
+    const url = this.getAttribute('data-url');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
     let badge = null;
 
     pill == 'true' ? (pill = 'rounded-pill') : (pill = '');

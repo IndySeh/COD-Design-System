@@ -34,7 +34,7 @@ export default class FormCheckGroup extends HTMLElement {
       }
     }
 
-    let firstFormCheck = this.checkedFormCheck;
+    const firstFormCheck = this.checkedFormCheck;
     if (firstFormCheck) {
       this._uncheckAll();
       this._checkNode(firstFormCheck);
@@ -128,7 +128,7 @@ export default class FormCheckGroup extends HTMLElement {
   }
 
   _setCheckedToPrevButton() {
-    let checkedButton = this.checkedFormCheck || this.firstFormCheck;
+    const checkedButton = this.checkedFormCheck || this.firstFormCheck;
     if (checkedButton === this.firstFormCheck) {
       this._setChecked(this.lastFormCheck);
     } else {
@@ -137,7 +137,7 @@ export default class FormCheckGroup extends HTMLElement {
   }
 
   _setCheckedToNextButton() {
-    let checkedButton = this.checkedRadioButton || this.firstFormCheck;
+    const checkedButton = this.checkedRadioButton || this.firstFormCheck;
     if (checkedButton === this.lastFormCheck) {
       this._setChecked(this.firstFormCheck);
     } else {
@@ -154,7 +154,7 @@ export default class FormCheckGroup extends HTMLElement {
   _uncheckAll() {
     const formCheck = this.querySelectorAll('cod-form-check');
     for (let i = 0; i < formCheck.length; i++) {
-      let btn = formCheck[i];
+      const btn = formCheck[i];
       btn.setAttribute('data-checked', 'false');
       btn.setAttribute('data-required', 'false');
       btn.tabIndex = -1;
@@ -165,7 +165,7 @@ export default class FormCheckGroup extends HTMLElement {
     const formCheck = this.querySelectorAll('cod-form-check');
     let isValid = false;
     for (let i = 0; i < formCheck.length; i++) {
-      let checkbox = formCheck[i];
+      const checkbox = formCheck[i];
       checkbox.formCheck.checked ? (isValid = true) : 0;
     }
     isValid ? this._unRequiredAll() : this._requiredAll();
@@ -174,7 +174,7 @@ export default class FormCheckGroup extends HTMLElement {
   _requiredAll() {
     const formCheck = this.querySelectorAll('cod-form-check');
     for (let i = 0; i < formCheck.length; i++) {
-      let btn = formCheck[i];
+      const btn = formCheck[i];
       btn.setAttribute('data-required', 'true');
     }
   }
@@ -182,7 +182,7 @@ export default class FormCheckGroup extends HTMLElement {
   _unRequiredAll() {
     const formCheck = this.querySelectorAll('cod-form-check');
     for (let i = 0; i < formCheck.length; i++) {
-      let btn = formCheck[i];
+      const btn = formCheck[i];
       btn.setAttribute('data-required', 'false');
     }
   }

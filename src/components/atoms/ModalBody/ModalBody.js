@@ -18,7 +18,7 @@ export default class ModalBody extends HTMLElement {
     this.body = document.createElement('div');
 
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.body.append(node);
       });
@@ -39,9 +39,9 @@ export default class ModalBody extends HTMLElement {
   connectedCallback() {
     // OffcanvasBody attributes
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let bodyClasses = ['modal-body'];
+    const bodyClasses = ['modal-body'];
 
     extraClasses != undefined && extraClasses != null
       ? bodyClasses.push(extraClasses)

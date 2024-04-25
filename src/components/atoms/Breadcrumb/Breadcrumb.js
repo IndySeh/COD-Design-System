@@ -23,13 +23,13 @@ export default class Container extends HTMLElement {
     this.breadcrumb = shadow.querySelector('ol');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
-        let nodeClasses = node.className.split(' ');
+        const nodeClasses = node.className.split(' ');
         if (nodeClasses.includes('no-wc')) {
           node.remove();
         } else {
-          let crumb = this.querySelector('li');
+          const crumb = this.querySelector('li');
           crumb && this.breadcrumb.append(crumb);
         }
       });
@@ -48,9 +48,9 @@ export default class Container extends HTMLElement {
   connectedCallback() {
     // Breadcrumb attributes
 
-    let noDivider = this.getAttribute('data-no-divider');
+    const noDivider = this.getAttribute('data-no-divider');
 
-    let svg = this.getAttribute('data-svg-divider');
+    const svg = this.getAttribute('data-svg-divider');
 
     if (noDivider == 'true') {
       this.nav.style.cssText = "--bs-breadcrumb-divider: '';";

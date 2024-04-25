@@ -31,7 +31,7 @@ class TableHeader extends HTMLElement {
     this.tableHeader = document.createElement('thead');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
         if (index === 0) {
           node.setIsFirst();

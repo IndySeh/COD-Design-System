@@ -18,7 +18,7 @@ export default class CardBody extends HTMLElement {
     this.cardBody = document.createElement('div');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.cardBody.append(node);
       });

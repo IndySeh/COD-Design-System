@@ -19,11 +19,11 @@ export default class Pagination extends HTMLElement {
     this.pagination = document.createElement('ul');
 
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
-        let paginationItem = document.createElement('li');
+        const paginationItem = document.createElement('li');
 
-        let paginationItemClasses = ['page-item'];
+        const paginationItemClasses = ['page-item'];
 
         if (node.getAttribute('data-active') == 'true') {
           paginationItemClasses.push('active');
@@ -38,7 +38,7 @@ export default class Pagination extends HTMLElement {
         node.setAttribute('data-index', index);
         paginationItem.appendChild(node);
 
-        let nodeClasses = node.className.split(' ');
+        const nodeClasses = node.className.split(' ');
         nodeClasses.includes('no-wc')
           ? node.remove()
           : this.pagination.append(paginationItem);
@@ -61,15 +61,15 @@ export default class Pagination extends HTMLElement {
   connectedCallback() {
     // Nav attributes
 
-    let label = this.getAttribute('data-label');
+    const label = this.getAttribute('data-label');
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let size = this.getAttribute('data-size');
+    const size = this.getAttribute('data-size');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let paginationClasses = ['pagination'];
+    const paginationClasses = ['pagination'];
 
     size != undefined && size != null
       ? paginationClasses.push(`pagination-${size}`)

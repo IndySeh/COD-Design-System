@@ -18,7 +18,7 @@ export default class CarouselItem extends HTMLElement {
     this.carouselItem = document.createElement('div');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.carouselItem.append(node);
       });

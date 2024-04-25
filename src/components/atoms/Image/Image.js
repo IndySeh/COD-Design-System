@@ -20,7 +20,7 @@ export default class Image extends HTMLElement {
     this.picture = shadow.querySelector('picture');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.picture.append(node);
       });

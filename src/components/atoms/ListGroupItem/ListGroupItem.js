@@ -53,7 +53,7 @@ export default class ListGroupItem extends HTMLElement {
         if (newValue != null) {
           this.listGroupItem.innerHTML = `${newValue}. ${this.listGroupItem.innerHTML}`;
 
-          let tempElements = Array.from(this.children);
+          const tempElements = Array.from(this.children);
           tempElements.forEach((node) => {
             this.listGroupItem.append(node);
           });
@@ -68,17 +68,17 @@ export default class ListGroupItem extends HTMLElement {
   connectedCallback() {
     // badge attributes
 
-    let tag = this.getAttribute('data-tag');
+    const tag = this.getAttribute('data-tag');
 
-    let backgroundColor = this.getAttribute('data-background-color');
+    const backgroundColor = this.getAttribute('data-background-color');
     let current = this.getAttribute('data-current');
     let disabled = this.getAttribute('data-disabled');
 
-    let text = this.getAttribute('data-text');
+    const text = this.getAttribute('data-text');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let url = this.getAttribute('data-url');
+    const url = this.getAttribute('data-url');
     this.listGroupItem = document.createElement(tag);
     let actionItem = '';
 
@@ -112,7 +112,7 @@ export default class ListGroupItem extends HTMLElement {
 
     if (!this.shadowRoot.querySelector(tag)) {
       this.shadowRoot.addEventListener('slotchange', (ev) => {
-        let tempElements = Array.from(this.children);
+        const tempElements = Array.from(this.children);
         tempElements.forEach((node) => {
           this.listGroupItem.append(node);
         });

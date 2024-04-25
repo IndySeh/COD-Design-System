@@ -32,7 +32,7 @@ class TableRow extends HTMLElement {
     this.tableRow = document.createElement('tr');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
         this.getAttribute('data-striped-row') == 'true'
           ? node.setAttribute('data-striped-row', 'true')
@@ -71,9 +71,9 @@ class TableRow extends HTMLElement {
   connectedCallback() {
     // TableRow attributes
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let hover = this.getAttribute('data-hover');
+    const hover = this.getAttribute('data-hover');
 
     hover == 'true' ? this.tableRow.classList.add('table-hover') : 0;
 

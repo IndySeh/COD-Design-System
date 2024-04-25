@@ -23,15 +23,15 @@ export default class Range extends HTMLElement {
     this.shadowRoot.appendChild(rangeStyles);
     // progress attributes
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let disabled = this.getAttribute('data-disabled');
+    const disabled = this.getAttribute('data-disabled');
 
-    let min = this.getAttribute('data-min');
+    const min = this.getAttribute('data-min');
 
-    let max = this.getAttribute('data-max');
+    const max = this.getAttribute('data-max');
 
-    let step = this.getAttribute('data-step');
+    const step = this.getAttribute('data-step');
     const range = document.createElement('input');
     range.type = 'range';
     range.className = 'form-range';

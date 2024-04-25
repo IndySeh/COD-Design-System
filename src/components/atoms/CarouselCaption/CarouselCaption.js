@@ -18,7 +18,7 @@ export default class CarouselCaption extends HTMLElement {
     this.carouselCaption = document.createElement('div');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.carouselCaption.append(node);
       });
@@ -39,9 +39,9 @@ export default class CarouselCaption extends HTMLElement {
   connectedCallback() {
     // Modal attributes
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let carouselCaptionClasses = ['carousel-caption d-none d-md-block'];
+    const carouselCaptionClasses = ['carousel-caption d-none d-md-block'];
 
     extraClasses != undefined && extraClasses != null
       ? carouselCaptionClasses.push(extraClasses)

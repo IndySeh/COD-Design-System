@@ -18,7 +18,7 @@ export default class Container extends HTMLElement {
     this.container = document.createElement('div');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.container.append(node);
       });
@@ -37,13 +37,13 @@ export default class Container extends HTMLElement {
     this.shadowRoot.appendChild(containerStyles);
     // container attributes
 
-    let type = this.getAttribute('data-type');
+    const type = this.getAttribute('data-type');
 
-    let text = this.getAttribute('data-text');
+    const text = this.getAttribute('data-text');
 
-    let backgroundColor = this.getAttribute('data-background-color');
+    const backgroundColor = this.getAttribute('data-background-color');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
     this.container.className = [
       type,
       `${backgroundColor || ''}`,

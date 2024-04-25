@@ -18,7 +18,7 @@ export default class CardHeader extends HTMLElement {
     this.cardHeader = document.createElement('div');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.cardHeader.append(node);
       });

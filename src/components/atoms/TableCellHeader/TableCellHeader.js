@@ -29,7 +29,7 @@ class TableCellHeader extends HTMLElement {
     this.tableCellHeader = document.createElement('th');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.childNodes);
+      const tempElements = Array.from(this.childNodes);
       tempElements.forEach((node) => {
         this.tableCellHeader.appendChild(node);
       });
@@ -52,13 +52,13 @@ class TableCellHeader extends HTMLElement {
   connectedCallback() {
     // tableCellHeader attributes
 
-    let stripedRow = this.getAttribute('data-striped-row');
+    const stripedRow = this.getAttribute('data-striped-row');
 
-    let stripedCol = this.getAttribute('data-striped-col');
+    const stripedCol = this.getAttribute('data-striped-col');
 
-    let verticalAlign = this.getAttribute('data-vertical-align');
+    const verticalAlign = this.getAttribute('data-vertical-align');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
     verticalAlign != undefined && verticalAlign != null
       ? this.tableCellHeader.classList.add(verticalAlign)

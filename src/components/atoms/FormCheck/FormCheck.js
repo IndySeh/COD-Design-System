@@ -23,9 +23,9 @@ export default class FormCheck extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    let tempClasses = this.formCheck.className.split(' ');
+    const tempClasses = this.formCheck.className.split(' ');
 
-    let popValue = tempClasses.pop();
+    const popValue = tempClasses.pop();
 
     popValue != 'is-invalid' ? tempClasses.push(popValue) : 0;
 
@@ -81,30 +81,30 @@ export default class FormCheck extends HTMLElement {
   connectedCallback() {
     // Checkbox/Radio attributes setup
 
-    let dataType = this.getAttribute('data-type');
+    const dataType = this.getAttribute('data-type');
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let value = this.getAttribute('data-value');
+    const value = this.getAttribute('data-value');
 
-    let checkName = this.getAttribute('data-name');
+    const checkName = this.getAttribute('data-name');
 
-    let disabled = this.getAttribute('data-disabled');
+    const disabled = this.getAttribute('data-disabled');
 
-    let required = this.getAttribute('data-required');
+    const required = this.getAttribute('data-required');
 
-    let checked = this.getAttribute('data-checked');
+    const checked = this.getAttribute('data-checked');
     let mode = this.getAttribute('data-mode');
 
-    let noLabel = this.getAttribute('data-nolabel');
+    const noLabel = this.getAttribute('data-nolabel');
 
-    let labelTxt = this.getAttribute('data-label');
+    const labelTxt = this.getAttribute('data-label');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let backgroundColor = this.getAttribute('data-background-color');
+    const backgroundColor = this.getAttribute('data-background-color');
 
-    let btnColor = this.getAttribute('data-btn-color');
+    const btnColor = this.getAttribute('data-btn-color');
     // Set formcheck
     this.formCheck.id = id;
     this.formCheck.type = dataType;
@@ -239,7 +239,7 @@ export default class FormCheck extends HTMLElement {
     if (!validState.valid) {
       // loop through the error reasons
 
-      for (let state in validState) {
+      for (const state in validState) {
         // get the name of the data attribute that holds the
         //error message
         const attr = `data-${state.toString()}`;

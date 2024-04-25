@@ -24,19 +24,19 @@ export default class Geocoder extends HTMLElement {
     const geocoderWraper = document.createElement('article');
     geocoderWraper.id = 'geocoder';
 
-    let form = document.createElement('form');
+    const form = document.createElement('form');
 
-    let label = document.createElement('label');
+    const label = document.createElement('label');
     label.style.fontFamily = 'Montserrat, sans-serif';
     label.style.fontWeight = 'bold';
 
-    let input = document.createElement('input');
+    const input = document.createElement('input');
 
-    let suggestions = document.createElement('ul');
+    const suggestions = document.createElement('ul');
 
-    let list = document.createElement('datalist');
+    const list = document.createElement('datalist');
 
-    let icon = document.createElement('i');
+    const icon = document.createElement('i');
     form.addEventListener('submit', (ev) => {
       this.submit(ev, this);
     });
@@ -79,13 +79,13 @@ export default class Geocoder extends HTMLElement {
     tempAddr = tempAddr.split(' ');
     let newTempAddr = '';
 
-    let size = tempAddr.length;
+    const size = tempAddr.length;
     tempAddr.forEach(function (item, index) {
       newTempAddr += item;
       index < size && index + 1 !== size ? (newTempAddr += '+') : 0;
     });
 
-    let url = `https://opengis.detroitmi.gov/opengis/rest/services/BaseUnits/BaseUnitGeocoder/GeocodeServer/findAddressCandidates?Address=&Address2=&Address3=&Neighborhood=&City=&Subregion=&Region=&Postal=&PostalExt=&CountryCode=&SingleLine=${newTempAddr}&outFields=*&maxLocations=&matchOutOfRange=true&langCode=&locationType=&sourceCountry=&category=&location=&distance=&searchExtent=&outSR=&magicKey=&f=json`;
+    const url = `https://opengis.detroitmi.gov/opengis/rest/services/BaseUnits/BaseUnitGeocoder/GeocodeServer/findAddressCandidates?Address=&Address2=&Address3=&Neighborhood=&City=&Subregion=&Region=&Postal=&PostalExt=&CountryCode=&SingleLine=${newTempAddr}&outFields=*&maxLocations=&matchOutOfRange=true&langCode=&locationType=&sourceCountry=&category=&location=&distance=&searchExtent=&outSR=&magicKey=&f=json`;
 
     try {
       fetch(url)
@@ -94,7 +94,7 @@ export default class Geocoder extends HTMLElement {
           // console.log(data);
           if (type === 'suggestions') {
             data.candidates.forEach((item) => {
-              let sugg = document.createElement('option');
+              const sugg = document.createElement('option');
               if (item.attributes.parcel_id === '') {
                 sugg.value = item.address;
                 sugg.setAttribute('data-parsel', 'no-parcel');
@@ -110,7 +110,7 @@ export default class Geocoder extends HTMLElement {
             });
           } else {
             if (data.candidates.length) {
-              let url = `https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/City_of_Detroit_Boundary/FeatureServer/0/query?where=&objectIds=&time=&geometry=${data.candidates[0].location.x}%2C+${data.candidates[0].location.y}&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=4326&returnGeometry=true&returnCentroid=false&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=geojson&token=`;
+              const url = `https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/City_of_Detroit_Boundary/FeatureServer/0/query?where=&objectIds=&time=&geometry=${data.candidates[0].location.x}%2C+${data.candidates[0].location.y}&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=4326&returnGeometry=true&returnCentroid=false&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=geojson&token=`;
               try {
                 fetch(url)
                   .then((resp) => resp.json()) // Transform the data into json
@@ -245,9 +245,9 @@ export default class Geocoder extends HTMLElement {
     )
       .then((resp) => resp.json()) // Transform the data into json
       .then(function (data) {
-        let cleanAddress = address.split(' RECOMMENDED')[0];
+        const cleanAddress = address.split(' RECOMMENDED')[0];
 
-        let params = [
+        const params = [
           {
             attributes: {
               valid_parcel_status: geocoder.parcelStatus,
@@ -265,7 +265,7 @@ export default class Geocoder extends HTMLElement {
           params[0].geometry.y = location.y;
         }
 
-        let request = new Request(
+        const request = new Request(
           `https://services2.arcgis.com/qvkbeam7Wirps6zC/ArcGIS/rest/services/addressvalidator/FeatureServer/0/addFeatures?token=${
             data.access_token
           }&features=${encodeURIComponent(JSON.stringify(params))}&f=json`,

@@ -23,13 +23,13 @@ export default class Image extends HTMLElement {
     this.shadowRoot.appendChild(spinnerStyles);
     // image attributes
 
-    let spinnerType = this.getAttribute('data-type');
+    const spinnerType = this.getAttribute('data-type');
 
-    let spinnerSize = this.getAttribute('data-size');
+    const spinnerSize = this.getAttribute('data-size');
 
-    let backgroundColor = this.getAttribute('data-background-color');
+    const backgroundColor = this.getAttribute('data-background-color');
 
-    let displayType = this.getAttribute('data-display-type');
+    const displayType = this.getAttribute('data-display-type');
     let spinnerSizeClass;
 
     if (spinnerSize == 'sm') {
@@ -49,7 +49,7 @@ export default class Image extends HTMLElement {
     ].join(' ');
     spinner.role = 'status';
 
-    let pLoading = document.createElement('span');
+    const pLoading = document.createElement('span');
     pLoading.innerText = 'Loading...';
     pLoading.className = 'visually-hidden';
     spinner.appendChild(pLoading);

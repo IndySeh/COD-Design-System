@@ -42,12 +42,12 @@ export default class Carousel extends HTMLElement {
       );
       this.carouselPrev.setAttribute('data-bs-slide', 'prev');
 
-      let prevIcon = document.createElement('span');
+      const prevIcon = document.createElement('span');
       prevIcon.className = 'carousel-control-prev-icon';
       prevIcon.setAttribute('aria-hidden', 'true');
       this.carouselPrev.appendChild(prevIcon);
 
-      let prevText = document.createElement('span');
+      const prevText = document.createElement('span');
       prevText.className = 'visually-hidden';
       prevText.innerText = 'Previous';
       this.carouselPrev.appendChild(prevText);
@@ -58,12 +58,12 @@ export default class Carousel extends HTMLElement {
       );
       this.carouselNext.setAttribute('data-bs-slide', 'next');
 
-      let nextIcon = document.createElement('span');
+      const nextIcon = document.createElement('span');
       nextIcon.className = 'carousel-control-next-icon';
       nextIcon.setAttribute('aria-hidden', 'true');
       this.carouselNext.appendChild(nextIcon);
 
-      let nextText = document.createElement('span');
+      const nextText = document.createElement('span');
       nextText.className = 'visually-hidden';
       nextText.innerText = 'Next';
       this.carouselNext.appendChild(nextText);
@@ -79,13 +79,13 @@ export default class Carousel extends HTMLElement {
     }
 
     shadow.addEventListener('slotchange', (e) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       let tempElementsCount = 0;
       tempElements.forEach((node, index) => {
         if (node.tagName == 'COD-CAROUSEL-ITEM') {
           tempElementsCount += 1;
 
-          let tempItem = document.createElement('div');
+          const tempItem = document.createElement('div');
           tempItem.setAttribute('data-index', index);
 
           if (node.getAttribute('data-active') == 'true') {
@@ -106,7 +106,7 @@ export default class Carousel extends HTMLElement {
           this.carouselInner.appendChild(tempItem);
 
           if (this.getAttribute('data-indicator') == 'true') {
-            let tempIndicator = document.createElement('button');
+            const tempIndicator = document.createElement('button');
             tempIndicator.type = 'button';
             tempIndicator.setAttribute(
               'data-bs-target',
@@ -128,7 +128,7 @@ export default class Carousel extends HTMLElement {
           ? this.setAttribute('data-total-items', tempElementsCount)
           : 0;
 
-        let nodeClasses = node.className.split(' ');
+        const nodeClasses = node.className.split(' ');
         nodeClasses.includes('no-wc') ? node.remove() : 0;
       });
     });
@@ -147,11 +147,11 @@ export default class Carousel extends HTMLElement {
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue != null) {
-      let oldItem = this.carouselInner.querySelector(
+      const oldItem = this.carouselInner.querySelector(
         `[data-index="${oldValue}"`,
       );
 
-      let newItem = this.carouselInner.querySelector(
+      const newItem = this.carouselInner.querySelector(
         `[data-index="${newValue}"`,
       );
 
@@ -183,19 +183,19 @@ export default class Carousel extends HTMLElement {
   connectedCallback() {
     // Modal attributes
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let crossfade = this.getAttribute('data-crossfade');
+    const crossfade = this.getAttribute('data-crossfade');
 
-    let autoplay = this.getAttribute('data-autoplay');
+    const autoplay = this.getAttribute('data-autoplay');
 
-    let noTouch = this.getAttribute('data-no-touch');
+    const noTouch = this.getAttribute('data-no-touch');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let externalControls = this.getAttribute('data-external-controls');
+    const externalControls = this.getAttribute('data-external-controls');
 
-    let carouselClasses = ['carousel slide'];
+    const carouselClasses = ['carousel slide'];
 
     extraClasses != undefined && extraClasses != null
       ? carouselClasses.push(extraClasses)
@@ -227,9 +227,9 @@ export default class Carousel extends HTMLElement {
   }
 
   _onClick(e) {
-    let activeItem = this.getRootNode().host.getAttribute('data-active-item');
+    const activeItem = this.getRootNode().host.getAttribute('data-active-item');
 
-    let totalItems = this.getRootNode().host.getAttribute('data-total-items');
+    const totalItems = this.getRootNode().host.getAttribute('data-total-items');
 
     if (this.getAttribute('data-bs-slide') == undefined) {
       if (this.getAttribute('data-bs-slide-to') > activeItem) {
@@ -246,9 +246,9 @@ export default class Carousel extends HTMLElement {
         );
       }
     } else {
-      let activeItem = this.getRootNode().host.getAttribute('data-active-item');
+      const activeItem = this.getRootNode().host.getAttribute('data-active-item');
 
-      let totalItems = this.getRootNode().host.getAttribute('data-total-items');
+      const totalItems = this.getRootNode().host.getAttribute('data-total-items');
 
       if (this.getAttribute('data-bs-slide') == 'prev') {
         this.getRootNode().host.setAttribute('data-direction', 'prev');

@@ -31,12 +31,12 @@ export default class FormCheckGroup extends HTMLElement {
   connectedCallback() {
     // setting up styles
 
-    let tag = this.getAttribute('data-tag');
+    const tag = this.getAttribute('data-tag');
     let flushed = this.getAttribute('data-flushed');
     let numbered = this.getAttribute('data-numbered');
     let horizontal = this.getAttribute('data-horizontal');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
     this.listGroup = document.createElement(tag);
 
     flushed == 'true' ? (flushed = 'list-group-flush') : (flushed = null);
@@ -56,9 +56,9 @@ export default class FormCheckGroup extends HTMLElement {
 
     if (!this.shadowRoot.querySelector(tag)) {
       this.shadowRoot.addEventListener('slotchange', (ev) => {
-        let tempElements = Array.from(this.children);
+        const tempElements = Array.from(this.children);
 
-        let tempLength = tempElements.length;
+        const tempLength = tempElements.length;
         tempElements.forEach((node, index) => {
           let pClasses = null;
           switch (index) {
@@ -88,7 +88,7 @@ export default class FormCheckGroup extends HTMLElement {
             node.setAttribute('data-parent-classes', pClasses);
           }
 
-          let nodeClasses = node.className.split(' ');
+          const nodeClasses = node.className.split(' ');
           nodeClasses.includes('no-wc')
             ? node.remove()
             : this.listGroup.append(node);

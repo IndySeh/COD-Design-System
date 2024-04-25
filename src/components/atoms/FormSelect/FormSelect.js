@@ -27,15 +27,15 @@ export default class FormSelect extends HTMLElement {
     this.select = shadow.querySelector('select');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let node = this.querySelector('option');
+      const node = this.querySelector('option');
       node && this.select.append(node);
     });
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    let tempClasses = this.select.className.split(' ');
+    const tempClasses = this.select.className.split(' ');
 
-    let popValue = tempClasses.pop();
+    const popValue = tempClasses.pop();
 
     popValue != 'is-invalid' ? tempClasses.push(popValue) : 0;
 
@@ -67,21 +67,21 @@ export default class FormSelect extends HTMLElement {
     this.shadowRoot.appendChild(formSelectStyles);
     // progress attributes
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let size = this.getAttribute('data-size');
+    const size = this.getAttribute('data-size');
 
-    let multiple = this.getAttribute('data-multiple');
+    const multiple = this.getAttribute('data-multiple');
 
-    let displayMultiple = this.getAttribute('data-display-multiple');
+    const displayMultiple = this.getAttribute('data-display-multiple');
 
-    let disabled = this.getAttribute('data-disabled');
+    const disabled = this.getAttribute('data-disabled');
 
-    let required = this.getAttribute('data-required');
+    const required = this.getAttribute('data-required');
 
-    let ariaLabel = this.getAttribute('data-aria-label');
+    const ariaLabel = this.getAttribute('data-aria-label');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
     this.select.addEventListener('change', (e) => {
       // we also want to dispatch a `change` event from
@@ -163,7 +163,7 @@ export default class FormSelect extends HTMLElement {
     if (!validState.valid) {
       // loop through the error reasons
 
-      for (let state in validState) {
+      for (const state in validState) {
         // get the name of the data attribute that holds the
         //error message
         const attr = `data-${state.toString()}`;

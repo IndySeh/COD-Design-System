@@ -23,7 +23,7 @@ export default class Offcanvas extends HTMLElement {
     this.offcanvasBackdrop = document.createElement('div');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.getAttribute('data-show') == 'true'
           ? node.setAttribute('data-show', true)
@@ -40,7 +40,7 @@ export default class Offcanvas extends HTMLElement {
           node.setAttribute('data-expand', expand);
         }
 
-        let nodeClasses = node.className.split(' ');
+        const nodeClasses = node.className.split(' ');
         nodeClasses.includes('no-wc')
           ? node.remove()
           : this.offcanvas.appendChild(node);
@@ -60,9 +60,9 @@ export default class Offcanvas extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    let tempClasses = this.offcanvas.className.split(' ');
+    const tempClasses = this.offcanvas.className.split(' ');
 
-    let popValue = tempClasses.pop();
+    const popValue = tempClasses.pop();
 
     popValue != 'show' ? tempClasses.push(popValue) : 0;
 
@@ -86,25 +86,25 @@ export default class Offcanvas extends HTMLElement {
   connectedCallback() {
     // Offcanvas attributes
 
-    let show = this.getAttribute('data-show');
+    const show = this.getAttribute('data-show');
 
-    let placement = this.getAttribute('data-placement');
+    const placement = this.getAttribute('data-placement');
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let backdrop = this.getAttribute('data-backdrop');
+    const backdrop = this.getAttribute('data-backdrop');
 
-    let backdropExtraClasses = this.getAttribute('data-backdrop-extra-classes');
+    const backdropExtraClasses = this.getAttribute('data-backdrop-extra-classes');
 
-    let scroll = this.getAttribute('data-scroll');
+    const scroll = this.getAttribute('data-scroll');
 
-    let bStatic = this.getAttribute('data-static');
+    const bStatic = this.getAttribute('data-static');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let offcanvasClasses = ['offcanvas'];
+    const offcanvasClasses = ['offcanvas'];
 
-    let backdropClasses = ['offcanvas-backdrop fade show'];
+    const backdropClasses = ['offcanvas-backdrop fade show'];
 
     show == 'true' ? offcanvasClasses.push('show') : 0;
 

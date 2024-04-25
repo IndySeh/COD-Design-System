@@ -21,9 +21,9 @@ export default class Alert extends HTMLElement {
     this.alert.appendChild(alertContent);
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
-        let nodeClasses = node.className.split(' ');
+        const nodeClasses = node.className.split(' ');
         nodeClasses.includes('no-wc')
           ? node.remove()
           : this.alert.querySelector('#alert-content').append(node);
@@ -43,26 +43,26 @@ export default class Alert extends HTMLElement {
     this.shadowRoot.appendChild(alertStyles);
     // alert attributes
 
-    let icon = this.getAttribute('data-icon');
+    const icon = this.getAttribute('data-icon');
 
-    let iconOrder = this.getAttribute('data-icon-order');
+    const iconOrder = this.getAttribute('data-icon-order');
 
-    let iconSize = this.getAttribute('data-icon-size');
+    const iconSize = this.getAttribute('data-icon-size');
 
-    let backgroundColor = this.getAttribute('data-background-color');
+    const backgroundColor = this.getAttribute('data-background-color');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
     this.alert.role = 'alert';
     let iconClass = '';
 
     if (icon != undefined && icon != null) {
       this.alert.querySelector('#alert-content').className = 'col';
 
-      let activeIcon = document.createElement('cod-icon');
+      const activeIcon = document.createElement('cod-icon');
       activeIcon.setAttribute('data-icon', icon);
       activeIcon.setAttribute('data-size', iconSize);
 
-      let iconContainer = document.createElement('div');
+      const iconContainer = document.createElement('div');
       iconContainer.appendChild(activeIcon);
       iconClass = 'd-flex';
       switch (iconOrder) {

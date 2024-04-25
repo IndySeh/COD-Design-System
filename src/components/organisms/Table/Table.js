@@ -52,7 +52,7 @@ class Table extends HTMLElement {
     this.tableContainer.appendChild(this.table);
 
     shadow.addEventListener('slotchange', (e) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         switch (node.tagName) {
           case 'COD-TABLE-HEADER':
@@ -96,7 +96,7 @@ class Table extends HTMLElement {
             break;
 
           default:
-            let nodeClasses = node.className.split(' ');
+            const nodeClasses = node.className.split(' ');
             nodeClasses.includes('no-wc') ? node.remove() : 0;
             break;
         }
@@ -118,11 +118,11 @@ class Table extends HTMLElement {
   connectedCallback() {
     // Table attributes
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let tableClasses = ['table'];
+    const tableClasses = ['table'];
 
     extraClasses != undefined && extraClasses != null
       ? tableClasses.push(extraClasses)

@@ -13,15 +13,15 @@ export default class FormLabel extends HTMLElement {
   connectedCallback() {
     // progress attributes
 
-    let inputID = this.getAttribute('data-input-id');
+    const inputID = this.getAttribute('data-input-id');
     let hidden = this.getAttribute('data-hidden');
 
-    let textColor = this.getAttribute('data-color');
+    const textColor = this.getAttribute('data-color');
     let required = this.getAttribute('data-required');
 
-    let text = this.getAttribute('data-text');
+    const text = this.getAttribute('data-text');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
     if (hidden == 'true') {
       hidden = 'visually-hidden';

@@ -18,7 +18,7 @@ export default class AccordionBody extends HTMLElement {
     this.accordionBody = document.createElement('div');
 
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.accordionBody.append(node);
       });
@@ -40,9 +40,9 @@ export default class AccordionBody extends HTMLElement {
     // Nav attributes
     // TODO: Refactor attribute and class handling.
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let accordionBodyClasses = ['accordion-body'];
+    const accordionBodyClasses = ['accordion-body'];
     if (this.getAttribute('data-li') !== null) {
       accordionBodyClasses.push('data-li');
     }

@@ -19,7 +19,7 @@ export default class Form extends HTMLElement {
     this.form = document.createElement('form');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       if (tempElements.length) {
         tempElements.forEach((node) => {
           this.form.append(node);
@@ -41,12 +41,12 @@ export default class Form extends HTMLElement {
     this.shadowRoot.appendChild(formStyles);
     // form attributes
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
     let customValidation = this.getAttribute('data-custom-validate');
 
-    let backgroundColor = this.getAttribute('data-background-color');
+    const backgroundColor = this.getAttribute('data-background-color');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
     this.form.id = id;
 
     if (customValidation == 'true') {

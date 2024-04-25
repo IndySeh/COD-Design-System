@@ -20,9 +20,9 @@ export default class FormCheckGroup extends HTMLElement {
     this.btnGroup = shadow.querySelector('div');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
-        let nodeClasses = node.className.split(' ');
+        const nodeClasses = node.className.split(' ');
         nodeClasses.includes('no-wc')
           ? node.remove()
           : this.btnGroup.append(node);
@@ -43,13 +43,13 @@ export default class FormCheckGroup extends HTMLElement {
   connectedCallback() {
     // setting up styles
 
-    let type = this.getAttribute('data-type');
+    const type = this.getAttribute('data-type');
 
-    let label = this.getAttribute('data-label');
+    const label = this.getAttribute('data-label');
     let size = this.getAttribute('data-size');
     let vertical = this.getAttribute('data-vertical');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
     if (type == 'group') {
       this.btnGroup.role = 'group';

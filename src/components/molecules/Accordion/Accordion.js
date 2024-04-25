@@ -17,12 +17,12 @@ export default class Accordion extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.accordion = document.createElement('div');
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      let tempElements = ev.target.assignedElements();
+      const tempElements = ev.target.assignedElements();
       tempElements.forEach((node, index) => {
         // TODO: Refactor attribute and class handling for children.
         switch (node.tagName) {
           case 'COD-ACCORDION-ITEM':
-            let accordionItem = document.createElement('div');
+            const accordionItem = document.createElement('div');
             accordionItem.className = 'accordion-item';
             node.setAttribute('data-parent-id', this.getAttribute('data-id'));
             node.setAttribute('data-index', index);
@@ -34,7 +34,7 @@ export default class Accordion extends HTMLElement {
             break;
 
           default:
-            let nodeClasses = node.className.split(' ');
+            const nodeClasses = node.className.split(' ');
             nodeClasses.includes('no-wc')
               ? node.remove()
               : this.card.appendChild(node);
@@ -59,14 +59,14 @@ export default class Accordion extends HTMLElement {
     // Nav attributes
     // TODO: Refactor attribute and class handling.
 
-    let flush = this.getAttribute('data-flush');
+    const flush = this.getAttribute('data-flush');
     const isOrderedList = this.getAttribute('data-ol');
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let accordionClasses = ['accordion'];
+    const accordionClasses = ['accordion'];
 
     flush == 'true' ? accordionClasses.push('accordion-flush') : 0;
     isOrderedList !== null ? accordionClasses.push('accordion-ol') : 0;

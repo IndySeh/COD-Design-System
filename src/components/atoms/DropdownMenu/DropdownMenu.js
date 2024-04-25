@@ -22,7 +22,7 @@ export default class DropdownMenu extends HTMLElement {
     this.dropdownMenu = document.createElement('ul');
 
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.dropdownMenu.append(node);
       });
@@ -43,9 +43,9 @@ export default class DropdownMenu extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     console.log(newValue);
 
-    let tempClasses = this.dropdownMenu.className.split(' ');
+    const tempClasses = this.dropdownMenu.className.split(' ');
 
-    let popValue = tempClasses.pop();
+    const popValue = tempClasses.pop();
 
     popValue != 'show' ? tempClasses.push(popValue) : 0;
 
@@ -60,13 +60,13 @@ export default class DropdownMenu extends HTMLElement {
   connectedCallback() {
     // badge attributes
 
-    let darkMode = this.getAttribute('data-dark-mode');
+    const darkMode = this.getAttribute('data-dark-mode');
 
-    let alignment = this.getAttribute('data-alignment');
+    const alignment = this.getAttribute('data-alignment');
 
-    let show = this.getAttribute('data-show');
+    const show = this.getAttribute('data-show');
 
-    let classList = ['dropdown-menu'];
+    const classList = ['dropdown-menu'];
 
     darkMode == 'true' ? classList.push('dropdown-menu-dark') : 0;
 

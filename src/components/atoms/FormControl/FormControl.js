@@ -21,9 +21,9 @@ export default class FormControl extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    let tempClasses = this.formControl.className.split(' ');
+    const tempClasses = this.formControl.className.split(' ');
 
-    let popValue = tempClasses.pop();
+    const popValue = tempClasses.pop();
 
     popValue != 'is-invalid' ? tempClasses.push(popValue) : 0;
 
@@ -46,35 +46,35 @@ export default class FormControl extends HTMLElement {
   connectedCallback() {
     // progress attributes
 
-    let inputType = this.getAttribute('data-tag');
+    const inputType = this.getAttribute('data-tag');
 
-    let dataType = this.getAttribute('data-type');
+    const dataType = this.getAttribute('data-type');
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let minlength = this.getAttribute('data-minlength');
+    const minlength = this.getAttribute('data-minlength');
 
-    let maxlength = this.getAttribute('data-maxlength');
+    const maxlength = this.getAttribute('data-maxlength');
 
-    let pattern = this.getAttribute('data-pattern');
+    const pattern = this.getAttribute('data-pattern');
 
-    let placeholderTxt = this.getAttribute('data-placeholder-txt');
+    const placeholderTxt = this.getAttribute('data-placeholder-txt');
 
-    let readOnly = this.getAttribute('data-read-only');
+    const readOnly = this.getAttribute('data-read-only');
 
-    let disabled = this.getAttribute('data-disabled');
+    const disabled = this.getAttribute('data-disabled');
 
-    let plainText = this.getAttribute('data-plain-txt');
+    const plainText = this.getAttribute('data-plain-txt');
 
-    let required = this.getAttribute('data-required');
+    const required = this.getAttribute('data-required');
 
-    let rows = this.getAttribute('data-rows');
+    const rows = this.getAttribute('data-rows');
 
-    let size = this.getAttribute('data-size');
+    const size = this.getAttribute('data-size');
 
-    let value = this.getAttribute('data-value');
+    const value = this.getAttribute('data-value');
 
-    let backgroundColor = this.getAttribute('data-background-color');
+    const backgroundColor = this.getAttribute('data-background-color');
     const formControl = document.createElement(inputType);
     formControl.id = id;
     formControl.placeholder = placeholderTxt;
@@ -199,7 +199,7 @@ export default class FormControl extends HTMLElement {
     if (!validState.valid) {
       // loop through the error reasons
 
-      for (let state in validState) {
+      for (const state in validState) {
         // get the name of the data attribute that holds the
         //error message
         const attr = `data-${state.toString()}`;

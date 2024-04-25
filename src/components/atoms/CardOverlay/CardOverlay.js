@@ -18,7 +18,7 @@ export default class CardOverlay extends HTMLElement {
     this.cardOverlay = document.createElement('div');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.cardOverlay.append(node);
       });

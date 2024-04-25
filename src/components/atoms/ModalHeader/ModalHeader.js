@@ -20,7 +20,7 @@ export default class ModalHeader extends HTMLElement {
     this.closeBtn = document.createElement('cod-button');
 
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.modalTitle.appendChild(node);
       });
@@ -43,13 +43,13 @@ export default class ModalHeader extends HTMLElement {
   connectedCallback() {
     // Nav attributes
 
-    let parentID = this.getAttribute('data-parent-id');
+    const parentID = this.getAttribute('data-parent-id');
 
-    let btnDark = this.getAttribute('data-button-dark');
+    const btnDark = this.getAttribute('data-button-dark');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let modalHeaderClasses = ['modal-header'];
+    const modalHeaderClasses = ['modal-header'];
     this.modalTitle.className = 'modal-title';
     this.modalTitle.id = `${parentID}-label`;
     this.closeBtn.setAttribute('data-img-alt', '');

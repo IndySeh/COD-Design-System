@@ -29,7 +29,7 @@ export default class Modal extends HTMLElement {
     this.modal.appendChild(this.modalDialog);
 
     shadow.addEventListener('slotchange', (e) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         switch (node.tagName) {
           case 'COD-MODAL-HEADER':
@@ -73,9 +73,9 @@ export default class Modal extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    let tempClasses = this.modal.className.split(' ');
+    const tempClasses = this.modal.className.split(' ');
 
-    let popValue = tempClasses.pop();
+    const popValue = tempClasses.pop();
 
     popValue != 'show' ? tempClasses.push(popValue) : 0;
 
@@ -98,25 +98,25 @@ export default class Modal extends HTMLElement {
   connectedCallback() {
     // Modal attributes
 
-    let bStatic = this.getAttribute('data-static');
+    const bStatic = this.getAttribute('data-static');
 
-    let id = this.getAttribute('data-id');
+    const id = this.getAttribute('data-id');
 
-    let show = this.getAttribute('data-show');
+    const show = this.getAttribute('data-show');
 
-    let verticalCentered = this.getAttribute('data-vertical-centered');
+    const verticalCentered = this.getAttribute('data-vertical-centered');
 
-    let size = this.getAttribute('data-size');
+    const size = this.getAttribute('data-size');
 
-    let fullScreen = this.getAttribute('data-full-screen');
+    const fullScreen = this.getAttribute('data-full-screen');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let modalClasses = ['modal fade'];
+    const modalClasses = ['modal fade'];
 
-    let modalDialogClasses = ['modal-dialog'];
+    const modalDialogClasses = ['modal-dialog'];
 
-    let modalContentClasses = ['modal-content'];
+    const modalContentClasses = ['modal-content'];
 
     extraClasses != undefined && extraClasses != null
       ? modalClasses.push(extraClasses)

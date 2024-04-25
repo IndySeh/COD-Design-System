@@ -19,7 +19,7 @@ export default class ModalFooter extends HTMLElement {
     this.closeBtn = document.createElement('cod-button');
 
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.modalFooter.appendChild(node);
       });
@@ -41,11 +41,11 @@ export default class ModalFooter extends HTMLElement {
   connectedCallback() {
     // Nav attributes
 
-    let btnExtraClasses = this.getAttribute('data-button-extra-classes');
+    const btnExtraClasses = this.getAttribute('data-button-extra-classes');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let modalFooterClasses = ['modal-footer'];
+    const modalFooterClasses = ['modal-footer'];
     this.closeBtn.setAttribute('data-img-alt', '');
     this.closeBtn.setAttribute('data-icon', '');
     this.closeBtn.setAttribute('data-label', 'Close');

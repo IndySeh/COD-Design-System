@@ -61,13 +61,13 @@ class TableCell extends HTMLElement {
   connectedCallback() {
     // TableCell attributes
 
-    let stripedRow = this.getAttribute('data-striped-row');
+    const stripedRow = this.getAttribute('data-striped-row');
 
-    let stripedCol = this.getAttribute('data-striped-col');
+    const stripedCol = this.getAttribute('data-striped-col');
 
-    let verticalAlign = this.getAttribute('data-vertical-align');
+    const verticalAlign = this.getAttribute('data-vertical-align');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
     verticalAlign != undefined && verticalAlign != null
       ? this.tableCell.classList.add(verticalAlign)

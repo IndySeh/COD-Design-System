@@ -22,7 +22,7 @@ export default class AccordionItem extends HTMLElement {
     this.accordionHeader = document.createElement('div');
     this.accordionBody = document.createElement('div');
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      let tempElements = ev.target.assignedElements();
+      const tempElements = ev.target.assignedElements();
       tempElements.forEach((node) => {
         // TODO: Refactor attribute and class handling.
         node.setAttribute(
@@ -72,9 +72,9 @@ export default class AccordionItem extends HTMLElement {
       .querySelector('cod-accordion-body')
       .setAttribute('data-expanded', newValue);
 
-    let tempClasses = this.accordionBody.className.split(' ');
+    const tempClasses = this.accordionBody.className.split(' ');
 
-    let popValue = tempClasses.pop();
+    const popValue = tempClasses.pop();
 
     popValue != 'show' ? tempClasses.push(popValue) : 0;
 
@@ -88,13 +88,13 @@ export default class AccordionItem extends HTMLElement {
     // Nav attributes
     // TODO: Refactor attribute and class handling.
 
-    let parentID = this.getAttribute('data-parent-id');
+    const parentID = this.getAttribute('data-parent-id');
 
-    let index = this.getAttribute('data-index');
+    const index = this.getAttribute('data-index');
 
-    let expanded = this.getAttribute('data-expanded');
+    const expanded = this.getAttribute('data-expanded');
 
-    let accordionHeaderClasses = ['accordion-header'];
+    const accordionHeaderClasses = ['accordion-header'];
     let accordionBodyClasses = ['accordion-collapse collapse'];
 
     expanded == 'true' ? accordionBodyClasses.push('show') : 0;

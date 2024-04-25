@@ -30,7 +30,7 @@ class TableBody extends HTMLElement {
     this.tableBody = document.createElement('tbody');
 
     shadow.addEventListener('slotchange', (ev) => {
-      let tempElements = Array.from(this.children);
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
         if (index === 0) {
           node.setIsFirst();

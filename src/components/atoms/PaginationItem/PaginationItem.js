@@ -24,21 +24,21 @@ export default class PaginationItem extends HTMLElement {
   connectedCallback() {
     // Nav attributes
 
-    let url = this.getAttribute('data-url');
+    const url = this.getAttribute('data-url');
 
-    let special = this.getAttribute('data-special');
+    const special = this.getAttribute('data-special');
 
-    let label = this.getAttribute('data-label');
+    const label = this.getAttribute('data-label');
 
-    let text = this.getAttribute('data-text');
+    const text = this.getAttribute('data-text');
 
-    let disabled = this.getAttribute('data-disabled');
+    const disabled = this.getAttribute('data-disabled');
 
-    let active = this.getAttribute('data-active');
+    const active = this.getAttribute('data-active');
 
-    let extraClasses = this.getAttribute('data-extra-classes');
+    const extraClasses = this.getAttribute('data-extra-classes');
 
-    let paginationItemClasses = ['page-link'];
+    const paginationItemClasses = ['page-link'];
     let paginationItem = null;
     let tag = null;
 
@@ -50,7 +50,7 @@ export default class PaginationItem extends HTMLElement {
       } else {
         paginationItem = document.createElement('a');
 
-        let cleanURL = encodeURI(url);
+        const cleanURL = encodeURI(url);
         paginationItem.href = decodeURI(cleanURL);
         tag = 'a';
       }
