@@ -118,7 +118,7 @@ export default class FormCheckGroup extends HTMLElement {
     while (next) {
       if (
         next.getAttribute('data-type') === 'radio' ||
-        prev.getAttribute('data-type') === 'checkbox'
+        next.getAttribute('data-type') === 'checkbox'
       ) {
         return next;
       }
