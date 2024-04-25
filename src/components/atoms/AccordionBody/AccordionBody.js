@@ -16,11 +16,8 @@ export default class AccordionBody extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
     this.accordionBody = document.createElement('div');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
+
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
       let tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.accordionBody.append(node);
@@ -42,17 +39,14 @@ export default class AccordionBody extends HTMLElement {
   connectedCallback() {
     // Nav attributes
     // TODO: Refactor attribute and class handling.
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let accordionBodyClasses = ['accordion-body'];
     if (this.getAttribute('data-li') !== null) {
       accordionBodyClasses.push('data-li');
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     extraClasses != undefined && extraClasses != null
       ? accordionBodyClasses.push(extraClasses)
       : 0;

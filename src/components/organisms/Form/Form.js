@@ -17,11 +17,8 @@ export default class Form extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
     this.form = document.createElement('form');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
+
     shadow.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
       let tempElements = Array.from(this.children);
       if (tempElements.length) {
         tempElements.forEach((node) => {
@@ -43,19 +40,15 @@ export default class Form extends HTMLElement {
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(formStyles);
     // form attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let id = this.getAttribute('data-id');
     let customValidation = this.getAttribute('data-custom-validate');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let backgroundColor = this.getAttribute('data-background-color');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let extraClasses = this.getAttribute('data-extra-classes');
     this.form.id = id;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (customValidation == 'true') {
       this.form.novalidate = true;
       customValidation = 'needs-validation';

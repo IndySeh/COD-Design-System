@@ -30,24 +30,19 @@ export default class FormCheckGroup extends HTMLElement {
 
   connectedCallback() {
     // setting up styles
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let tag = this.getAttribute('data-tag');
     let flushed = this.getAttribute('data-flushed');
     let numbered = this.getAttribute('data-numbered');
     let horizontal = this.getAttribute('data-horizontal');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let extraClasses = this.getAttribute('data-extra-classes');
     this.listGroup = document.createElement(tag);
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     flushed == 'true' ? (flushed = 'list-group-flush') : (flushed = null);
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     numbered == 'true' ? (numbered = 'list-group-numbered') : (numbered = null);
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     horizontal == 'true'
       ? (horizontal = 'list-group-horizontal')
       : (horizontal = null);
@@ -60,14 +55,9 @@ export default class FormCheckGroup extends HTMLElement {
     ].join(' ');
 
     if (!this.shadowRoot.querySelector(tag)) {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line no-unused-vars
       this.shadowRoot.addEventListener('slotchange', (ev) => {
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line prefer-const
         let tempElements = Array.from(this.children);
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line prefer-const
+
         let tempLength = tempElements.length;
         tempElements.forEach((node, index) => {
           let pClasses = null;
@@ -97,8 +87,7 @@ export default class FormCheckGroup extends HTMLElement {
           if (pClasses) {
             node.setAttribute('data-parent-classes', pClasses);
           }
-          // TODO: See CityOfDetroit/detroitmi#1099
-          // eslint-disable-next-line prefer-const
+
           let nodeClasses = node.className.split(' ');
           nodeClasses.includes('no-wc')
             ? node.remove()

@@ -27,8 +27,7 @@ class TableCell extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
     this.tableCell = document.createElement('td');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
+
     shadow.addEventListener('slotchange', (ev) => {
       const tempElements = ev.target.assignedNodes();
       tempElements.forEach((node) => {
@@ -61,36 +60,28 @@ class TableCell extends HTMLElement {
 
   connectedCallback() {
     // TableCell attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let stripedRow = this.getAttribute('data-striped-row');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let stripedCol = this.getAttribute('data-striped-col');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let verticalAlign = this.getAttribute('data-vertical-align');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     verticalAlign != undefined && verticalAlign != null
       ? this.tableCell.classList.add(verticalAlign)
       : 0;
     this.getAttribute('data-scrollable') === 'true'
       ? this.tableCell.classList.add('table-scrollable')
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     stripedRow == 'true' ? this.tableCell.classList.add('table-striped') : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     stripedCol == 'true'
       ? this.tableCell.classList.add('table-striped-columns')
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     extraClasses != undefined && extraClasses != null
       ? this.tableCell.classList.add(extraClasses)
       : 0;

@@ -30,25 +30,18 @@ class TableRow extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
     this.tableRow = document.createElement('tr');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
+
     shadow.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
       let tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-striped-row') == 'true'
           ? node.setAttribute('data-striped-row', 'true')
           : 0;
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line eqeqeq
+
         this.getAttribute('data-striped-col') == 'true' && index % 2 != 0
           ? node.setAttribute('data-striped-col', 'true')
           : 0;
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line eqeqeq
+
         this.getAttribute('data-vertical-align') == 'true'
           ? node.setAttribute('data-vertical-align', 'true')
           : 0;
@@ -77,17 +70,13 @@ class TableRow extends HTMLElement {
 
   connectedCallback() {
     // TableRow attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let hover = this.getAttribute('data-hover');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     hover == 'true' ? this.tableRow.classList.add('table-hover') : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     extraClasses != undefined && extraClasses != null
       ? this.tableRow.classList.add(extraClasses)
       : 0;

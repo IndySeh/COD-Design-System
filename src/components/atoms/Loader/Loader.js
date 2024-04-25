@@ -5,8 +5,7 @@ export default class Loader extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
+
     const shadow = this.attachShadow({ mode: 'open' });
   }
 
@@ -19,8 +18,7 @@ export default class Loader extends HTMLElement {
     // Loader attributes
     this.shadowRoot.appendChild(loaderStyles);
     const loader = document.createElement('article');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let color = this.getAttribute('data-color');
     loader.className = ['cod-loader', `cod-loader--${color || 'color-1'}`].join(
       ' ',

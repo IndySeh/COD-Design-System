@@ -25,25 +25,18 @@ export default class FormSelect extends HTMLElement {
     this.internals = this.attachInternals();
     // Create select and move options from slot to select
     this.select = shadow.querySelector('select');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
+
     shadow.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
       let node = this.querySelector('option');
       node && this.select.append(node);
     });
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
     let tempClasses = this.select.className.split(' ');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let popValue = tempClasses.pop();
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     popValue != 'is-invalid' ? tempClasses.push(popValue) : 0;
 
     switch (newValue) {
@@ -73,29 +66,21 @@ export default class FormSelect extends HTMLElement {
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(formSelectStyles);
     // progress attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let id = this.getAttribute('data-id');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let size = this.getAttribute('data-size');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let multiple = this.getAttribute('data-multiple');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let displayMultiple = this.getAttribute('data-display-multiple');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let disabled = this.getAttribute('data-disabled');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let required = this.getAttribute('data-required');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let ariaLabel = this.getAttribute('data-aria-label');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let extraClasses = this.getAttribute('data-extra-classes');
 
     this.select.addEventListener('change', (e) => {
@@ -125,23 +110,18 @@ export default class FormSelect extends HTMLElement {
       this.setAttribute('tabindex', '0');
     }
 
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
     if (required == 'true') {
       this.select.setAttribute('required', true);
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (disabled == 'true') {
       this.select.setAttribute('disabled', true);
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (multiple == 'true') {
       this.select.setAttribute('multiple', true);
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (displayMultiple != undefined && displayMultiple != null) {
       this.select.setAttribute('size', displayMultiple);
     }
@@ -182,8 +162,7 @@ export default class FormSelect extends HTMLElement {
     // if the input is invalid, show the correct error
     if (!validState.valid) {
       // loop through the error reasons
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
+
       for (let state in validState) {
         // get the name of the data attribute that holds the
         //error message

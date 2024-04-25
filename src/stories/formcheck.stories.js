@@ -61,38 +61,31 @@ const Template = (args) => {
   formCheck.setAttribute('data-type', args.type);
   formCheck.setAttribute('data-btn-color', args.btnColor);
   formCheck.setAttribute('data-checked', args.checked);
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
+
   if (args.extraClasses != null) {
     formCheck.setAttribute('data-extra-classes', args.extraClasses);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
+
   if (args.backgroundColor != null) {
     formCheck.setAttribute('data-background-color', args.backgroundColor);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
+
   if (args.label != null) {
     formCheck.setAttribute('data-label', args.label);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
+
   if (args.nolabel != null) {
     formCheck.setAttribute('data-nolabel', args.nolabel);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
+
   if (args.mode != null) {
     formCheck.setAttribute('data-mode', args.mode);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
+
   if (args.disabled != null) {
     formCheck.setAttribute('data-disabled', args.disabled);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
+
   if (args.required != null) {
     formCheck.setAttribute('data-required', args.required);
   }
@@ -235,8 +228,6 @@ WithInteraction.args = {
   name: 'interaction-checkbox',
   value: 'interaction-checkbox',
   clicked: (e) => {
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-console
     console.log(e);
   },
 };

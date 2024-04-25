@@ -6,8 +6,7 @@ export default class Progress extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
+
     const shadow = this.attachShadow({ mode: 'open' });
   }
 
@@ -23,30 +22,22 @@ export default class Progress extends HTMLElement {
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(progressStyles);
     // progress attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let striped = this.getAttribute('data-type');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let label = this.getAttribute('data-label');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let ariaLabel = this.getAttribute('data-aria-label');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let animated = this.getAttribute('data-animated');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let value = this.getAttribute('data-value');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let backgroundColor = this.getAttribute('data-background-color');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let stacked = this.getAttribute('data-multi-bars');
     const progressContainer = document.createElement('div');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (stacked == 'undefined' || stacked == 'null') {
       const bar = document.createElement('div');
       bar.role = 'progressbar';
@@ -55,8 +46,7 @@ export default class Progress extends HTMLElement {
       bar.className = 'progress';
       const barBody = document.createElement('div');
       barBody.style = `width: ${value}%`;
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line eqeqeq
+
       if (label != 'undefined' && label != 'null') {
         barBody.innerText = label;
       }
@@ -77,8 +67,6 @@ export default class Progress extends HTMLElement {
 
   buildBar(bars, barContainer) {
     bars.forEach((bar) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
       let tempBar = document.createElement('div');
       tempBar.role = 'progressbar';
       tempBar.setAttribute('aria-label', bar.ariaLabel);
@@ -88,8 +76,7 @@ export default class Progress extends HTMLElement {
       tempBar.className = 'progress';
       const barBody = document.createElement('div');
       tempBar.style = `width: ${bar.value}%`;
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line eqeqeq
+
       bar.label == undefined || bar.label == null
         ? ''
         : (barBody.innerText = bar.label);

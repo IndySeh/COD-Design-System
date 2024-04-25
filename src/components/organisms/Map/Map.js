@@ -53,8 +53,6 @@ export default class Map extends HTMLElement {
     });
   }
 
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line no-unused-vars
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'data-map-state': {
@@ -114,8 +112,6 @@ export default class Map extends HTMLElement {
             }
           });
           // Creating this temp variable for workaround with dealing with "this" encapsulation
-          // TODO: See CityOfDetroit/detroitmi#1099
-          // eslint-disable-next-line no-case-declarations
 
           this.map.on('click', 'data-points', function (e) {
             let activeData;

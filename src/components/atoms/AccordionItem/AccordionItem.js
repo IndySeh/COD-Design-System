@@ -22,8 +22,6 @@ export default class AccordionItem extends HTMLElement {
     this.accordionHeader = document.createElement('div');
     this.accordionBody = document.createElement('div');
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
       let tempElements = ev.target.assignedElements();
       tempElements.forEach((node) => {
         // TODO: Refactor attribute and class handling.
@@ -33,13 +31,11 @@ export default class AccordionItem extends HTMLElement {
             'data-index',
           )}`,
         );
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line eqeqeq
+
         this.getAttribute('data-expanded') == 'true'
           ? node.setAttribute('data-expanded', true)
           : 0;
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line eqeqeq
+
         if (node.tagName == 'COD-ACCORDION-HEADER') {
           if (this.getAttribute('data-li') !== null) {
             node.setAttribute('data-li', '');
@@ -75,17 +71,13 @@ export default class AccordionItem extends HTMLElement {
     this.accordionBody
       .querySelector('cod-accordion-body')
       .setAttribute('data-expanded', newValue);
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let tempClasses = this.accordionBody.className.split(' ');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let popValue = tempClasses.pop();
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     popValue != 'show' ? tempClasses.push(popValue) : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (newValue == 'true') {
       tempClasses.push('show');
     }
@@ -95,21 +87,16 @@ export default class AccordionItem extends HTMLElement {
   connectedCallback() {
     // Nav attributes
     // TODO: Refactor attribute and class handling.
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let parentID = this.getAttribute('data-parent-id');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let index = this.getAttribute('data-index');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let expanded = this.getAttribute('data-expanded');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let accordionHeaderClasses = ['accordion-header'];
     let accordionBodyClasses = ['accordion-collapse collapse'];
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     expanded == 'true' ? accordionBodyClasses.push('show') : 0;
     if (this.getAttribute('data-li') !== null) {
       accordionBodyClasses = accordionBodyClasses.concat(
@@ -157,8 +144,6 @@ export default class AccordionItem extends HTMLElement {
   }
 
   _onClick(e) {
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
     if (e.target.getAttribute('data-expanded') == 'true') {
       this.getRootNode().host.setAttribute('data-expanded', 'false');
     } else {

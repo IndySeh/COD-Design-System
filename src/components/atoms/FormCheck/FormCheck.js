@@ -12,8 +12,7 @@ export default class FormCheck extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
+
     const shadow = this.attachShadow({ mode: 'open' });
     this.internals = this.attachInternals();
     this.container = document.createElement('div');
@@ -24,14 +23,10 @@ export default class FormCheck extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
     let tempClasses = this.formCheck.className.split(' ');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let popValue = tempClasses.pop();
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     popValue != 'is-invalid' ? tempClasses.push(popValue) : 0;
 
     switch (newValue) {
@@ -85,42 +80,30 @@ export default class FormCheck extends HTMLElement {
 
   connectedCallback() {
     // Checkbox/Radio attributes setup
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let dataType = this.getAttribute('data-type');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let id = this.getAttribute('data-id');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let value = this.getAttribute('data-value');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let checkName = this.getAttribute('data-name');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let disabled = this.getAttribute('data-disabled');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let required = this.getAttribute('data-required');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let checked = this.getAttribute('data-checked');
     let mode = this.getAttribute('data-mode');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let noLabel = this.getAttribute('data-nolabel');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let labelTxt = this.getAttribute('data-label');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let backgroundColor = this.getAttribute('data-background-color');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let btnColor = this.getAttribute('data-btn-color');
     // Set formcheck
     this.formCheck.id = id;
@@ -128,31 +111,26 @@ export default class FormCheck extends HTMLElement {
     this.formCheck.value = value;
     this.formCheck.name = checkName;
     this.formCheck.setAttribute('autocomplete', 'off');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (required == 'true') {
       this.formCheck.setAttribute('required', true);
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (checked == 'true') {
       this.formCheck.checked = true;
       this.formCheck.setAttribute('aria-checked', 'true');
     } else {
       this.formCheck.setAttribute('aria-checked', 'false');
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (disabled == 'true') {
       this.formCheck.setAttribute('disabled', true);
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (mode == 'switch') {
       this.formCheck.setAttribute('role', mode);
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     if (mode == 'btn' || mode == 'btn-outline') {
       this.formCheck.className = 'btn-check';
       mode = null;
@@ -182,17 +160,13 @@ export default class FormCheck extends HTMLElement {
       this.container.appendChild(this.formCheck);
 
       // Adding label to check/radio
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line eqeqeq
+
       if (noLabel != 'true') {
         const checkLabel = document.createElement('label');
         checkLabel.setAttribute('for', id);
         checkLabel.innerText = labelTxt;
         if (
-          // TODO: See CityOfDetroit/detroitmi#1099
-          // eslint-disable-next-line eqeqeq
-          this.getAttribute('data-mode') == 'btn' || // TODO: See CityOfDetroit/detroitmi#1099
-          // eslint-disable-next-line eqeqeq
+          this.getAttribute('data-mode') == 'btn' ||
           this.getAttribute('data-mode') == 'btn-outline'
         ) {
           checkLabel.className = `btn ${this.getAttribute(
@@ -264,8 +238,7 @@ export default class FormCheck extends HTMLElement {
     // if the input is invalid, show the correct error
     if (!validState.valid) {
       // loop through the error reasons
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
+
       for (let state in validState) {
         // get the name of the data attribute that holds the
         //error message

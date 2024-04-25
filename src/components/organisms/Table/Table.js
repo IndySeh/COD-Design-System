@@ -51,22 +51,15 @@ class Table extends HTMLElement {
     this.table = document.createElement('table');
     this.tableContainer.appendChild(this.table);
 
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
     shadow.addEventListener('slotchange', (e) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
       let tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         switch (node.tagName) {
           case 'COD-TABLE-HEADER':
-            // TODO: See CityOfDetroit/detroitmi#1099
-            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-striped-col') == 'true'
               ? node.setAttribute('data-striped-col', 'true')
               : 0;
-            // TODO: See CityOfDetroit/detroitmi#1099
-            // eslint-disable-next-line eqeqeq
+
             this.getAttribute('data-vertical-align') == 'true'
               ? node.setAttribute('data-vertical-align', 'true')
               : 0;
@@ -79,23 +72,18 @@ class Table extends HTMLElement {
             break;
 
           case 'COD-TABLE-BODY':
-            // TODO: See CityOfDetroit/detroitmi#1099
-            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-hover') == 'true'
               ? node.setAttribute('data-hover', 'true')
               : 0;
-            // TODO: See CityOfDetroit/detroitmi#1099
-            // eslint-disable-next-line eqeqeq
+
             this.getAttribute('data-striped-row') == 'true'
               ? node.setAttribute('data-striped-row', 'true')
               : 0;
-            // TODO: See CityOfDetroit/detroitmi#1099
-            // eslint-disable-next-line eqeqeq
+
             this.getAttribute('data-striped-col') == 'true'
               ? node.setAttribute('data-striped-col', 'true')
               : 0;
-            // TODO: See CityOfDetroit/detroitmi#1099
-            // eslint-disable-next-line eqeqeq
+
             this.getAttribute('data-vertical-align') == 'true'
               ? node.setAttribute('data-vertical-align', 'true')
               : 0;
@@ -108,8 +96,6 @@ class Table extends HTMLElement {
             break;
 
           default:
-            // TODO: See CityOfDetroit/detroitmi#1099
-            // eslint-disable-next-line no-case-declarations, prefer-const
             let nodeClasses = node.className.split(' ');
             nodeClasses.includes('no-wc') ? node.remove() : 0;
             break;
@@ -131,22 +117,17 @@ class Table extends HTMLElement {
 
   connectedCallback() {
     // Table attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let id = this.getAttribute('data-id');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let tableClasses = ['table'];
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     extraClasses != undefined && extraClasses != null
       ? tableClasses.push(extraClasses)
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     id != undefined && id != null ? (this.table.id = id) : 0;
     // Use bootstraps 'table-responsive' utility which styles the table as a
     // horizontally scrollable table.

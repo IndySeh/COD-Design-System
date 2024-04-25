@@ -17,27 +17,19 @@ export default class Pagination extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.paginationContainer = document.createElement('nav');
     this.pagination = document.createElement('ul');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
+
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
       let tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line prefer-const
         let paginationItem = document.createElement('li');
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line prefer-const
+
         let paginationItemClasses = ['page-item'];
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line eqeqeq
+
         if (node.getAttribute('data-active') == 'true') {
           paginationItemClasses.push('active');
           paginationItem.setAttribute('aria-current', 'page');
         }
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line eqeqeq
+
         if (node.getAttribute('data-disabled') == 'true') {
           paginationItemClasses.push('disabled');
           paginationItem.setAttribute('tabindex', '-1');
@@ -45,8 +37,7 @@ export default class Pagination extends HTMLElement {
         paginationItem.className = paginationItemClasses.join(' ');
         node.setAttribute('data-index', index);
         paginationItem.appendChild(node);
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line prefer-const
+
         let nodeClasses = node.className.split(' ');
         nodeClasses.includes('no-wc')
           ? node.remove()
@@ -69,33 +60,25 @@ export default class Pagination extends HTMLElement {
 
   connectedCallback() {
     // Nav attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let label = this.getAttribute('data-label');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let id = this.getAttribute('data-id');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let size = this.getAttribute('data-size');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
+
     let paginationClasses = ['pagination'];
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     size != undefined && size != null
       ? paginationClasses.push(`pagination-${size}`)
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     extraClasses != undefined && extraClasses != null
       ? paginationClasses.push(extraClasses)
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line eqeqeq
+
     id != undefined && id != null ? (this.paginationContainer.id = id) : 0;
     this.paginationContainer.setAttribute('aria-label', label);
     this.pagination.className = paginationClasses.join(' ');
