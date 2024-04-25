@@ -30,34 +30,34 @@ const Template = (args) => {
     <option value="3">Options 3</option>
   `;
 
-  if (args.id != null) {
+  if (args.id !== null) {
     select.setAttribute('data-id', args.id);
   }
 
-  if (args.value != null) {
+  if (args.value !== null) {
     select.setAttribute('data-value', args.value);
   }
 
-  if (args.size != null) {
+  if (args.size !== null) {
     select.setAttribute('data-size', args.size);
   }
 
-  if (args.multiple != null) {
+  if (args.multiple !== null) {
     select.setAttribute('data-multiple', args.multiple);
   }
 
-  if (args.displayMultiple != null) {
+  if (args.displayMultiple !== null) {
     select.setAttribute('data-display-multiple', args.displayMultiple);
   }
 
-  if (args.extraClasses != null) {
+  if (args.extraClasses !== null) {
     select.setAttribute('data-extra-classes', args.extraClasses);
   }
   select.setAttribute('data-aria-label', args.ariaLabel);
   select.setAttribute('data-disabled', args.disabled);
   select.setAttribute('data-required', args.required);
 
-  if (args.selectChange != null) {
+  if (args.selectChange !== null) {
     select.addEventListener('click', (e) => {
       args.selectChange(e);
     });
@@ -92,13 +92,8 @@ WithInteraction.args = {
   id: 'interaction-input',
   ariaLabel: 'Interaction select example',
   selectChange: (e) => {
+    // Allow console log for testing in Storybook.
+    // eslint-disable-next-line no-console
     console.log(e.target.shadowRoot.querySelector('select').value);
   },
 };
-
-// WithInteraction.play = async ({ args, canvasElement }) => {
-//   // Assigns canvas to the component root element
-//   const canvas = within(canvasElement);
-//   await userEvent.click(canvas.getByTestId('interaction'));
-//   await expect(console.log);
-// }
