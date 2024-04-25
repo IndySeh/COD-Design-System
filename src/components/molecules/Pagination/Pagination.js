@@ -18,7 +18,7 @@ export default class Pagination extends HTMLElement {
     this.paginationContainer = document.createElement('nav');
     this.pagination = document.createElement('ul');
 
-    this.shadowRoot.addEventListener('slotchange', (ev) => {
+    this.shadowRoot.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
         const paginationItem = document.createElement('li');

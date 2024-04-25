@@ -55,7 +55,7 @@ export default class FormCheckGroup extends HTMLElement {
     ].join(' ');
 
     if (!this.shadowRoot.querySelector(tag)) {
-      this.shadowRoot.addEventListener('slotchange', (ev) => {
+      this.shadowRoot.addEventListener('slotchange', () => {
         const tempElements = Array.from(this.children);
 
         const tempLength = tempElements.length;
