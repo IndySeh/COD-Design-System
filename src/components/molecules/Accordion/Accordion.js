@@ -21,7 +21,7 @@ export default class Accordion extends HTMLElement {
       tempElements.forEach((node, index) => {
         // TODO: Refactor attribute and class handling for children.
         switch (node.tagName) {
-          case 'COD-ACCORDION-ITEM':
+          case 'COD-ACCORDION-ITEM': {
             const accordionItem = document.createElement('div');
             accordionItem.className = 'accordion-item';
             node.setAttribute('data-parent-id', this.getAttribute('data-id'));
@@ -32,13 +32,14 @@ export default class Accordion extends HTMLElement {
             accordionItem.appendChild(node);
             this.accordion.append(accordionItem);
             break;
-
-          default:
+          }
+          default: {
             const nodeClasses = node.className.split(' ');
             nodeClasses.includes('no-wc')
               ? node.remove()
               : this.card.appendChild(node);
             break;
+          }
         }
       });
     });
