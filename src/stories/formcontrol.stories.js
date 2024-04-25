@@ -48,15 +48,15 @@ const Template = (args) => {
   const fcontrol = document.createElement('cod-form-control');
   fcontrol.setAttribute('data-tag', args.tag);
 
-  if (args.size != null) {
+  if (args.size !== null) {
     fcontrol.setAttribute('data-size', args.size);
   }
 
-  if (args.rows != null) {
+  if (args.rows !== null) {
     fcontrol.setAttribute('data-rows', args.rows);
   }
 
-  if (args.value != null) {
+  if (args.value !== null) {
     fcontrol.setAttribute('data-value', args.value);
   }
   fcontrol.setAttribute('data-read-only', args.readOnly);
@@ -118,13 +118,8 @@ WithInteraction.args = {
   placeholder: 'enter text here',
   tag: 'input',
   keydown: (e) => {
+    // Allow console log for testing in Storybook.
+    // eslint-disable-next-line no-console
     console.log(e);
   },
 };
-
-// WithInteraction.play = async ({ args, canvasElement }) => {
-//   // Assigns canvas to the component root element
-//   const canvas = within(canvasElement);
-//   await userEvent.click(canvas.getByTestId('interaction'));
-//   await expect(console.log);
-// }
