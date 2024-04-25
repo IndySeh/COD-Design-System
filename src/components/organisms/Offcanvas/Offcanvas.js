@@ -108,7 +108,9 @@ export default class Offcanvas extends HTMLElement {
 
     const backdrop = this.getAttribute('data-backdrop');
 
-    const backdropExtraClasses = this.getAttribute('data-backdrop-extra-classes');
+    const backdropExtraClasses = this.getAttribute(
+      'data-backdrop-extra-classes',
+    );
 
     const scroll = this.getAttribute('data-scroll');
 

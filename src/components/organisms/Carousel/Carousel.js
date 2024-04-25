@@ -282,9 +282,11 @@ export default class Carousel extends HTMLElement {
         );
       }
     } else {
-      const activeItem = this.getRootNode().host.getAttribute('data-active-item');
+      const activeItem =
+        this.getRootNode().host.getAttribute('data-active-item');
 
-      const totalItems = this.getRootNode().host.getAttribute('data-total-items');
+      const totalItems =
+        this.getRootNode().host.getAttribute('data-total-items');
 
       // TODO: Fix old ESLint errors - see issue #1099
       // eslint-disable-next-line eqeqeq
