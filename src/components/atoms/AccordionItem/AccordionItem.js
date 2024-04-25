@@ -32,10 +32,14 @@ export default class AccordionItem extends HTMLElement {
           )}`,
         );
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-expanded') == 'true'
           ? node.setAttribute('data-expanded', true)
           : 0;
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (node.tagName == 'COD-ACCORDION-HEADER') {
           if (this.getAttribute('data-li') !== null) {
             node.setAttribute('data-li', '');
@@ -76,8 +80,12 @@ export default class AccordionItem extends HTMLElement {
 
     const popValue = tempClasses.pop();
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     popValue != 'show' ? tempClasses.push(popValue) : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (newValue == 'true') {
       tempClasses.push('show');
     }
@@ -97,6 +105,8 @@ export default class AccordionItem extends HTMLElement {
     const accordionHeaderClasses = ['accordion-header'];
     let accordionBodyClasses = ['accordion-collapse collapse'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     expanded == 'true' ? accordionBodyClasses.push('show') : 0;
     if (this.getAttribute('data-li') !== null) {
       accordionBodyClasses = accordionBodyClasses.concat(
@@ -144,6 +154,8 @@ export default class AccordionItem extends HTMLElement {
   }
 
   _onClick(e) {
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (e.target.getAttribute('data-expanded') == 'true') {
       this.getRootNode().host.setAttribute('data-expanded', 'false');
     } else {

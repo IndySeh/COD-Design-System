@@ -24,6 +24,8 @@ export default class FormControl extends HTMLElement {
 
     const popValue = tempClasses.pop();
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     popValue != 'is-invalid' ? tempClasses.push(popValue) : 0;
 
     switch (newValue) {
@@ -77,43 +79,63 @@ export default class FormControl extends HTMLElement {
     formControl.id = id;
     formControl.placeholder = placeholderTxt;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (required == 'true') {
       formControl.setAttribute('required', true);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (inputType != 'textarea') {
       formControl.type = dataType;
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (minlength != undefined && minlength != null) {
       formControl.setAttribute('minlength', minlength);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (maxlength != undefined && maxlength != null) {
       formControl.setAttribute('maxlength', maxlength);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (pattern != undefined && pattern != null) {
       formControl.setAttribute('pattern', pattern);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (rows != undefined && rows != null) {
       formControl.setAttribute('rows', rows);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (value != undefined && value != null) {
       formControl.value = value;
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (readOnly == 'true') {
       formControl.setAttribute('readonly', true);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (disabled == 'true') {
       formControl.setAttribute('disabled', true);
     }
     let colorPicker;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     dataType == 'color' ? (colorPicker = dataType) : (colorPicker = '');
     formControl.className = [
       'form-control',

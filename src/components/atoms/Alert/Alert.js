@@ -55,6 +55,8 @@ export default class Alert extends HTMLElement {
     this.alert.role = 'alert';
     let iconClass = '';
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (icon != undefined && icon != null) {
       this.alert.querySelector('#alert-content').className = 'col';
 

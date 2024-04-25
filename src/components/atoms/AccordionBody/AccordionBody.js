@@ -47,6 +47,8 @@ export default class AccordionBody extends HTMLElement {
       accordionBodyClasses.push('data-li');
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? accordionBodyClasses.push(extraClasses)
       : 0;

@@ -25,11 +25,17 @@ export default class Offcanvas extends HTMLElement {
     shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-show') == 'true'
           ? node.setAttribute('data-show', true)
           : 0;
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (node.tagName == 'COD-OFFCANVAS-HEADER') {
+          // TODO: Fix old ESLint errors - see issue #1099
+          // eslint-disable-next-line eqeqeq
           this.getAttribute('data-button-dark') == 'true'
             ? node.setAttribute('data-button-dark', true)
             : 0;
@@ -64,12 +70,20 @@ export default class Offcanvas extends HTMLElement {
 
     const popValue = tempClasses.pop();
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     popValue != 'show' ? tempClasses.push(popValue) : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (newValue == 'true') {
       tempClasses.push('show');
 
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (this.getAttribute('data-backdrop') != 'false') {
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (this.getAttribute('data-static') != 'true') {
           this.offcanvasBackdrop.addEventListener('click', this._onClick);
         }
@@ -106,26 +120,40 @@ export default class Offcanvas extends HTMLElement {
 
     const backdropClasses = ['offcanvas-backdrop fade show'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     show == 'true' ? offcanvasClasses.push('show') : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     backdrop == 'false'
       ? this.offcanvas.setAttribute('data-bs-backdrop', false)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     scroll == 'true' ? this.offcanvas.setAttribute('data-bs-scroll', true) : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     bStatic == 'true'
       ? this.offcanvas.setAttribute('data-bs-backdrop', 'static')
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     backdropExtraClasses != undefined && backdropExtraClasses != null
       ? backdropClasses.push(backdropExtraClasses)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? offcanvasClasses.push(extraClasses)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (placement != undefined && placement != null) {
       offcanvasClasses.push(`offcanvas-${placement}`);
     } else {
@@ -138,6 +166,8 @@ export default class Offcanvas extends HTMLElement {
         : offcanvasClasses.push(`navbar-expand-${expand}`);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (id != undefined && id != null) {
       this.offcanvas.id = id;
       this.offcanvas.setAttribute('aria-labelledby', `${id}-label`);

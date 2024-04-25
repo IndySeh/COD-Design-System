@@ -36,18 +36,24 @@ export default class ListGroupItem extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'data-order':
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (newValue != null) {
           this.listGroupItem.className = `${this.listGroupItem.className} ${newValue}`;
         }
         break;
 
       case 'data-parent-classes':
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (newValue != null) {
           this.listGroupItem.className = `${this.listGroupItem.className} ${newValue}`;
         }
         break;
 
       case 'data-order-index':
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (newValue != null) {
           this.listGroupItem.innerHTML = `${newValue}. ${this.listGroupItem.innerHTML}`;
 
@@ -80,21 +86,31 @@ export default class ListGroupItem extends HTMLElement {
     this.listGroupItem = document.createElement(tag);
     let actionItem = '';
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     tag == 'a' || tag == 'button' ? (actionItem = 'list-group-item-action') : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (text != undefined || text != null) {
       this.listGroupItem.innerText = text;
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (url != undefined || url != null) {
       this.listGroupItem.href = url;
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (current == 'true') {
       this.listGroupItem.setAttribute('aria-current', 'true');
       current = 'active';
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (disabled == 'true') {
       this.listGroupItem.setAttribute('aria-disabled', 'true');
       disabled = 'disabled';

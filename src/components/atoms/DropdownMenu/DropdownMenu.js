@@ -45,8 +45,12 @@ export default class DropdownMenu extends HTMLElement {
 
     const popValue = tempClasses.pop();
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     popValue != 'show' ? tempClasses.push(popValue) : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (newValue == 'true') {
       tempClasses.push('show');
     }
@@ -64,12 +68,18 @@ export default class DropdownMenu extends HTMLElement {
 
     const classList = ['dropdown-menu'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     darkMode == 'true' ? classList.push('dropdown-menu-dark') : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     alignment != undefined && alignment != null
       ? classList.push(`dropdown-menu-${alignment}`)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     show == 'true' ? classList.push('show') : 0;
     this.dropdownMenu.className = classList.join(' ');
 

@@ -37,6 +37,8 @@ export default class FormSelect extends HTMLElement {
 
     const popValue = tempClasses.pop();
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     popValue != 'is-invalid' ? tempClasses.push(popValue) : 0;
 
     switch (newValue) {
@@ -110,18 +112,26 @@ export default class FormSelect extends HTMLElement {
       this.setAttribute('tabindex', '0');
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (required == 'true') {
       this.select.setAttribute('required', true);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (disabled == 'true') {
       this.select.setAttribute('disabled', true);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (multiple == 'true') {
       this.select.setAttribute('multiple', true);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (displayMultiple != undefined && displayMultiple != null) {
       this.select.setAttribute('size', displayMultiple);
     }

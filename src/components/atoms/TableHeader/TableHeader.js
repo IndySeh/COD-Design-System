@@ -37,10 +37,14 @@ class TableHeader extends HTMLElement {
           node.setIsFirst();
         }
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-striped-col') == 'true'
           ? node.setAttribute('data-striped-col', 'true')
           : 0;
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-vertical-align') == 'true'
           ? node.setAttribute('data-vertical-align', 'true')
           : 0;

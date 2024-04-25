@@ -22,12 +22,16 @@ export default class FormLabel extends HTMLElement {
 
     const extraClasses = this.getAttribute('data-extra-classes');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (hidden == 'true') {
       hidden = 'visually-hidden';
     } else {
       hidden = '';
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (required == 'true') {
       required = 'required-field';
     }

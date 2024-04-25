@@ -34,14 +34,20 @@ class TableRow extends HTMLElement {
     shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node, index) => {
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-striped-row') == 'true'
           ? node.setAttribute('data-striped-row', 'true')
           : 0;
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-striped-col') == 'true' && index % 2 != 0
           ? node.setAttribute('data-striped-col', 'true')
           : 0;
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-vertical-align') == 'true'
           ? node.setAttribute('data-vertical-align', 'true')
           : 0;
@@ -75,8 +81,12 @@ class TableRow extends HTMLElement {
 
     const hover = this.getAttribute('data-hover');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     hover == 'true' ? this.tableRow.classList.add('table-hover') : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? this.tableRow.classList.add(extraClasses)
       : 0;

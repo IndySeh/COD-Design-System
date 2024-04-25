@@ -25,11 +25,15 @@ export default class Pagination extends HTMLElement {
 
         const paginationItemClasses = ['page-item'];
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (node.getAttribute('data-active') == 'true') {
           paginationItemClasses.push('active');
           paginationItem.setAttribute('aria-current', 'page');
         }
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (node.getAttribute('data-disabled') == 'true') {
           paginationItemClasses.push('disabled');
           paginationItem.setAttribute('tabindex', '-1');
@@ -71,14 +75,20 @@ export default class Pagination extends HTMLElement {
 
     const paginationClasses = ['pagination'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     size != undefined && size != null
       ? paginationClasses.push(`pagination-${size}`)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? paginationClasses.push(extraClasses)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     id != undefined && id != null ? (this.paginationContainer.id = id) : 0;
     this.paginationContainer.setAttribute('aria-label', label);
     this.pagination.className = paginationClasses.join(' ');

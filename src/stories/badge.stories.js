@@ -31,14 +31,20 @@ const Template = (args) => {
   badge.setAttribute('data-tag', args.tag);
   badge.setAttribute('data-background-color', args.backgroundColor);
 
+  // TODO: Fix old ESLint errors - see issue #1099
+  // eslint-disable-next-line eqeqeq
   if (args.url != null) {
     badge.setAttribute('data-url', args.url);
   }
 
+  // TODO: Fix old ESLint errors - see issue #1099
+  // eslint-disable-next-line eqeqeq
   if (args.hiddenText != null) {
     badge.setAttribute('data-hidden-text', args.hiddenText);
   }
 
+  // TODO: Fix old ESLint errors - see issue #1099
+  // eslint-disable-next-line eqeqeq
   if (args.pill != null) {
     badge.setAttribute('data-pill', args.pill);
   }

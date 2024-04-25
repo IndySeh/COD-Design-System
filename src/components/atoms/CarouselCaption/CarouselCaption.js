@@ -43,6 +43,8 @@ export default class CarouselCaption extends HTMLElement {
 
     const carouselCaptionClasses = ['carousel-caption d-none d-md-block'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? carouselCaptionClasses.push(extraClasses)
       : 0;

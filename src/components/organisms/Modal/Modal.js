@@ -33,10 +33,14 @@ export default class Modal extends HTMLElement {
       tempElements.forEach((node) => {
         switch (node.tagName) {
           case 'COD-MODAL-HEADER':
+            // TODO: Fix old ESLint errors - see issue #1099
+            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-show') == 'true'
               ? node.setAttribute('data-show', true)
               : 0;
 
+            // TODO: Fix old ESLint errors - see issue #1099
+            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-button-dark') == 'true'
               ? node.setAttribute('data-button-dark', true)
               : 0;
@@ -77,12 +81,18 @@ export default class Modal extends HTMLElement {
 
     const popValue = tempClasses.pop();
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     popValue != 'show' ? tempClasses.push(popValue) : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (newValue == 'true') {
       tempClasses.push('show');
       this.modal.style.display = 'block';
 
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (this.getAttribute('data-static') != 'true') {
         this.modal.addEventListener('click', this._onClick);
       }
@@ -118,29 +128,43 @@ export default class Modal extends HTMLElement {
 
     const modalContentClasses = ['modal-content'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? modalClasses.push(extraClasses)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     size != undefined && size != null
       ? modalDialogClasses.push(`modal-${size}`)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     verticalCentered == 'true'
       ? modalDialogClasses.push('modal-dialog-centered')
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (fullScreen != undefined && fullScreen != null) {
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       fullScreen == 'always'
         ? modalDialogClasses.push('modal-fullscreen')
         : modalDialogClasses.push(`modal-fullscreen-${fullScreen}-down`);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (bStatic == 'true') {
       this.modal.setAttribute('data-bs-backdrop', 'static');
       this.modal.setAttribute('data-bs-keyboard', 'false');
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (show == 'true') {
       this.modalClasses.push('show');
       this.modal.setAttribute('aria-modal', `true`);
@@ -148,6 +172,8 @@ export default class Modal extends HTMLElement {
       this.modal.setAttribute('aria-modal', `false`);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     id != undefined && id != null ? (this.modal.id = id) : 0;
     this.modal.setAttribute('tabindex', -1);
     this.modal.className = modalClasses.join(' ');

@@ -44,6 +44,8 @@ export default class Geocoder extends HTMLElement {
     label.innerText = 'Property Address:';
     try {
       if (app[0].getAttribute('data-geocoder-label')) {
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (app[0].getAttribute('data-geocoder-label') != '') {
           label.innerText = app[0].getAttribute('data-geocoder-label');
         }
@@ -127,6 +129,8 @@ export default class Geocoder extends HTMLElement {
                         }
                       });
 
+                      // TODO: Fix old ESLint errors - see issue #1099
+                      // eslint-disable-next-line eqeqeq
                       parcel == null
                         ? (location = data.candidates[0].location)
                         : (location = null);
@@ -200,6 +204,8 @@ export default class Geocoder extends HTMLElement {
   inputChange(ev, geocoder) {
     switch (ev.key) {
       case 'Enter':
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         ev.target.value != '' && ev.target.value != undefined
           ? geocoder.supplementGeocoder(ev.target.value, geocoder, 'submit')
           : 0;
@@ -218,6 +224,8 @@ export default class Geocoder extends HTMLElement {
         break;
 
       case undefined:
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         ev.target.value != '' && ev.target.value != undefined
           ? geocoder.supplementGeocoder(ev.target.value, geocoder, 'submit')
           : 0;
@@ -259,6 +267,8 @@ export default class Geocoder extends HTMLElement {
           },
         ];
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (location != null) {
           params[0].geometry.x = location.x;
           params[0].geometry.y = location.y;

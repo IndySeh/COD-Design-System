@@ -56,10 +56,14 @@ class Table extends HTMLElement {
       tempElements.forEach((node) => {
         switch (node.tagName) {
           case 'COD-TABLE-HEADER':
+            // TODO: Fix old ESLint errors - see issue #1099
+            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-striped-col') == 'true'
               ? node.setAttribute('data-striped-col', 'true')
               : 0;
 
+            // TODO: Fix old ESLint errors - see issue #1099
+            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-vertical-align') == 'true'
               ? node.setAttribute('data-vertical-align', 'true')
               : 0;
@@ -72,18 +76,26 @@ class Table extends HTMLElement {
             break;
 
           case 'COD-TABLE-BODY':
+            // TODO: Fix old ESLint errors - see issue #1099
+            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-hover') == 'true'
               ? node.setAttribute('data-hover', 'true')
               : 0;
 
+            // TODO: Fix old ESLint errors - see issue #1099
+            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-striped-row') == 'true'
               ? node.setAttribute('data-striped-row', 'true')
               : 0;
 
+            // TODO: Fix old ESLint errors - see issue #1099
+            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-striped-col') == 'true'
               ? node.setAttribute('data-striped-col', 'true')
               : 0;
 
+            // TODO: Fix old ESLint errors - see issue #1099
+            // eslint-disable-next-line eqeqeq
             this.getAttribute('data-vertical-align') == 'true'
               ? node.setAttribute('data-vertical-align', 'true')
               : 0;
@@ -125,10 +137,14 @@ class Table extends HTMLElement {
 
     const tableClasses = ['table'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? tableClasses.push(extraClasses)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     id != undefined && id != null ? (this.table.id = id) : 0;
     // Use bootstraps 'table-responsive' utility which styles the table as a
     // horizontally scrollable table.

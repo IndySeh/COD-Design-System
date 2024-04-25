@@ -43,6 +43,8 @@ export default class ModalBody extends HTMLElement {
 
     const bodyClasses = ['modal-body'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? bodyClasses.push(extraClasses)
       : 0;

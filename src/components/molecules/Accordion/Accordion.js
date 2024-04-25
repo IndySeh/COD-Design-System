@@ -69,9 +69,13 @@ export default class Accordion extends HTMLElement {
 
     const accordionClasses = ['accordion'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     flush == 'true' ? accordionClasses.push('accordion-flush') : 0;
     isOrderedList !== null ? accordionClasses.push('accordion-ol') : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? accordionClasses.push(extraClasses)
       : 0;

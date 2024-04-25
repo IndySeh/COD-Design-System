@@ -39,10 +39,16 @@ export default class FormCheckGroup extends HTMLElement {
     const extraClasses = this.getAttribute('data-extra-classes');
     this.listGroup = document.createElement(tag);
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     flushed == 'true' ? (flushed = 'list-group-flush') : (flushed = null);
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     numbered == 'true' ? (numbered = 'list-group-numbered') : (numbered = null);
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     horizontal == 'true'
       ? (horizontal = 'list-group-horizontal')
       : (horizontal = null);

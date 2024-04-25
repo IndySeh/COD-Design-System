@@ -60,6 +60,8 @@ class TableCellHeader extends HTMLElement {
 
     const extraClasses = this.getAttribute('data-extra-classes');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     verticalAlign != undefined && verticalAlign != null
       ? this.tableCellHeader.classList.add(verticalAlign)
       : 0;
@@ -67,14 +69,20 @@ class TableCellHeader extends HTMLElement {
       ? this.tableCellHeader.classList.add('table-scrollable')
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     stripedRow == 'true'
       ? this.tableCellHeader.classList.add('table-striped')
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     stripedCol == 'true'
       ? this.tableCellHeader.classList.add('table-striped-columns')
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? this.tableCellHeader.classList.add(extraClasses)
       : 0;

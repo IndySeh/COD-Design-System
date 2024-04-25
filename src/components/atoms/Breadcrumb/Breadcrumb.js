@@ -52,10 +52,14 @@ export default class Container extends HTMLElement {
 
     const svg = this.getAttribute('data-svg-divider');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (noDivider == 'true') {
       this.nav.style.cssText = "--bs-breadcrumb-divider: '';";
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (svg != undefined || svg != null) {
       this.nav.style.cssText = `--bs-breadcrumb-divider: url(${svg});`;
     }

@@ -37,6 +37,8 @@ export default class Progress extends HTMLElement {
     const stacked = this.getAttribute('data-multi-bars');
     const progressContainer = document.createElement('div');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (stacked == 'undefined' || stacked == 'null') {
       const bar = document.createElement('div');
       bar.role = 'progressbar';
@@ -46,6 +48,8 @@ export default class Progress extends HTMLElement {
       const barBody = document.createElement('div');
       barBody.style = `width: ${value}%`;
 
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (label != 'undefined' && label != 'null') {
         barBody.innerText = label;
       }
@@ -76,6 +80,8 @@ export default class Progress extends HTMLElement {
       const barBody = document.createElement('div');
       tempBar.style = `width: ${bar.value}%`;
 
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       bar.label == undefined || bar.label == null
         ? ''
         : (barBody.innerText = bar.label);

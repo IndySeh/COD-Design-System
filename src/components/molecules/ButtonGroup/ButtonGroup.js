@@ -51,16 +51,22 @@ export default class FormCheckGroup extends HTMLElement {
 
     const extraClasses = this.getAttribute('data-extra-classes');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (type == 'group') {
       this.btnGroup.role = 'group';
     } else {
       this.btnGroup.role = 'toolbar';
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (size != undefined && size != null) {
       size = `btn-group-${size}`;
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (vertical == 'true') {
       vertical = 'btn-group-vertical';
     }

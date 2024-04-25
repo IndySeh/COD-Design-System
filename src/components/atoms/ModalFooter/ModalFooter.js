@@ -51,10 +51,14 @@ export default class ModalFooter extends HTMLElement {
     this.closeBtn.setAttribute('data-label', 'Close');
     this.closeBtn.setAttribute('data-bs-dismiss', 'modal');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? modalFooterClasses.push(extraClasses)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     btnExtraClasses != undefined && btnExtraClasses != null
       ? this.closeBtn.setAttribute('data-extra-classes', btnExtraClasses)
       : 0;

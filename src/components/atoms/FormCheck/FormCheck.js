@@ -26,6 +26,8 @@ export default class FormCheck extends HTMLElement {
 
     const popValue = tempClasses.pop();
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     popValue != 'is-invalid' ? tempClasses.push(popValue) : 0;
 
     switch (newValue) {
@@ -111,10 +113,14 @@ export default class FormCheck extends HTMLElement {
     this.formCheck.name = checkName;
     this.formCheck.setAttribute('autocomplete', 'off');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (required == 'true') {
       this.formCheck.setAttribute('required', true);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (checked == 'true') {
       this.formCheck.checked = true;
       this.formCheck.setAttribute('aria-checked', 'true');
@@ -122,14 +128,20 @@ export default class FormCheck extends HTMLElement {
       this.formCheck.setAttribute('aria-checked', 'false');
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (disabled == 'true') {
       this.formCheck.setAttribute('disabled', true);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (mode == 'switch') {
       this.formCheck.setAttribute('role', mode);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (mode == 'btn' || mode == 'btn-outline') {
       this.formCheck.className = 'btn-check';
       mode = null;
@@ -160,12 +172,17 @@ export default class FormCheck extends HTMLElement {
 
       // Adding label to check/radio
 
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (noLabel != 'true') {
         const checkLabel = document.createElement('label');
         checkLabel.setAttribute('for', id);
         checkLabel.innerText = labelTxt;
         if (
-          this.getAttribute('data-mode') == 'btn' ||
+          // TODO: Fix old ESLint errors - see issue #1099
+          // eslint-disable-next-line eqeqeq
+          this.getAttribute('data-mode') == 'btn' || // TODO: Fix old ESLint errors - see issue #1099
+          // eslint-disable-next-line eqeqeq
           this.getAttribute('data-mode') == 'btn-outline'
         ) {
           checkLabel.className = `btn ${this.getAttribute(

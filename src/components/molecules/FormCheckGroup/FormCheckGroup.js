@@ -27,6 +27,8 @@ export default class FormCheckGroup extends HTMLElement {
   connectedCallback() {
     // setting up styles
     if (!this.hasAttribute('role')) {
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (this.getAttribute('data-type') == 'radio') {
         this.setAttribute('role', 'radiogroup');
       } else {
@@ -202,6 +204,8 @@ export default class FormCheckGroup extends HTMLElement {
       this._setChecked(e.target);
     }
     if (e.target.getAttribute('data-type') === 'checkbox') {
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (this.getAttribute('data-required') == 'true') {
         this._validateRequired(e.target);
       }

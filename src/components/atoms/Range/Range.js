@@ -32,18 +32,26 @@ export default class Range extends HTMLElement {
     range.type = 'range';
     range.className = 'form-range';
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (disabled == 'true') {
       range.disabled = true;
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (min != undefined || min != null) {
       range.setAttribute('min', min);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (max != undefined || max != null) {
       range.setAttribute('max', max);
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (step != undefined || step != null) {
       range.setAttribute('step', step);
     }

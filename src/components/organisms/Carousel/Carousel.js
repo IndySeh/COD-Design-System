@@ -27,7 +27,11 @@ export default class Carousel extends HTMLElement {
     this.carouselPrev = document.createElement('button');
     this.carouselNext = document.createElement('button');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (this.getAttribute('data-no-controls') != 'true') {
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (this.getAttribute('data-external-controls') == 'true') {
         this.carouselPrev.className = 'carousel-control-prev position-relative';
         this.carouselNext.className = 'carousel-control-next position-relative';
@@ -82,12 +86,16 @@ export default class Carousel extends HTMLElement {
       const tempElements = Array.from(this.children);
       let tempElementsCount = 0;
       tempElements.forEach((node, index) => {
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         if (node.tagName == 'COD-CAROUSEL-ITEM') {
           tempElementsCount += 1;
 
           const tempItem = document.createElement('div');
           tempItem.setAttribute('data-index', index);
 
+          // TODO: Fix old ESLint errors - see issue #1099
+          // eslint-disable-next-line eqeqeq
           if (node.getAttribute('data-active') == 'true') {
             tempItem.className = 'carousel-item active';
             this.setAttribute('data-active-item', index);
@@ -95,7 +103,11 @@ export default class Carousel extends HTMLElement {
             tempItem.className = 'carousel-item';
           }
 
+          // TODO: Fix old ESLint errors - see issue #1099
+          // eslint-disable-next-line eqeqeq
           node.getAttribute('data-interval') != undefined &&
+          // TODO: Fix old ESLint errors - see issue #1099
+          // eslint-disable-next-line eqeqeq
           node.getAttribute('data-interval') != null
             ? tempItem.setAttribute(
                 'data-bs-interval',
@@ -105,6 +117,8 @@ export default class Carousel extends HTMLElement {
           tempItem.appendChild(node);
           this.carouselInner.appendChild(tempItem);
 
+          // TODO: Fix old ESLint errors - see issue #1099
+          // eslint-disable-next-line eqeqeq
           if (this.getAttribute('data-indicator') == 'true') {
             const tempIndicator = document.createElement('button');
             tempIndicator.type = 'button';
@@ -115,6 +129,8 @@ export default class Carousel extends HTMLElement {
             tempIndicator.setAttribute('data-bs-slide-to', index);
             tempIndicator.setAttribute('aria-label', `Slide ${index}`);
 
+            // TODO: Fix old ESLint errors - see issue #1099
+            // eslint-disable-next-line eqeqeq
             if (node.getAttribute('data-active') == 'true') {
               tempIndicator.className = 'active';
               tempIndicator.setAttribute('aria-current', 'true');
@@ -146,6 +162,8 @@ export default class Carousel extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (oldValue != null) {
       const oldItem = this.carouselInner.querySelector(
         `[data-index="${oldValue}"`,
@@ -155,6 +173,8 @@ export default class Carousel extends HTMLElement {
         `[data-index="${newValue}"`,
       );
 
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (this.getAttribute('data-indicator') == 'true') {
         this.carouselIndicators.querySelector(
           `[data-bs-slide-to="${oldValue}"`,
@@ -164,6 +184,8 @@ export default class Carousel extends HTMLElement {
         ).className = 'active';
       }
 
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (this.getAttribute('data-direction') == 'next') {
         oldItem.className = 'carousel-item active carousel-item-start';
         newItem.className =
@@ -197,24 +219,38 @@ export default class Carousel extends HTMLElement {
 
     const carouselClasses = ['carousel slide'];
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? carouselClasses.push(extraClasses)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     crossfade == 'true' ? carouselClasses.push('carousel-fade') : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     externalControls == 'true' ? carouselClasses.push('d-flex') : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     noTouch == 'false'
       ? this.carousel.setAttribute('data-bs-touch', 'false')
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (autoplay != undefined && autoplay != null) {
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       autoplay == 'true'
         ? this.carousel.setAttribute('data-bs-ride', autoplay)
         : this.carousel.setAttribute('data-bs-ride', 'carousel');
     }
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     id != undefined && id != null ? (this.carousel.id = id) : 0;
     this.carousel.className = carouselClasses.join(' ');
     if (!this.shadowRoot.querySelector('div')) {
@@ -229,6 +265,8 @@ export default class Carousel extends HTMLElement {
   _onClick() {
     const activeItem = this.getRootNode().host.getAttribute('data-active-item');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (this.getAttribute('data-bs-slide') == undefined) {
       if (this.getAttribute('data-bs-slide-to') > activeItem) {
         this.getRootNode().host.setAttribute('data-direction', 'prev');
@@ -248,6 +286,8 @@ export default class Carousel extends HTMLElement {
 
       const totalItems = this.getRootNode().host.getAttribute('data-total-items');
 
+      // TODO: Fix old ESLint errors - see issue #1099
+      // eslint-disable-next-line eqeqeq
       if (this.getAttribute('data-bs-slide') == 'prev') {
         this.getRootNode().host.setAttribute('data-direction', 'prev');
         parseInt(activeItem) - 1 >= 0

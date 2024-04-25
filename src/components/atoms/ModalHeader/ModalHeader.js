@@ -57,10 +57,14 @@ export default class ModalHeader extends HTMLElement {
     this.closeBtn.setAttribute('data-close', 'true');
     this.closeBtn.setAttribute('data-bs-dismiss', 'modal');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? modalHeaderClasses.push(extraClasses)
       : 0;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     btnDark == 'true'
       ? this.closeBtn.setAttribute('data-extra-classes', 'btn-close-white')
       : 0;

@@ -31,6 +31,8 @@ export default class Image extends HTMLElement {
     const displayType = this.getAttribute('data-display-type');
     let spinnerSizeClass;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (spinnerSize == 'sm') {
       spinnerSizeClass = `spinner-${spinnerType}-${spinnerSize}`;
     } else {
@@ -38,6 +40,8 @@ export default class Image extends HTMLElement {
     }
     let spinner;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     displayType == 'inline'
       ? (spinner = document.createElement('span'))
       : (spinner = document.createElement('div'));

@@ -49,6 +49,8 @@ export default class Form extends HTMLElement {
     const extraClasses = this.getAttribute('data-extra-classes');
     this.form.id = id;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (customValidation == 'true') {
       this.form.novalidate = true;
       customValidation = 'needs-validation';

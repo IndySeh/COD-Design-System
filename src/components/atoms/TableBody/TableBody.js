@@ -38,18 +38,26 @@ class TableBody extends HTMLElement {
           node.setIsOdd();
         }
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-striped-row') == 'true' && index % 2 == 0
           ? node.setAttribute('data-striped-row', 'true')
           : 0;
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-hover') == 'true'
           ? node.setAttribute('data-hover', 'true')
           : 0;
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-striped-col') == 'true'
           ? node.setAttribute('data-striped-col', 'true')
           : 0;
 
+        // TODO: Fix old ESLint errors - see issue #1099
+        // eslint-disable-next-line eqeqeq
         this.getAttribute('data-vertical-align') == 'true'
           ? node.setAttribute('data-vertical-align', 'true')
           : 0;

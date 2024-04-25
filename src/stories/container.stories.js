@@ -34,6 +34,8 @@ const Template = (args) => {
   const container = document.createElement('cod-container');
   container.setAttribute('data-type', args.type);
 
+  // TODO: Fix old ESLint errors - see issue #1099
+  // eslint-disable-next-line eqeqeq
   if (args.elements != null) {
     container.innerHTML = args.elements;
   }

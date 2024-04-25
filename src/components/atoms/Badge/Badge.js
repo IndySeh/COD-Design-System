@@ -35,8 +35,12 @@ export default class Badge extends HTMLElement {
     const extraClasses = this.getAttribute('data-extra-classes');
     let badge = null;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     pill == 'true' ? (pill = 'rounded-pill') : (pill = '');
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (url != undefined || url != null) {
       badge = document.createElement('a');
       badge.href = url;
@@ -45,6 +49,8 @@ export default class Badge extends HTMLElement {
     }
     badge.innerText = text;
 
+    // TODO: Fix old ESLint errors - see issue #1099
+    // eslint-disable-next-line eqeqeq
     if (hiddenText != undefined || hiddenText != null) {
       const hiddenBadge = document.createElement('span');
       hiddenBadge.className = 'visually-hidden';
