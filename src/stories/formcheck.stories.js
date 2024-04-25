@@ -228,6 +228,8 @@ WithInteraction.args = {
   name: 'interaction-checkbox',
   value: 'interaction-checkbox',
   clicked: (e) => {
+    // Allow console logging for testing stories.
+    // eslint-disable-next-line no-console
     console.log(e);
   },
 };
