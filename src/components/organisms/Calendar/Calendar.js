@@ -92,7 +92,7 @@ class Calendar extends HTMLElement {
       events = JSON.parse(eventsJSON ?? '[]');
     } catch (error) {
       // TODO: Introduce proper error logging.
-
+      // eslint-disable-next-line no-console
       console.error(`Failed to parse list of events:\n${eventsJSON}`);
     }
     events = this.applyEventPropertyRules(events);
@@ -179,7 +179,7 @@ class Calendar extends HTMLElement {
       filters = JSON.parse(newFiltersJSON ?? '{}');
     } catch (error) {
       // TODO: Introduce proper error logging.
-
+      // eslint-disable-next-line no-console
       console.error(`Failed to parse list of filters:\n${newFiltersJSON}`);
     }
     for (const filter in filters) {
@@ -238,7 +238,7 @@ class Calendar extends HTMLElement {
       }
       default: {
         // TODO: Introduce proper error logging.
-
+        // eslint-disable-next-line no-console
         console.warn(`Unsupported event filter type provided: ${filter.type}`);
         return;
       }
@@ -262,7 +262,7 @@ class Calendar extends HTMLElement {
         }
         default: {
           // TODO: Introduce proper error logging.
-
+          // eslint-disable-next-line no-console
           console.warn(`Ignoring unsupported filter property: ${property}`);
           return;
         }
@@ -286,7 +286,7 @@ class Calendar extends HTMLElement {
       events = JSON.parse(currentEventsJSON ?? '[]');
     } catch (error) {
       // TODO: Introduce proper error logging.
-
+      // eslint-disable-next-line no-console
       console.error(`Failed to parse list of events:\n${currentEventsJSON}`);
     }
     events = events.filter((calEvent) => calEvent[inputKey] === inputValue);
@@ -323,7 +323,7 @@ class Calendar extends HTMLElement {
       eventPropertyRules = JSON.parse(eventPropertyRulesJSON ?? '{}');
     } catch (error) {
       // TODO: Introduce proper error logging.
-
+      // eslint-disable-next-line no-console
       console.error(
         `Failed to parse event property rules:\n${eventPropertyRulesJSON}`,
       );
