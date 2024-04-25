@@ -51,7 +51,7 @@ class Table extends HTMLElement {
     this.table = document.createElement('table');
     this.tableContainer.appendChild(this.table);
 
-    shadow.addEventListener('slotchange', (e) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         switch (node.tagName) {
@@ -95,10 +95,11 @@ class Table extends HTMLElement {
             this.table.appendChild(node);
             break;
 
-          default:
+          default: {
             const nodeClasses = node.className.split(' ');
             nodeClasses.includes('no-wc') ? node.remove() : 0;
             break;
+          }
         }
       });
     });

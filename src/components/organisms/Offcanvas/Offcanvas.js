@@ -22,7 +22,7 @@ export default class Offcanvas extends HTMLElement {
     this.offcanvas = document.createElement('div');
     this.offcanvasBackdrop = document.createElement('div');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.getAttribute('data-show') == 'true'
@@ -154,7 +154,7 @@ export default class Offcanvas extends HTMLElement {
     this.removeEventListener('click', this._onClick.bind(this));
   }
 
-  _onClick(e) {
+  _onClick() {
     this.getRootNode().host.setAttribute('data-show', 'false');
   }
 }
