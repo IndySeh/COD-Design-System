@@ -21,7 +21,7 @@ export default class DropdownMenu extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.dropdownMenu = document.createElement('ul');
 
-    this.shadowRoot.addEventListener('slotchange', (ev) => {
+    this.shadowRoot.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.dropdownMenu.append(node);
@@ -41,15 +41,11 @@ export default class DropdownMenu extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log(newValue);
-
     const tempClasses = this.dropdownMenu.className.split(' ');
 
     const popValue = tempClasses.pop();
 
     popValue != 'show' ? tempClasses.push(popValue) : 0;
-
-    console.log(tempClasses);
 
     if (newValue == 'true') {
       tempClasses.push('show');

@@ -12,8 +12,7 @@ export default class FormControl extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-
-    const shadow = this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
     this.internals = this.attachInternals();
     this.formControl = null;
     this.invalid = false;
@@ -29,7 +28,6 @@ export default class FormControl extends HTMLElement {
 
     switch (newValue) {
       case 'true':
-        console.log('invalid input');
         tempClasses.push('is-invalid');
         this.formControl.className = tempClasses.join(' ');
         break;

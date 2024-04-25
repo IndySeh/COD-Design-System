@@ -19,7 +19,7 @@ export default class Image extends HTMLElement {
     // Create select and move options from slot to select
     this.picture = shadow.querySelector('picture');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.picture.append(node);

@@ -12,8 +12,7 @@ export default class FormCheck extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-
-    const shadow = this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
     this.internals = this.attachInternals();
     this.container = document.createElement('div');
     this.formCheck = document.createElement('input');

@@ -5,8 +5,7 @@ export default class Loader extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-
-    const shadow = this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
   }
 
   connectedCallback() {

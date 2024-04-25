@@ -17,7 +17,7 @@ export default class Container extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.container = document.createElement('div');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.container.append(node);

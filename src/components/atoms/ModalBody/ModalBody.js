@@ -17,7 +17,7 @@ export default class ModalBody extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.body = document.createElement('div');
 
-    this.shadowRoot.addEventListener('slotchange', (ev) => {
+    this.shadowRoot.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.body.append(node);

@@ -20,7 +20,7 @@ export default class Alert extends HTMLElement {
     alertContent.id = 'alert-content';
     this.alert.appendChild(alertContent);
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         const nodeClasses = node.className.split(' ');

@@ -48,8 +48,6 @@ export default class ListGroupItem extends HTMLElement {
         break;
 
       case 'data-order-index':
-        console.log(newValue);
-
         if (newValue != null) {
           this.listGroupItem.innerHTML = `${newValue}. ${this.listGroupItem.innerHTML}`;
 
@@ -111,7 +109,7 @@ export default class ListGroupItem extends HTMLElement {
     ].join(' ');
 
     if (!this.shadowRoot.querySelector(tag)) {
-      this.shadowRoot.addEventListener('slotchange', (ev) => {
+      this.shadowRoot.addEventListener('slotchange', () => {
         const tempElements = Array.from(this.children);
         tempElements.forEach((node) => {
           this.listGroupItem.append(node);

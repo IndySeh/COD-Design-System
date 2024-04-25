@@ -19,7 +19,7 @@ export default class ModalHeader extends HTMLElement {
     this.modalTitle = document.createElement('div');
     this.closeBtn = document.createElement('cod-button');
 
-    this.shadowRoot.addEventListener('slotchange', (ev) => {
+    this.shadowRoot.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.modalTitle.appendChild(node);
@@ -75,7 +75,7 @@ export default class ModalHeader extends HTMLElement {
     this.removeEventListener('click', this._onClick.bind(this));
   }
 
-  _onClick(e) {
+  _onClick() {
     this.getRootNode()
       .host.getRootNode()
       .host.setAttribute('data-show', 'false');

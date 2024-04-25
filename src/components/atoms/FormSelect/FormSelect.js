@@ -26,7 +26,7 @@ export default class FormSelect extends HTMLElement {
     // Create select and move options from slot to select
     this.select = shadow.querySelector('select');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const node = this.querySelector('option');
       node && this.select.append(node);
     });

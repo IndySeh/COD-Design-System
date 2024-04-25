@@ -1,6 +1,6 @@
-import styles from '!!raw-loader!./CardFooter.css';
-import varStyles from '!!raw-loader!../../../shared/variables.css';
 import bootstrapStyles from '!!raw-loader!../../../shared/themed-bootstrap.css';
+import varStyles from '!!raw-loader!../../../shared/variables.css';
+import styles from '!!raw-loader!./CardFooter.css';
 
 const template = document.createElement('template');
 
@@ -17,7 +17,7 @@ export default class CardFooter extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.cardFooter = document.createElement('div');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.cardFooter.append(node);

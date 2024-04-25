@@ -18,7 +18,7 @@ export default class ModalFooter extends HTMLElement {
     this.modalFooter = document.createElement('div');
     this.closeBtn = document.createElement('cod-button');
 
-    this.shadowRoot.addEventListener('slotchange', (ev) => {
+    this.shadowRoot.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.modalFooter.appendChild(node);
@@ -69,7 +69,7 @@ export default class ModalFooter extends HTMLElement {
     this.removeEventListener('click', this._onClick.bind(this));
   }
 
-  _onClick(e) {
+  _onClick() {
     this.getRootNode()
       .host.getRootNode()
       .host.setAttribute('data-show', 'false');

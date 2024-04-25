@@ -22,7 +22,7 @@ export default class Container extends HTMLElement {
     this.nav = shadow.querySelector('nav');
     this.breadcrumb = shadow.querySelector('ol');
 
-    shadow.addEventListener('slotchange', (ev) => {
+    shadow.addEventListener('slotchange', () => {
       const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         const nodeClasses = node.className.split(' ');
