@@ -16,15 +16,15 @@ const Template = (args) => {
   range.setAttribute('data-id', args.id);
   range.setAttribute('data-disable', args.disable);
 
-  if (args.min != null) {
+  if (args.min !== null) {
     range.setAttribute('data-min', args.min);
   }
 
-  if (args.max != null) {
+  if (args.max !== null) {
     range.setAttribute('data-max', args.max);
   }
 
-  if (args.step != null) {
+  if (args.step !== null) {
     range.setAttribute('data-step', args.step);
   }
   return range;
