@@ -23,36 +23,29 @@ export default class PaginationItem extends HTMLElement {
 
   connectedCallback() {
     // Nav attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let url = this.getAttribute('data-url');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let special = this.getAttribute('data-special');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let label = this.getAttribute('data-label');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let text = this.getAttribute('data-text');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let disabled = this.getAttribute('data-disabled');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let active = this.getAttribute('data-active');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let paginationItemClasses = ['page-link'];
+
+    const url = this.getAttribute('data-url');
+
+    const special = this.getAttribute('data-special');
+
+    const label = this.getAttribute('data-label');
+
+    const text = this.getAttribute('data-text');
+
+    const disabled = this.getAttribute('data-disabled');
+
+    const active = this.getAttribute('data-active');
+
+    const extraClasses = this.getAttribute('data-extra-classes');
+
+    const paginationItemClasses = ['page-link'];
     let paginationItem = null;
     let tag = null;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     if (url != undefined && url != null) {
-      // TODO: See CityOfDetroit/detroitmi#1099
+      // TODO: Fix old ESLint errors - see issue #1099
       // eslint-disable-next-line eqeqeq
       if (disabled == 'true') {
         paginationItemClasses.push('disabled');
@@ -60,9 +53,8 @@ export default class PaginationItem extends HTMLElement {
         tag = 'span';
       } else {
         paginationItem = document.createElement('a');
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line prefer-const
-        let cleanURL = encodeURI(url);
+
+        const cleanURL = encodeURI(url);
         paginationItem.href = decodeURI(cleanURL);
         tag = 'a';
       }
@@ -70,23 +62,28 @@ export default class PaginationItem extends HTMLElement {
       paginationItem = document.createElement('span');
       tag = 'span';
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     active == 'true' ? paginationItemClasses.push('active') : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? paginationItemClasses.push(extraClasses)
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     special != undefined && special != null
       ? this.setSpecialItem(special, paginationItem)
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     text != undefined && text != null ? (paginationItem.innerText = text) : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     label != undefined && label != null
       ? paginationItem.setAttribute('aria-label', label)

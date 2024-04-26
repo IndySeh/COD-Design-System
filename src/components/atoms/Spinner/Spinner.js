@@ -6,9 +6,7 @@ export default class Image extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
-    const shadow = this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
   }
 
   connectedCallback() {
@@ -23,20 +21,17 @@ export default class Image extends HTMLElement {
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(spinnerStyles);
     // image attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let spinnerType = this.getAttribute('data-type');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let spinnerSize = this.getAttribute('data-size');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let backgroundColor = this.getAttribute('data-background-color');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let displayType = this.getAttribute('data-display-type');
+
+    const spinnerType = this.getAttribute('data-type');
+
+    const spinnerSize = this.getAttribute('data-size');
+
+    const backgroundColor = this.getAttribute('data-background-color');
+
+    const displayType = this.getAttribute('data-display-type');
     let spinnerSizeClass;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     if (spinnerSize == 'sm') {
       spinnerSizeClass = `spinner-${spinnerType}-${spinnerSize}`;
@@ -44,7 +39,8 @@ export default class Image extends HTMLElement {
       spinnerSizeClass = '';
     }
     let spinner;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     displayType == 'inline'
       ? (spinner = document.createElement('span'))
@@ -55,9 +51,8 @@ export default class Image extends HTMLElement {
       `text-${backgroundColor || ''}`,
     ].join(' ');
     spinner.role = 'status';
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let pLoading = document.createElement('span');
+
+    const pLoading = document.createElement('span');
     pLoading.innerText = 'Loading...';
     pLoading.className = 'visually-hidden';
     spinner.appendChild(pLoading);

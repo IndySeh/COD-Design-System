@@ -15,19 +15,16 @@ const Template = (args) => {
   const range = document.createElement('cod-range');
   range.setAttribute('data-id', args.id);
   range.setAttribute('data-disable', args.disable);
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
-  if (args.min != null) {
+
+  if (args.min !== null) {
     range.setAttribute('data-min', args.min);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
-  if (args.max != null) {
+
+  if (args.max !== null) {
     range.setAttribute('data-max', args.max);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line eqeqeq
-  if (args.step != null) {
+
+  if (args.step !== null) {
     range.setAttribute('data-step', args.step);
   }
   return range;

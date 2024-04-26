@@ -16,12 +16,9 @@ export default class Container extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
     this.container = document.createElement('div');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
-    shadow.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
-      let tempElements = Array.from(this.children);
+
+    shadow.addEventListener('slotchange', () => {
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.container.append(node);
       });
@@ -39,18 +36,14 @@ export default class Container extends HTMLElement {
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(containerStyles);
     // container attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let type = this.getAttribute('data-type');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let text = this.getAttribute('data-text');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let backgroundColor = this.getAttribute('data-background-color');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let extraClasses = this.getAttribute('data-extra-classes');
+
+    const type = this.getAttribute('data-type');
+
+    const text = this.getAttribute('data-text');
+
+    const backgroundColor = this.getAttribute('data-background-color');
+
+    const extraClasses = this.getAttribute('data-extra-classes');
     this.container.className = [
       type,
       `${backgroundColor || ''}`,
