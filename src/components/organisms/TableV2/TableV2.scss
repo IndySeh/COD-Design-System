@@ -1,0 +1,66 @@
+@use '../../../scss/mixins/table';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins/breakpoints';
+
+
+@include media-breakpoint-down(lg) {
+  table.table-stacked {
+    & slot {
+      display: block;
+      flex: 1 1 0px;
+      padding: 0.5em 0.5em;
+    }
+
+    // Header & body styles.
+    & thead {
+      // Move table header off the screen to hide from
+      // sited viewers but remain enabled for screen readers
+      // and other AT.
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    // Row styles.
+    & tr {
+      display: block;
+      border-top-width: 0;
+      width: 100%;
+      border-bottom: 2px solid var(--bs-black);
+
+      &:nth-child(1) {
+        border-top: 2px solid var(--bs-black);
+      }
+    }
+
+    // Cell header styles.
+    & th {
+      @include table.th-td-stacked-inline-styles;
+      
+      & div.content {
+        @include table.cell-content-stacked-inline-styles;
+      }
+    }
+
+    & th[data-label] {
+      @include table.th-td-labeled-stacked-inline-styles;
+    }
+
+    // Cell styles.
+    & td {
+      @include table.th-td-stacked-inline-styles;
+
+      & div.content {
+        @include table.cell-content-stacked-inline-styles;
+      }
+    }
+
+    & td[data-label] {
+      @include table.th-td-labeled-stacked-inline-styles;
+    }
+  }
+}
