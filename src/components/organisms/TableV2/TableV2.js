@@ -31,10 +31,6 @@ class TableV2 extends HTMLElement {
     this._slotCells();
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    // TODO: Handle attr changes as well.
-  }
-
   _addTableClasses() {
     const table = this.shadowRoot.querySelector('table');
     table.classList.add('table');

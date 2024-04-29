@@ -7,7 +7,7 @@ export default {
 
 export const Basic = () => html`
   <cod-table-v2 id="basicTable">
-    <table class="table">
+    <table>
       <thead>
         <tr>
           <th scope="col">#</th>
