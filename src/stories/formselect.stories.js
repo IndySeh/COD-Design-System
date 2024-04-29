@@ -29,32 +29,38 @@ const Template = (args) => {
     <option value="2">Options 2</option>
     <option value="3">Options 3</option>
   `;
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.id != null) {
     select.setAttribute('data-id', args.id);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.value != null) {
     select.setAttribute('data-value', args.value);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.size != null) {
     select.setAttribute('data-size', args.size);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.multiple != null) {
     select.setAttribute('data-multiple', args.multiple);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.displayMultiple != null) {
     select.setAttribute('data-display-multiple', args.displayMultiple);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.extraClasses != null) {
     select.setAttribute('data-extra-classes', args.extraClasses);
@@ -62,7 +68,8 @@ const Template = (args) => {
   select.setAttribute('data-aria-label', args.ariaLabel);
   select.setAttribute('data-disabled', args.disabled);
   select.setAttribute('data-required', args.required);
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.selectChange != null) {
     select.addEventListener('click', (e) => {
@@ -99,15 +106,8 @@ WithInteraction.args = {
   id: 'interaction-input',
   ariaLabel: 'Interaction select example',
   selectChange: (e) => {
-    // TODO: See CityOfDetroit/detroitmi#1099
+    // Allow console log for testing in Storybook.
     // eslint-disable-next-line no-console
     console.log(e.target.shadowRoot.querySelector('select').value);
   },
 };
-
-// WithInteraction.play = async ({ args, canvasElement }) => {
-//   // Assigns canvas to the component root element
-//   const canvas = within(canvasElement);
-//   await userEvent.click(canvas.getByTestId('interaction'));
-//   await expect(console.log);
-// }

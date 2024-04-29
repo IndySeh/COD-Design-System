@@ -102,6 +102,7 @@
     "start-server-and-test": "^1.14.0",
     "storybook": "^7.3.2",
     "style-loader": "^3.3.1",
+    "suppress-eslint-errors": "^3.0.1",
     "terser-webpack-plugin": "^5.2.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.61.0",

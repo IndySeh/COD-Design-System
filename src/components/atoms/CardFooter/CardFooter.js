@@ -1,6 +1,6 @@
-import styles from '!!raw-loader!./CardFooter.css';
-import varStyles from '!!raw-loader!../../../shared/variables.css';
 import bootstrapStyles from '!!raw-loader!../../../shared/themed-bootstrap.css';
+import varStyles from '!!raw-loader!../../../shared/variables.css';
+import styles from '!!raw-loader!./CardFooter.css';
 
 const template = document.createElement('template');
 
@@ -16,12 +16,9 @@ export default class CardFooter extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
     this.cardFooter = document.createElement('div');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
-    shadow.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
-      let tempElements = Array.from(this.children);
+
+    shadow.addEventListener('slotchange', () => {
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.cardFooter.append(node);
       });

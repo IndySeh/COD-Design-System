@@ -16,12 +16,9 @@ export default class ModalBody extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
     this.body = document.createElement('div');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
-    this.shadowRoot.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
-      let tempElements = Array.from(this.children);
+
+    this.shadowRoot.addEventListener('slotchange', () => {
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         this.body.append(node);
       });
@@ -41,13 +38,12 @@ export default class ModalBody extends HTMLElement {
 
   connectedCallback() {
     // OffcanvasBody attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let bodyClasses = ['modal-body'];
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    const extraClasses = this.getAttribute('data-extra-classes');
+
+    const bodyClasses = ['modal-body'];
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? bodyClasses.push(extraClasses)

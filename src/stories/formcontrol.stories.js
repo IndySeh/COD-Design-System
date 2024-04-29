@@ -47,17 +47,20 @@ export default {
 const Template = (args) => {
   const fcontrol = document.createElement('cod-form-control');
   fcontrol.setAttribute('data-tag', args.tag);
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.size != null) {
     fcontrol.setAttribute('data-size', args.size);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.rows != null) {
     fcontrol.setAttribute('data-rows', args.rows);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.value != null) {
     fcontrol.setAttribute('data-value', args.value);
@@ -121,15 +124,8 @@ WithInteraction.args = {
   placeholder: 'enter text here',
   tag: 'input',
   keydown: (e) => {
-    // TODO: See CityOfDetroit/detroitmi#1099
+    // Allow console log for testing in Storybook.
     // eslint-disable-next-line no-console
     console.log(e);
   },
 };
-
-// WithInteraction.play = async ({ args, canvasElement }) => {
-//   // Assigns canvas to the component root element
-//   const canvas = within(canvasElement);
-//   await userEvent.click(canvas.getByTestId('interaction'));
-//   await expect(console.log);
-// }
