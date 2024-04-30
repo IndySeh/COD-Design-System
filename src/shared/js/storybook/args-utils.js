@@ -43,15 +43,15 @@ const COMMON_STORY_ARGS = {
     control: { type: 'select' },
     options: ['left', 'right'],
   },
-  // TODO: Make the following two size attr names/values 
+  // TODO: Make the following two size attr names/values
   // consistent. Issue #202.
   size: {
     control: { type: 'select' },
     options: ['sm', 'md', 'lg', 'xl'],
   },
   longSize: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large', 'x-large'],
+    control: { type: 'select' },
+    options: ['small', 'medium', 'large', 'x-large'],
   },
   icon: {
     control: { type: 'select' },

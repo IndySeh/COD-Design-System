@@ -9,7 +9,7 @@ export default {
       options: ['start', 'end'],
     },
     backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
-    // TODO: Give this a new name so not to be confused 
+    // TODO: Give this a new name so not to be confused
     // with other components with size.
     size: {
       control: { type: 'select' },

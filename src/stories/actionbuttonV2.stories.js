@@ -8,8 +8,8 @@ export default {
   title: 'Components/Atoms/ActionButtonV2',
   // 👇 Creates specific argTypes
   argTypes: {
-    // TODO: Make this attr name and accepted 
-    // values consistent with other action button, progress bar, 
+    // TODO: Make this attr name and accepted
+    // values consistent with other action button, progress bar,
     // etc. Issue #202.
     buttonColor: {
       options: [

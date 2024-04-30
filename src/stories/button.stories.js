@@ -9,8 +9,8 @@ export default {
       control: { type: 'boolean' },
     },
     disable: COMMON_STORY_ARGS.disabled,
-    // TODO: Make this attr name and accepted 
-    // values consistent with other action button, progress bar, 
+    // TODO: Make this attr name and accepted
+    // values consistent with other action button, progress bar,
     // etc. Issue #202.
     backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
     size: COMMON_STORY_ARGS.size,
