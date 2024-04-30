@@ -1,4 +1,5 @@
 import '../components/atoms/Container/cod-container';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Components/Atoms/Container',
@@ -15,18 +16,8 @@ export default {
         'container-fluid',
       ],
     },
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'color-1',
-        'color-2',
-        'color-3',
-        'color-4',
-        'color-5',
-        'color-light',
-        'color-dark',
-      ],
-    },
+    // TODO: Use bootstrap color names. Issue #202.
+    backgroundColor: COMMON_STORY_ARGS.numberColor,
   },
 };
 // Template

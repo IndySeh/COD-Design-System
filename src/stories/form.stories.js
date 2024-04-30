@@ -1,21 +1,10 @@
 import '../components/organisms/Form/cod-form';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Forms/FormValidation',
   argTypes: {
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
   },
 };
 // Template

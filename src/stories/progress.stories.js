@@ -1,23 +1,13 @@
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 import '../components/atoms/Progress/cod-progress';
 
 export default {
   title: 'Components/Atoms/Progress',
   argTypes: {
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
   },
 };
+
 // Template
 const Template = (args) => {
   const progress = document.createElement('cod-progress');

@@ -1,13 +1,16 @@
 import { html } from 'lit-html';
 import '../components/atoms/ActionButton/cod-action-button';
 import '../components/atoms/Icon/cod-icon';
-import IconStory from './icon.stories';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   component: 'cod-action-button',
   title: 'Components/Atoms/ActionButton',
   // 👇 Creates specific argTypes
   argTypes: {
+    // TODO: Make this attr name and accepted 
+    // values consistent with other action button, progress bar, 
+    // etc. Issue #202.
     buttonColor: {
       options: [
         'btn-outline-primary',
@@ -16,7 +19,7 @@ export default {
       ],
       control: 'select',
     },
-    icon: IconStory.argTypes.icon,
+    icon: COMMON_STORY_ARGS.icon,
     title: {
       control: 'text',
     },

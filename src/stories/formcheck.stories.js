@@ -1,55 +1,19 @@
 import '../components/atoms/FormCheck/cod-formcheck';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Forms/FormCheck',
   argTypes: {
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
-    btnColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-      defaultValue: 'primary',
-    },
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor, 
+    btnColor: COMMON_STORY_ARGS.bootstrapColor,
     type: {
       control: { type: 'select' },
       options: ['checkbox', 'radio'],
       defaultValue: 'checkbox',
     },
-    required: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
-    disabled: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
-    checked: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
+    required: COMMON_STORY_ARGS.required,
+    disabled: COMMON_STORY_ARGS.disabled,
+    checked: COMMON_STORY_ARGS.checked,
   },
 };
 // Template

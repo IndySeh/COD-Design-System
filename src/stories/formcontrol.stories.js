@@ -1,45 +1,22 @@
 import '../components/atoms/FormControl/cod-formcontrol';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Forms/FormControl',
   argTypes: {
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
+    size: COMMON_STORY_ARGS.size,
+    required: COMMON_STORY_ARGS.required,
+    readOnly: COMMON_STORY_ARGS.readOnly,
     tag: {
       control: { type: 'select' },
       options: ['input', 'textarea'],
       defaultValue: 'input',
     },
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
-    size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
     type: {
       control: { type: 'select' },
       options: ['text', 'number', 'email', 'color', 'tel', 'password'],
       defaultValue: 'text',
-    },
-    required: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
-    readOnly: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
     },
   },
 };

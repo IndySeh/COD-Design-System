@@ -1,4 +1,5 @@
 import '../components/atoms/Spinner/cod-spinner';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Components/Atoms/Spinner',
@@ -7,23 +8,8 @@ export default {
       control: { type: 'select' },
       options: ['border', 'grow'],
     },
-    size: {
-      control: { type: 'select' },
-      options: ['sm', ''],
-    },
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
+    size: COMMON_STORY_ARGS.size,
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
   },
 };
 // Template
