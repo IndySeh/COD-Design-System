@@ -8,7 +8,12 @@ export default {
       control: { type: 'select' },
       options: ['border', 'grow'],
     },
-    size: COMMON_STORY_ARGS.size,
+    // TODO: Add support for lg and xl to make size
+    // consistent. Issue #202.
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md'],
+    },
     backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
   },
 };

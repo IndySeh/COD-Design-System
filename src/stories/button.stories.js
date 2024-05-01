@@ -13,7 +13,12 @@ export default {
     // values consistent with other action button, progress bar,
     // etc. Issue #202.
     backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
-    size: COMMON_STORY_ARGS.size,
+    // TODO: Add support for lg and xl to make size
+    // consistent. Issue #202.
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+    },
     icon: COMMON_STORY_ARGS.icon,
     onClick: { action: 'onClick' },
     iconSize: COMMON_STORY_ARGS.longSize,

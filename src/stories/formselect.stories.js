@@ -4,7 +4,12 @@ import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 export default {
   title: 'Forms/FormSelect',
   argTypes: {
-    size: COMMON_STORY_ARGS.size,
+    // TODO: Add support for xl to make size
+    // consistent. Issue #202.
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+    },
     required: COMMON_STORY_ARGS.required,
     disabled: COMMON_STORY_ARGS.disabled,
   },

@@ -5,7 +5,12 @@ export default {
   title: 'Forms/FormControl',
   argTypes: {
     backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
-    size: COMMON_STORY_ARGS.size,
+    // TODO: Add support for xl to make size
+    // consistent. Issue #202.
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+    },
     required: COMMON_STORY_ARGS.required,
     readOnly: COMMON_STORY_ARGS.readOnly,
     tag: {
