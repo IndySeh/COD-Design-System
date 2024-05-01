@@ -20,14 +20,6 @@ export default class Alert extends HTMLElement {
     alertContent.id = 'alert-content';
     this.alert.appendChild(alertContent);
 
-    // Close Button
-    this.closeBtn = document.createElement('cod-button');
-    this._onClick = this._onClick.bind(this);
-    this.closeBtn.addEventListener('click', this._onClick);
-    shadow.appendChild(this.closeBtn);
-    shadow.appendChild(this.alert);
-    
-
     // TODO: See CityOfDetroit/detroitmi#1099
     // eslint-disable-next-line no-unused-vars
     shadow.addEventListener('slotchange', (ev) => {
@@ -55,10 +47,7 @@ export default class Alert extends HTMLElement {
     this.shadowRoot.appendChild(bootStyles);
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(alertStyles);
-
-    // Close Button
-    this.closeBtn.setAttribute('data-close', 'true');
-
+  
     // alert attributes
     // TODO: See CityOfDetroit/detroitmi#1099
     // eslint-disable-next-line prefer-const
@@ -116,13 +105,5 @@ export default class Alert extends HTMLElement {
       iconClass,
     ].join(' ');
     this.shadowRoot.appendChild(this.alert);
-  }
-
-  disconnectedCallback() {
-    this.closeBtn.removeEventListener('click', this._onClick);
-  }
-
-  _onClick(e) {
-    this.remove();
   }
 }

@@ -36,6 +36,10 @@ export default {
         'dark',
       ],
     },
+    isClosed: {
+      control: { type: 'boolean' },
+      defaultValue: false,
+    }
   },
 };
 // Template
@@ -48,12 +52,6 @@ const Template = (args) => {
   alert.setAttribute('data-icon-size', args.iconSize);
   alert.setAttribute('data-extra-classes', args.extraClasses);
   alert.setAttribute('data-background-color', args.backgroundColor);
-
-    // Add the close button
-    const closeButton = document.createElement('button');
-    closeButton.textContent = 'Close';
-    closeButton.addEventListener('click', () => alert.remove());
-    alert.appendChild(closeButton);
 
   return alert;
 };
