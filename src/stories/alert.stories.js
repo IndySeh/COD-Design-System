@@ -36,7 +36,7 @@ export default {
         'dark',
       ],
     },
-    isClosed: {
+    isOpen: {
       control: { type: 'boolean' },
       defaultValue: false,
     }
