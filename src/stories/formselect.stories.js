@@ -1,23 +1,17 @@
 import '../components/atoms/FormSelect/cod-formselect';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Forms/FormSelect',
   argTypes: {
+    // TODO: Add support for xl to make size
+    // consistent. Issue #202.
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
-      defaultValue: 'md',
     },
-    required: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
-    disabled: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
+    required: COMMON_STORY_ARGS.required,
+    disabled: COMMON_STORY_ARGS.disabled,
   },
 };
 // Template

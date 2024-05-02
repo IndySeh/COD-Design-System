@@ -1,5 +1,6 @@
 import { html } from 'lit-html';
 import '../components/atoms/Badge/cod-badge';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Components/Atoms/Badge',
@@ -9,20 +10,7 @@ export default {
       options: ['span', 'div', 'a'],
       defaultValue: 'span',
     },
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-      defaultValue: 'primary',
-    },
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
   },
 };
 // Template

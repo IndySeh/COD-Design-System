@@ -1,13 +1,10 @@
 import '../components/atoms/Range/cod-range';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Components/Atoms/Forms/Range',
   argTypes: {
-    disable: {
-      control: { type: 'select' },
-      options: [true, false],
-      defaultValue: false,
-    },
+    disable: COMMON_STORY_ARGS.disabled,
   },
 };
 // Template
