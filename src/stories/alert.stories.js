@@ -53,6 +53,12 @@ const Template = (args) => {
   alert.setAttribute('data-extra-classes', args.extraClasses);
   alert.setAttribute('data-background-color', args.backgroundColor);
 
+    if (args.isOpen) {
+      alert.setAttribute('is-open', true);
+    } else {
+      alert.removeAttribute('is-open');
+    }
+
   return alert;
 };
 
@@ -102,3 +108,4 @@ AlertClose.args = {
     <span>Alert with Close Button</span>
   `,
 };
+
