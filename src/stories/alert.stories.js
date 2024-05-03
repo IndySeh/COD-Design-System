@@ -54,9 +54,9 @@ const Template = (args) => {
   alert.setAttribute('data-background-color', args.backgroundColor);
 
     if (args.isOpen) {
-      alert.setAttribute('is-open', true);
+      alert.setAttribute('closeable', true);
     } else {
-      alert.removeAttribute('is-open');
+      alert.removeAttribute('closeable');
     }
 
   return alert;
