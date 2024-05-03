@@ -47,7 +47,7 @@ export default class Alert extends HTMLElement {
     this.shadowRoot.appendChild(bootStyles);
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(alertStyles);
-  
+
     // alert attributes
     // TODO: See CityOfDetroit/detroitmi#1099
     // eslint-disable-next-line prefer-const
@@ -106,12 +106,12 @@ export default class Alert extends HTMLElement {
     ].join(' ');
     this.shadowRoot.appendChild(this.alert);
 
-        // Add close button
-        const closeButton = document.createElement('cod-button');
-        closeButton.className = 'btn-close';
-        closeButton.setAttribute('type', 'button');
-        closeButton.setAttribute('aria-label', 'Close');
-        closeButton.addEventListener('click', () => this.remove());
-        this.alert.appendChild(closeButton);
+    // Add close button
+    const closeButton = document.createElement('cod-button');
+    closeButton.className = 'btn-close';
+    closeButton.setAttribute('type', 'button');
+    closeButton.setAttribute('aria-label', 'Close');
+    closeButton.addEventListener('click', () => this.remove());
+    this.alert.appendChild(closeButton);
   }
 }

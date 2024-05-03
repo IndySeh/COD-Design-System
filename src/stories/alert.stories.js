@@ -39,7 +39,7 @@ export default {
     closeable: {
       control: { type: 'boolean' },
       defaultValue: false,
-    }
+    },
   },
 };
 // Template
@@ -60,7 +60,6 @@ const Template = (args) => {
     // If closeable is false, remove the closeable attribute
     alert.removeAttribute('closeable');
   }
-
 
   return alert;
 };
