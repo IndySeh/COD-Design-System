@@ -99,13 +99,3 @@ AlertIcon.args = {
     <article>Article with <a href="https://google.com">link</a></article>
   `,
 };
-
-export const AlertClose = Template.bind({});
-AlertClose.args = {
-  isOpen: true,
-  backgroundColor: 'primary',
-  elements: `
-    <span>Alert with Close Button</span>
-  `,
-};
-
