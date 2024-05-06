@@ -106,12 +106,12 @@ export default class Alert extends HTMLElement {
     ].join(' ');
     this.shadowRoot.appendChild(this.alert);
 
-    // Add close button
+    //close button
     const closeButton = document.createElement('cod-button');
     closeButton.className = 'btn-close';
-    closeButton.setAttribute('type', 'button');
-    closeButton.setAttribute('aria-label', 'Close');
     closeButton.addEventListener('click', () => this.remove());
     this.alert.appendChild(closeButton);
+
+
   }
 }

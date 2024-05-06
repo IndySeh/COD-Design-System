@@ -55,7 +55,7 @@ const Template = (args) => {
 
   if (args.closeable) {
     // If closeable is true, set the closeable attribute
-    alert.setAttribute('closeable', 'true');
+    alert.setAttribute('closeable', '');
   } else {
     // If closeable is false, remove the closeable attribute
     alert.removeAttribute('closeable');
