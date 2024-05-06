@@ -4,39 +4,11 @@ import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 export default {
   title: 'Components/Atoms/Alert',
   argTypes: {
-    icon: {
-      control: { type: 'select' },
-      options: [
-        'house',
-        'house-fill',
-        'exclamation-circle',
-        'exclamation-circle-fill',
-        'exclamation-triangle',
-        'check-circle',
-        'check-circle-fill',
-      ],
-    },
-    iconOrder: {
-      control: { type: 'select' },
-      options: ['left', 'right'],
-    },
-    iconSize: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large', 'x-large'],
-    },
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
+    icon: COMMON_STORY_ARGS.icon,
+    iconOrder: COMMON_STORY_ARGS.order,
+    iconSize: COMMON_STORY_ARGS.longSize,
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
+
     closeable: {
       control: { type: 'boolean' },
       defaultValue: false,

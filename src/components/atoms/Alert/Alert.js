@@ -20,12 +20,8 @@ export default class Alert extends HTMLElement {
     alertContent.id = 'alert-content';
     this.alert.appendChild(alertContent);
 
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
-    shadow.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
-      let tempElements = Array.from(this.children);
+    shadow.addEventListener('slotchange', () => {
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
         const nodeClasses = node.className.split(' ');
         nodeClasses.includes('no-wc')
@@ -98,15 +94,15 @@ export default class Alert extends HTMLElement {
     ].join(' ');
     this.shadowRoot.appendChild(this.alert);
 
-        // Check if the alert is closeable
-        const isCloseable = this.hasAttribute('closeable');
+    // Check if the alert is closeable
+    const isCloseable = this.hasAttribute('closeable');
 
-        if (isCloseable) {
-            // Add close button
-            const closeButton = document.createElement('cod-button');
-            closeButton.className = 'btn-close';
-            closeButton.addEventListener('click', () => this.remove());
-            this.alert.appendChild(closeButton);
-        }
+    if (isCloseable) {
+      // Add close button
+      const closeButton = document.createElement('cod-button');
+      closeButton.className = 'btn-close';
+      closeButton.addEventListener('click', () => this.remove());
+      this.alert.appendChild(closeButton);
+    }
   }
 }
