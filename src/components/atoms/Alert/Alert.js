@@ -106,12 +106,15 @@ export default class Alert extends HTMLElement {
     ].join(' ');
     this.shadowRoot.appendChild(this.alert);
 
-    //close button
-    const closeButton = document.createElement('cod-button');
-    closeButton.className = 'btn-close';
-    closeButton.addEventListener('click', () => this.remove());
-    this.alert.appendChild(closeButton);
+        // Check if the alert is closeable
+        const isCloseable = this.hasAttribute('closeable');
 
-
+        if (isCloseable) {
+            // Add close button
+            const closeButton = document.createElement('cod-button');
+            closeButton.className = 'btn-close';
+            closeButton.addEventListener('click', () => this.remove());
+            this.alert.appendChild(closeButton);
+        }
   }
 }
