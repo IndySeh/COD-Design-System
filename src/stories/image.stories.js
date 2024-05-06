@@ -1,4 +1,5 @@
 import '../components/atoms/Image/cod-image';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Components/Atoms/Image',
@@ -7,19 +8,9 @@ export default {
       control: { type: 'select' },
       options: ['start', 'end'],
     },
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
+    // TODO: Give this a new name so not to be confused
+    // with other components with size.
     size: {
       control: { type: 'select' },
       options: ['fluid', 'thumbnail'],

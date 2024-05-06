@@ -17,16 +17,12 @@ export default class Accordion extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.accordion = document.createElement('div');
     this.shadowRoot.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
-      let tempElements = ev.target.assignedElements();
+      const tempElements = ev.target.assignedElements();
       tempElements.forEach((node, index) => {
         // TODO: Refactor attribute and class handling for children.
         switch (node.tagName) {
-          case 'COD-ACCORDION-ITEM':
-            // TODO: See CityOfDetroit/detroitmi#1099
-            // eslint-disable-next-line no-case-declarations, prefer-const
-            let accordionItem = document.createElement('div');
+          case 'COD-ACCORDION-ITEM': {
+            const accordionItem = document.createElement('div');
             accordionItem.className = 'accordion-item';
             node.setAttribute('data-parent-id', this.getAttribute('data-id'));
             node.setAttribute('data-index', index);
@@ -36,15 +32,14 @@ export default class Accordion extends HTMLElement {
             accordionItem.appendChild(node);
             this.accordion.append(accordionItem);
             break;
-
-          default:
-            // TODO: See CityOfDetroit/detroitmi#1099
-            // eslint-disable-next-line no-case-declarations, prefer-const
-            let nodeClasses = node.className.split(' ');
+          }
+          default: {
+            const nodeClasses = node.className.split(' ');
             nodeClasses.includes('no-wc')
               ? node.remove()
               : this.card.appendChild(node);
             break;
+          }
         }
       });
     });
@@ -64,24 +59,22 @@ export default class Accordion extends HTMLElement {
   connectedCallback() {
     // Nav attributes
     // TODO: Refactor attribute and class handling.
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let flush = this.getAttribute('data-flush');
+
+    const flush = this.getAttribute('data-flush');
     const isOrderedList = this.getAttribute('data-ol');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let id = this.getAttribute('data-id');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let accordionClasses = ['accordion'];
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    const id = this.getAttribute('data-id');
+
+    const extraClasses = this.getAttribute('data-extra-classes');
+
+    const accordionClasses = ['accordion'];
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     flush == 'true' ? accordionClasses.push('accordion-flush') : 0;
     isOrderedList !== null ? accordionClasses.push('accordion-ol') : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? accordionClasses.push(extraClasses)

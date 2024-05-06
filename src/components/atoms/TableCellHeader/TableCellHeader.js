@@ -27,12 +27,9 @@ class TableCellHeader extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
     this.tableCellHeader = document.createElement('th');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
-    shadow.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
-      let tempElements = Array.from(this.childNodes);
+
+    shadow.addEventListener('slotchange', () => {
+      const tempElements = Array.from(this.childNodes);
       tempElements.forEach((node) => {
         this.tableCellHeader.appendChild(node);
       });
@@ -54,19 +51,16 @@ class TableCellHeader extends HTMLElement {
 
   connectedCallback() {
     // tableCellHeader attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let stripedRow = this.getAttribute('data-striped-row');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let stripedCol = this.getAttribute('data-striped-col');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let verticalAlign = this.getAttribute('data-vertical-align');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    const stripedRow = this.getAttribute('data-striped-row');
+
+    const stripedCol = this.getAttribute('data-striped-col');
+
+    const verticalAlign = this.getAttribute('data-vertical-align');
+
+    const extraClasses = this.getAttribute('data-extra-classes');
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     verticalAlign != undefined && verticalAlign != null
       ? this.tableCellHeader.classList.add(verticalAlign)
@@ -74,17 +68,20 @@ class TableCellHeader extends HTMLElement {
     this.getAttribute('data-scrollable') === 'true'
       ? this.tableCellHeader.classList.add('table-scrollable')
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     stripedRow == 'true'
       ? this.tableCellHeader.classList.add('table-striped')
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     stripedCol == 'true'
       ? this.tableCellHeader.classList.add('table-striped-columns')
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? this.tableCellHeader.classList.add(extraClasses)

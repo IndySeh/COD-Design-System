@@ -1,55 +1,19 @@
 import '../components/atoms/FormCheck/cod-formcheck';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Forms/FormCheck',
   argTypes: {
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
-    btnColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-      defaultValue: 'primary',
-    },
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
+    btnColor: COMMON_STORY_ARGS.bootstrapColor,
     type: {
       control: { type: 'select' },
       options: ['checkbox', 'radio'],
       defaultValue: 'checkbox',
     },
-    required: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
-    disabled: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
-    checked: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
+    required: COMMON_STORY_ARGS.required,
+    disabled: COMMON_STORY_ARGS.disabled,
+    checked: COMMON_STORY_ARGS.checked,
   },
 };
 // Template
@@ -61,37 +25,44 @@ const Template = (args) => {
   formCheck.setAttribute('data-type', args.type);
   formCheck.setAttribute('data-btn-color', args.btnColor);
   formCheck.setAttribute('data-checked', args.checked);
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - see issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.extraClasses != null) {
     formCheck.setAttribute('data-extra-classes', args.extraClasses);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - see issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.backgroundColor != null) {
     formCheck.setAttribute('data-background-color', args.backgroundColor);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - see issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.label != null) {
     formCheck.setAttribute('data-label', args.label);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - see issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.nolabel != null) {
     formCheck.setAttribute('data-nolabel', args.nolabel);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - see issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.mode != null) {
     formCheck.setAttribute('data-mode', args.mode);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - see issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.disabled != null) {
     formCheck.setAttribute('data-disabled', args.disabled);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - see issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.required != null) {
     formCheck.setAttribute('data-required', args.required);
@@ -235,7 +206,7 @@ WithInteraction.args = {
   name: 'interaction-checkbox',
   value: 'interaction-checkbox',
   clicked: (e) => {
-    // TODO: See CityOfDetroit/detroitmi#1099
+    // Allow console logging for testing stories.
     // eslint-disable-next-line no-console
     console.log(e);
   },

@@ -6,9 +6,7 @@ export default class Badge extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
-    const shadow = this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
   }
 
   connectedCallback() {
@@ -22,30 +20,26 @@ export default class Badge extends HTMLElement {
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(badgeStyles);
     // badge attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let tag = this.getAttribute('data-tag');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let backgroundColor = this.getAttribute('data-background-color');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let text = this.getAttribute('data-text');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let hiddenText = this.getAttribute('data-hidden-text');
+
+    const tag = this.getAttribute('data-tag');
+
+    const backgroundColor = this.getAttribute('data-background-color');
+
+    const text = this.getAttribute('data-text');
+
+    const hiddenText = this.getAttribute('data-hidden-text');
     let pill = this.getAttribute('data-pill');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let url = this.getAttribute('data-url');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let extraClasses = this.getAttribute('data-extra-classes');
+
+    const url = this.getAttribute('data-url');
+
+    const extraClasses = this.getAttribute('data-extra-classes');
     let badge = null;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     pill == 'true' ? (pill = 'rounded-pill') : (pill = '');
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     if (url != undefined || url != null) {
       badge = document.createElement('a');
@@ -54,7 +48,8 @@ export default class Badge extends HTMLElement {
       badge = document.createElement(tag);
     }
     badge.innerText = text;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     if (hiddenText != undefined || hiddenText != null) {
       const hiddenBadge = document.createElement('span');

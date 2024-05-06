@@ -1,45 +1,27 @@
 import '../components/atoms/FormControl/cod-formcontrol';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Forms/FormControl',
   argTypes: {
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
+    // TODO: Add support for xl to make size
+    // consistent. Issue #202.
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+    },
+    required: COMMON_STORY_ARGS.required,
+    readOnly: COMMON_STORY_ARGS.readOnly,
     tag: {
       control: { type: 'select' },
       options: ['input', 'textarea'],
       defaultValue: 'input',
     },
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
-    size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
     type: {
       control: { type: 'select' },
       options: ['text', 'number', 'email', 'color', 'tel', 'password'],
       defaultValue: 'text',
-    },
-    required: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
-    },
-    readOnly: {
-      control: { type: 'select' },
-      options: ['true', 'false'],
-      defaultValue: 'false',
     },
   },
 };
@@ -47,17 +29,20 @@ export default {
 const Template = (args) => {
   const fcontrol = document.createElement('cod-form-control');
   fcontrol.setAttribute('data-tag', args.tag);
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.size != null) {
     fcontrol.setAttribute('data-size', args.size);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.rows != null) {
     fcontrol.setAttribute('data-rows', args.rows);
   }
-  // TODO: See CityOfDetroit/detroitmi#1099
+
+  // TODO: Fix old ESLint errors - issue #1099
   // eslint-disable-next-line eqeqeq
   if (args.value != null) {
     fcontrol.setAttribute('data-value', args.value);
@@ -121,15 +106,8 @@ WithInteraction.args = {
   placeholder: 'enter text here',
   tag: 'input',
   keydown: (e) => {
-    // TODO: See CityOfDetroit/detroitmi#1099
+    // Allow console log for testing in Storybook.
     // eslint-disable-next-line no-console
     console.log(e);
   },
 };
-
-// WithInteraction.play = async ({ args, canvasElement }) => {
-//   // Assigns canvas to the component root element
-//   const canvas = within(canvasElement);
-//   await userEvent.click(canvas.getByTestId('interaction'));
-//   await expect(console.log);
-// }

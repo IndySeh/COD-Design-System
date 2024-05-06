@@ -6,35 +6,31 @@ export default class FormLabel extends HTMLElement {
     // Always call super first in constructor
     super();
     // Create a shadow root
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
-    const shadow = this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
   }
 
   connectedCallback() {
     // progress attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let inputID = this.getAttribute('data-input-id');
+
+    const inputID = this.getAttribute('data-input-id');
     let hidden = this.getAttribute('data-hidden');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let textColor = this.getAttribute('data-color');
+
+    const textColor = this.getAttribute('data-color');
     let required = this.getAttribute('data-required');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let text = this.getAttribute('data-text');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    const text = this.getAttribute('data-text');
+
+    const extraClasses = this.getAttribute('data-extra-classes');
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     if (hidden == 'true') {
       hidden = 'visually-hidden';
     } else {
       hidden = '';
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     if (required == 'true') {
       required = 'required-field';

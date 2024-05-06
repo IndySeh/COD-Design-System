@@ -21,22 +21,20 @@ export default class Offcanvas extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true));
     this.offcanvas = document.createElement('div');
     this.offcanvasBackdrop = document.createElement('div');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line no-unused-vars
-    shadow.addEventListener('slotchange', (ev) => {
-      // TODO: See CityOfDetroit/detroitmi#1099
-      // eslint-disable-next-line prefer-const
-      let tempElements = Array.from(this.children);
+
+    shadow.addEventListener('slotchange', () => {
+      const tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
-        // TODO: See CityOfDetroit/detroitmi#1099
+        // TODO: Fix old ESLint errors - see issue #1099
         // eslint-disable-next-line eqeqeq
         this.getAttribute('data-show') == 'true'
           ? node.setAttribute('data-show', true)
           : 0;
-        // TODO: See CityOfDetroit/detroitmi#1099
+
+        // TODO: Fix old ESLint errors - see issue #1099
         // eslint-disable-next-line eqeqeq
         if (node.tagName == 'COD-OFFCANVAS-HEADER') {
-          // TODO: See CityOfDetroit/detroitmi#1099
+          // TODO: Fix old ESLint errors - see issue #1099
           // eslint-disable-next-line eqeqeq
           this.getAttribute('data-button-dark') == 'true'
             ? node.setAttribute('data-button-dark', true)
@@ -47,9 +45,8 @@ export default class Offcanvas extends HTMLElement {
         if (expand) {
           node.setAttribute('data-expand', expand);
         }
-        // TODO: See CityOfDetroit/detroitmi#1099
-        // eslint-disable-next-line prefer-const
-        let nodeClasses = node.className.split(' ');
+
+        const nodeClasses = node.className.split(' ');
         nodeClasses.includes('no-wc')
           ? node.remove()
           : this.offcanvas.appendChild(node);
@@ -69,23 +66,23 @@ export default class Offcanvas extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let tempClasses = this.offcanvas.className.split(' ');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let popValue = tempClasses.pop();
-    // TODO: See CityOfDetroit/detroitmi#1099
+    const tempClasses = this.offcanvas.className.split(' ');
+
+    const popValue = tempClasses.pop();
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     popValue != 'show' ? tempClasses.push(popValue) : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     if (newValue == 'true') {
       tempClasses.push('show');
-      // TODO: See CityOfDetroit/detroitmi#1099
+
+      // TODO: Fix old ESLint errors - see issue #1099
       // eslint-disable-next-line eqeqeq
       if (this.getAttribute('data-backdrop') != 'false') {
-        // TODO: See CityOfDetroit/detroitmi#1099
+        // TODO: Fix old ESLint errors - see issue #1099
         // eslint-disable-next-line eqeqeq
         if (this.getAttribute('data-static') != 'true') {
           this.offcanvasBackdrop.addEventListener('click', this._onClick);
@@ -102,63 +99,62 @@ export default class Offcanvas extends HTMLElement {
 
   connectedCallback() {
     // Offcanvas attributes
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let show = this.getAttribute('data-show');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let placement = this.getAttribute('data-placement');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let id = this.getAttribute('data-id');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let backdrop = this.getAttribute('data-backdrop');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let backdropExtraClasses = this.getAttribute('data-backdrop-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let scroll = this.getAttribute('data-scroll');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let bStatic = this.getAttribute('data-static');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let extraClasses = this.getAttribute('data-extra-classes');
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let offcanvasClasses = ['offcanvas'];
-    // TODO: See CityOfDetroit/detroitmi#1099
-    // eslint-disable-next-line prefer-const
-    let backdropClasses = ['offcanvas-backdrop fade show'];
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    const show = this.getAttribute('data-show');
+
+    const placement = this.getAttribute('data-placement');
+
+    const id = this.getAttribute('data-id');
+
+    const backdrop = this.getAttribute('data-backdrop');
+
+    const backdropExtraClasses = this.getAttribute(
+      'data-backdrop-extra-classes',
+    );
+
+    const scroll = this.getAttribute('data-scroll');
+
+    const bStatic = this.getAttribute('data-static');
+
+    const extraClasses = this.getAttribute('data-extra-classes');
+
+    const offcanvasClasses = ['offcanvas'];
+
+    const backdropClasses = ['offcanvas-backdrop fade show'];
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     show == 'true' ? offcanvasClasses.push('show') : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     backdrop == 'false'
       ? this.offcanvas.setAttribute('data-bs-backdrop', false)
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     scroll == 'true' ? this.offcanvas.setAttribute('data-bs-scroll', true) : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     bStatic == 'true'
       ? this.offcanvas.setAttribute('data-bs-backdrop', 'static')
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     backdropExtraClasses != undefined && backdropExtraClasses != null
       ? backdropClasses.push(backdropExtraClasses)
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     extraClasses != undefined && extraClasses != null
       ? offcanvasClasses.push(extraClasses)
       : 0;
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     if (placement != undefined && placement != null) {
       offcanvasClasses.push(`offcanvas-${placement}`);
@@ -171,7 +167,8 @@ export default class Offcanvas extends HTMLElement {
         ? offcanvasClasses.push('navbar-expand')
         : offcanvasClasses.push(`navbar-expand-${expand}`);
     }
-    // TODO: See CityOfDetroit/detroitmi#1099
+
+    // TODO: Fix old ESLint errors - see issue #1099
     // eslint-disable-next-line eqeqeq
     if (id != undefined && id != null) {
       this.offcanvas.id = id;
@@ -189,9 +186,7 @@ export default class Offcanvas extends HTMLElement {
     this.removeEventListener('click', this._onClick.bind(this));
   }
 
-  // TODO: See CityOfDetroit/detroitmi#1099
-  // eslint-disable-next-line no-unused-vars
-  _onClick(e) {
+  _onClick() {
     this.getRootNode().host.setAttribute('data-show', 'false');
   }
 }

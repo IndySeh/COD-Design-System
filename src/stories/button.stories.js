@@ -1,11 +1,6 @@
-// TODO: See CityOfDetroit/detroitmi#1099
-// eslint-disable-next-line no-unused-vars
-import { userEvent, within } from '@storybook/testing-library';
-// TODO: See CityOfDetroit/detroitmi#1099
-// eslint-disable-next-line no-unused-vars
-import { expect } from '@storybook/jest';
 import '../components/atoms/Button/cod-button';
 import '../components/atoms/Icon/cod-icon';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Components/Atoms/Button',
@@ -13,53 +8,21 @@ export default {
     primary: {
       control: { type: 'boolean' },
     },
-    disable: {
-      control: { type: 'boolean' },
-    },
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-        'accent-primary',
-        'accent-secondary',
-      ],
-    },
-    onClick: { action: 'onClick' },
+    disable: COMMON_STORY_ARGS.disabled,
+    // TODO: Make this attr name and accepted
+    // values consistent with other action button, progress bar,
+    // etc. Issue #202.
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
+    // TODO: Add support for lg and xl to make size
+    // consistent. Issue #202.
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
     },
-    icon: {
-      control: { type: 'select' },
-      options: [
-        'house',
-        'house-fill',
-        'exclamation-circle',
-        'exclamation-circle-fill',
-        'exclamation-triangle',
-        'check-circle',
-        'check-circle-fill',
-        'calendar',
-        'calendar-fill',
-        'calendar-date',
-        'calendar-date-fill',
-      ],
-    },
-    iconSize: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large', 'x-large'],
-    },
-    iconOrder: {
-      control: { type: 'select' },
-      options: ['left', 'right'],
-    },
+    icon: COMMON_STORY_ARGS.icon,
+    onClick: { action: 'onClick' },
+    iconSize: COMMON_STORY_ARGS.longSize,
+    iconOrder: COMMON_STORY_ARGS.order,
     shape: {
       control: { type: 'select' },
       options: ['fluid', 'square'],

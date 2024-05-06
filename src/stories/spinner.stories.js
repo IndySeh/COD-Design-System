@@ -1,4 +1,5 @@
 import '../components/atoms/Spinner/cod-spinner';
+import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 
 export default {
   title: 'Components/Atoms/Spinner',
@@ -7,23 +8,13 @@ export default {
       control: { type: 'select' },
       options: ['border', 'grow'],
     },
+    // TODO: Add support for lg and xl to make size
+    // consistent. Issue #202.
     size: {
       control: { type: 'select' },
-      options: ['sm', ''],
+      options: ['sm', 'md'],
     },
-    backgroundColor: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'light',
-        'dark',
-      ],
-    },
+    backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
   },
 };
 // Template

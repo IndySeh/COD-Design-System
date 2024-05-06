@@ -1,0 +1,58 @@
+@media (max-width: 991.98px) {
+  table.table-stacked slot {
+    display: block;
+    flex: 1 1 0px;
+    padding: 0.5em 0.5em;
+  }
+  table.table-stacked thead {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  table.table-stacked tr {
+    display: block;
+    border-top-width: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--bs-black);
+  }
+  table.table-stacked tr:nth-child(1) {
+    border-top: 2px solid var(--bs-black);
+  }
+  table.table-stacked th {
+    padding: 0;
+    border-bottom-width: 0;
+    display: flex;
+  }
+  table.table-stacked th div.content {
+    flex: 1 1 0px;
+    padding: 0.5em 0.5em;
+  }
+  table.table-stacked th[data-label]:before {
+    content: attr(data-label);
+    font-weight: bold;
+    background-color: #f2f2f2;
+    flex: 1 1 0px;
+    padding: 0.5em 0.5em;
+  }
+  table.table-stacked td {
+    padding: 0;
+    border-bottom-width: 0;
+    display: flex;
+  }
+  table.table-stacked td div.content {
+    flex: 1 1 0px;
+    padding: 0.5em 0.5em;
+  }
+  table.table-stacked td[data-label]:before {
+    content: attr(data-label);
+    font-weight: bold;
+    background-color: #f2f2f2;
+    flex: 1 1 0px;
+    padding: 0.5em 0.5em;
+  }
+}
+
+/*# sourceMappingURL=TableV2.css.map */
