@@ -27,7 +27,9 @@ export default class Alert extends HTMLElement {
       // eslint-disable-next-line prefer-const
       let tempElements = Array.from(this.children);
       tempElements.forEach((node) => {
-        const nodeClasses = node.className.split(' ');
+        // TODO: See CityOfDetroit/detroitmi#1099
+        // eslint-disable-next-line prefer-const
+        let nodeClasses = node.className.split(' ');
         nodeClasses.includes('no-wc')
           ? node.remove()
           : this.alert.querySelector('#alert-content').append(node);
@@ -47,29 +49,35 @@ export default class Alert extends HTMLElement {
     this.shadowRoot.appendChild(alertStyles);
 
     // alert attributes
-
-    const icon = this.getAttribute('data-icon');
-
-    const iconOrder = this.getAttribute('data-icon-order');
-
-    const iconSize = this.getAttribute('data-icon-size');
-
-    const backgroundColor = this.getAttribute('data-background-color');
-
-    const extraClasses = this.getAttribute('data-extra-classes');
+    // TODO: See CityOfDetroit/detroitmi#1099
+    // eslint-disable-next-line prefer-const
+    let icon = this.getAttribute('data-icon');
+    // TODO: See CityOfDetroit/detroitmi#1099
+    // eslint-disable-next-line prefer-const
+    let iconOrder = this.getAttribute('data-icon-order');
+    // TODO: See CityOfDetroit/detroitmi#1099
+    // eslint-disable-next-line prefer-const
+    let iconSize = this.getAttribute('data-icon-size');
+    // TODO: See CityOfDetroit/detroitmi#1099
+    // eslint-disable-next-line prefer-const
+    let backgroundColor = this.getAttribute('data-background-color');
+    // TODO: See CityOfDetroit/detroitmi#1099
+    // eslint-disable-next-line prefer-const
+    let extraClasses = this.getAttribute('data-extra-classes');
     this.alert.role = 'alert';
     let iconClass = '';
-
-    // TODO: Fix old ESLint errors - see issue #1099
+    // TODO: See CityOfDetroit/detroitmi#1099
     // eslint-disable-next-line eqeqeq
     if (icon != undefined && icon != null) {
       this.alert.querySelector('#alert-content').className = 'col';
-
-      const activeIcon = document.createElement('cod-icon');
+      // TODO: See CityOfDetroit/detroitmi#1099
+      // eslint-disable-next-line prefer-const
+      let activeIcon = document.createElement('cod-icon');
       activeIcon.setAttribute('data-icon', icon);
       activeIcon.setAttribute('data-size', iconSize);
-
-      const iconContainer = document.createElement('div');
+      // TODO: See CityOfDetroit/detroitmi#1099
+      // eslint-disable-next-line prefer-const
+      let iconContainer = document.createElement('div');
       iconContainer.appendChild(activeIcon);
       iconClass = 'd-flex';
       switch (iconOrder) {
@@ -98,15 +106,15 @@ export default class Alert extends HTMLElement {
     ].join(' ');
     this.shadowRoot.appendChild(this.alert);
 
-    // Check if the alert is closeable
-    const isCloseable = this.hasAttribute('closeable');
+        // Check if the alert is closeable
+        const isCloseable = this.hasAttribute('closeable');
 
-    if (isCloseable) {
-      // Add close button
-      const closeButton = document.createElement('cod-button');
-      closeButton.className = 'btn-close';
-      closeButton.addEventListener('click', () => this.remove());
-      this.alert.appendChild(closeButton);
-    }
+        if (isCloseable) {
+            // Add close button
+            const closeButton = document.createElement('cod-button');
+            closeButton.className = 'btn-close';
+            closeButton.addEventListener('click', () => this.remove());
+            this.alert.appendChild(closeButton);
+        }
   }
 }
