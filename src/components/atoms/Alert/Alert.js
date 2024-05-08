@@ -41,6 +41,7 @@ export default class Alert extends HTMLElement {
     this.shadowRoot.appendChild(bootStyles);
     this.shadowRoot.appendChild(variableStyles);
     this.shadowRoot.appendChild(alertStyles);
+
     // alert attributes
 
     const icon = this.getAttribute('data-icon');
@@ -92,5 +93,16 @@ export default class Alert extends HTMLElement {
       iconClass,
     ].join(' ');
     this.shadowRoot.appendChild(this.alert);
+
+    // Check if the alert is closeable
+    const isCloseable = this.hasAttribute('closeable');
+
+    if (isCloseable) {
+      // Add close button
+      const closeButton = document.createElement('cod-button');
+      closeButton.className = 'btn-close';
+      closeButton.addEventListener('click', () => this.remove());
+      this.alert.appendChild(closeButton);
+    }
   }
 }

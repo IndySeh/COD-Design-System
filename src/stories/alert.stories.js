@@ -8,6 +8,11 @@ export default {
     iconOrder: COMMON_STORY_ARGS.order,
     iconSize: COMMON_STORY_ARGS.longSize,
     backgroundColor: COMMON_STORY_ARGS.bootstrapColor,
+
+    closeable: {
+      control: { type: 'boolean' },
+      defaultValue: false,
+    },
   },
 };
 // Template
@@ -20,6 +25,15 @@ const Template = (args) => {
   alert.setAttribute('data-icon-size', args.iconSize);
   alert.setAttribute('data-extra-classes', args.extraClasses);
   alert.setAttribute('data-background-color', args.backgroundColor);
+
+  if (args.closeable) {
+    // If closeable is true, set the closeable attribute
+    alert.setAttribute('closeable', '');
+  } else {
+    // If closeable is false, remove the closeable attribute
+    alert.removeAttribute('closeable');
+  }
+
   return alert;
 };
 
@@ -58,5 +72,14 @@ AlertIcon.args = {
   iconSize: 'small',
   elements: `
     <article>Article with <a href="https://google.com">link</a></article>
+  `,
+};
+
+export const AlertClose = Template.bind({});
+AlertClose.args = {
+  closeable: true,
+  backgroundColor: 'primary',
+  elements: `
+    <span>Alert with Close Button</span>
   `,
 };
