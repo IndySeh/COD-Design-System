@@ -1,3 +1,21 @@
+# v1.0.21 (Tues May 14 2024)
+
+#### 🚀 Enhancement
+
+- Add Close Button to Alert Component [by @sreidthomas](https://github.com/CityOfDetroit/COD-Design-System/pull/208)
+- Encapsulate SCSS-generated CSS with each component [by @sreidthomas](https://github.com/CityOfDetroit/COD-Design-System/pull/136)
+- Create table v2 to resolve performance issues [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/207)
+
+#### 🏠 Internal
+
+- Resolve more ESLint errors [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/206)
+- Use common story arguments [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/210)
+
+#### Authors: 2
+
+- Shakira Reid-Thomas ([@sreidthomas](https://github.com/sreidthomas))
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
 # v1.0.20 (Mon Apr 22 2024)
 
 #### 🐛 Bug Fix
