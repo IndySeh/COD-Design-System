@@ -18,7 +18,7 @@ template.innerHTML = `
           <button id="modalCloseButton" type="button" class="btn-close" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p> Test Video </p>
+          <div id="ytPlayerContainer"></div>
         </div>
       </div>
     </div>
@@ -35,6 +35,10 @@ class VideoPlayer extends HTMLElement {
     // Create a shadow root
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.appendChild(template.content.cloneNode(true));
+
+    // Set the playercontainer from the template for later use.
+    this.playerContainer = this.shadowRoot.querySelector('#ytPlayerContainer');
+    this.player = null;
 
     // Add styles
     const bootStyles = document.createElement('style');
@@ -58,6 +62,7 @@ class VideoPlayer extends HTMLElement {
     imgElt.setAttribute('src', imgSrc);
     imgElt.setAttribute('alt', imgAlt);
     imgElt.classList.add('video-placehold');
+    // TODO: Place play icon over placeholder image.
     playerContainer.appendChild(imgElt);
     playerContainer.classList.remove('video-placehold');
 
@@ -67,10 +72,13 @@ class VideoPlayer extends HTMLElement {
     const modalCloseButton = this.shadowRoot.querySelector('#modalCloseButton');
     modalCloseButton.addEventListener('click', this._onCloseModal.bind(this));
 
-    const videoPlayerLabel = this.shadowRoot.querySelector('#videoPlayerModalLabel');
+    const videoPlayerLabel = this.shadowRoot.querySelector(
+      '#videoPlayerModalLabel',
+    );
     videoPlayerLabel.textContent = this.getAttribute('title');
 
-    // TODO: Handle video src attributes.
+    const videoId = this.getAttribute('video-id');
+    this._loadVideo(videoId);
   }
 
   disconnectedCallback() {
@@ -85,6 +93,8 @@ class VideoPlayer extends HTMLElement {
     videoModal.removeAttribute('aria-hidden');
     videoModal.setAttribute('aria-modal', 'true');
     videoModal.setAttribute('role', 'modal');
+    // TODO: Use onAutoplayBlocked event to disable autoplay if configured by browser.
+    this.player?.playVideo();
   }
 
   _onCloseModal() {
@@ -94,6 +104,33 @@ class VideoPlayer extends HTMLElement {
     videoModal.removeAttribute('aria-modal');
     videoModal.removeAttribute('role');
     videoModal.setAttribute('aria-hidden', 'true');
+    this.player?.pauseVideo();
+  }
+
+  _loadVideo(videoId) {
+    if (window.YT) {
+      this._createPlayer(videoId);
+    } else {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      window.onYouTubeIframeAPIReady = () => {
+        this._createPlayer(videoId);
+      };
+    }
+  }
+
+  _createPlayer(videoId) {
+    // YT is defined by youtube iFrame API 3rd party script.
+    // eslint-disable-next-line no-undef
+    this.player = new YT.Player(this.playerContainer, {
+      height: '360',
+      width: '640',
+      videoId: videoId,
+      events: {},
+    });
   }
 }
 

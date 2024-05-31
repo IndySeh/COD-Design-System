@@ -2,3 +2,8 @@ div.video-placehold {
   background-color: lightgray;
   min-height: 343px;
 }
+
+iframe#ytPlayerContainer {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
