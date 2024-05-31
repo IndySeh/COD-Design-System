@@ -11,10 +11,15 @@ export default {
       control: { type: 'text' },
       description: 'The alt text for the thumbnail image.',
     },
+    title: {
+      control: { type: 'text' },
+      description: 'The title of the video (used for screenreaders).',
+    },
   },
   args: {
     thumbnailSrc: 'https://placehold.co/600x338',
     thumbnailAlt: 'Thumbnail image for a video.',
+    title: 'Super Cool Video',
   },
 };
 
@@ -22,6 +27,8 @@ export default {
 const Template = (args) => {
   const videoPlayerElt = document.createElement('cod-videoplayer');
   videoPlayerElt.setAttribute('thumbnail-src', args.thumbnailSrc);
+  videoPlayerElt.setAttribute('thumbnail-alt', args.thumbnailAlt);
+  videoPlayerElt.setAttribute('title', args.title);
   return videoPlayerElt;
 };
 
