@@ -6,7 +6,7 @@ export default {
     videoType: {
       control: { type: 'select' },
       options: ['youtube'],
-      description: 'The ID of the YouTube video.',
+      description: 'The source of the video.',
     },
     videoId: {
       control: { type: 'text' },
