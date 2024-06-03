@@ -1,12 +1,17 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins/breakpoints';
+
 div.modal {
   --bs-modal-width: 90vw;
 }
 
-@media (min-width: 992px) {
+@include media-breakpoint-up(lg) {
   div.modal {
     --bs-modal-width: 50vw;
   }
 }
+
 div.video-placehold {
   background-color: lightgray;
   min-height: 343px;
@@ -46,5 +51,3 @@ iframe#ytPlayerContainer {
   width: 100%;
   aspect-ratio: 16/9;
 }
-
-/*# sourceMappingURL=VideoPlayer.css.map */
