@@ -6,7 +6,7 @@ const template = document.createElement('template');
 template.innerHTML = `
 <div>
   <button type="button" class="btn" id="modalOpenButton">
-    <div class="container-fluid video-placehold"></div>
+    <div class="container-fluid video-placehold player-container"></div>
   </button>
 
   <!--<div class="modal fade show" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" style="display: block;" aria-modal="true" role="dialog">-->
@@ -62,8 +62,10 @@ class VideoPlayer extends HTMLElement {
     imgElt.setAttribute('src', imgSrc);
     imgElt.setAttribute('alt', imgAlt);
     imgElt.classList.add('video-placehold');
-    // TODO: Place play icon over placeholder image.
     playerContainer.appendChild(imgElt);
+    const playIcon = document.createElement('div');
+    playIcon.classList.add('play-icon');
+    playerContainer.appendChild(playIcon);
     playerContainer.classList.remove('video-placehold');
 
     const modalOpenButton = this.shadowRoot.querySelector('#modalOpenButton');
