@@ -4,11 +4,12 @@ import bootstrapStyles from '!!raw-loader!../../../shared/themed-bootstrap.css';
 
 const template = document.createElement('template');
 template.innerHTML = `
-<div>
+<div id="layoutContainer" class="d-flex justify-content-center">
   <button type="button" class="btn" id="modalOpenButton">
     <div class="container-fluid video-placehold player-container"></div>
   </button>
 
+  <!-- Next line is an example of an open modal. -->
   <!--<div class="modal fade show" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" style="display: block;" aria-modal="true" role="dialog">-->
   <div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -53,17 +54,47 @@ class VideoPlayer extends HTMLElement {
   }
 
   connectedCallback() {
+    this._buildThumbnailDisplayMode();
     this._replacePlaceholderWithThumbnail();
 
-    this._setModalOpenCloseEventHandlers();
-
-    const videoPlayerLabel = this.shadowRoot.querySelector(
-      '#videoPlayerModalLabel',
-    );
-    videoPlayerLabel.textContent = this.getAttribute('title');
-
+    const playerDisplayMode = this.getAttribute('player-display');
+    const videoType = this.getAttribute('video-type');
     const videoId = this.getAttribute('video-id');
-    this._loadVideo(videoId);
+    switch (playerDisplayMode) {
+      case 'modal': {
+        this._setModalOpenCloseEventHandlers();
+        const videoPlayerLabel = this.shadowRoot.querySelector(
+          '#videoPlayerModalLabel',
+        );
+        videoPlayerLabel.textContent = this.getAttribute('title');
+
+        switch (videoType) {
+          case 'youtube': {
+            this._loadVideo(videoId);
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Updates the thumbnail display mode based on the 'thumbnail-display' attribute value.
+   * @private
+   */
+  _buildThumbnailDisplayMode() {
+    const thumbnailDisplayMode = this.getAttribute('thumbnail-display');
+    const layoutContainer = this.shadowRoot.querySelector('#layoutContainer');
+    switch (thumbnailDisplayMode) {
+      case 'fullwidth': {
+        layoutContainer.classList.add('w-100');
+        break;
+      }
+      case 'inline': {
+        layoutContainer.classList.remove('d-flex');
+        layoutContainer.classList.add('d-inline-flex');
+      }
+    }
   }
 
   /**
@@ -91,7 +122,7 @@ class VideoPlayer extends HTMLElement {
     const imgElt = document.createElement('img');
     imgElt.setAttribute('src', imgSrc);
     imgElt.setAttribute('alt', imgAlt);
-    imgElt.classList.add('video-placehold');
+    imgElt.classList.add('video-placehold', 'img-fluid');
     playerContainer.appendChild(imgElt);
     const playIcon = document.createElement('div');
     playIcon.classList.add('play-icon');

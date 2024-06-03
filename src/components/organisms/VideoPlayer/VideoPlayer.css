@@ -1,5 +1,6 @@
+/* TODO: Set to 90% vh for tablet and smaller, 50% vh for desktop and larger. */
 div.modal {
-  --bs-modal-width: 50vw;
+  --bs-modal-width: 90vw;
 }
 
 div.video-placehold {
