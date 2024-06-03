@@ -7,6 +7,10 @@ div.modal {
     --bs-modal-width: 50vw;
   }
 }
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 div.video-placehold {
   background-color: lightgray;
   min-height: 343px;

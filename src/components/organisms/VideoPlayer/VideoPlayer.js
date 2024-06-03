@@ -107,6 +107,9 @@ class VideoPlayer extends HTMLElement {
 
     const modalCloseButton = this.shadowRoot.querySelector('#modalCloseButton');
     modalCloseButton.addEventListener('click', this._onCloseModal.bind(this));
+
+    const modal = this.shadowRoot.querySelector('#videoPlayerModal');
+    modal.addEventListener('click', this._onClickOutsideModal.bind(this));
   }
 
   /**
@@ -161,6 +164,18 @@ class VideoPlayer extends HTMLElement {
     videoModal.removeAttribute('role');
     videoModal.setAttribute('aria-hidden', 'true');
     this.player?.pauseVideo();
+  }
+
+  /**
+   * Handles the click event outside the modal content.
+   *
+   * @param {Event} event - The click event object.
+   * @returns {void}
+   */
+  _onClickOutsideModal(event) {
+    if (!event.target.closest('.modal-content')) {
+      this._onCloseModal();
+    }
   }
 
   /**
