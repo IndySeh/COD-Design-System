@@ -53,6 +53,36 @@ class VideoPlayer extends HTMLElement {
   }
 
   connectedCallback() {
+    this._replacePlaceholderWithThumbnail();
+
+    this._setModalOpenCloseEventHandlers();
+
+    const videoPlayerLabel = this.shadowRoot.querySelector(
+      '#videoPlayerModalLabel',
+    );
+    videoPlayerLabel.textContent = this.getAttribute('title');
+
+    const videoId = this.getAttribute('video-id');
+    this._loadVideo(videoId);
+  }
+
+  /**
+   * Sets the event handlers for opening and closing the modal.
+   * @private
+   */
+  _setModalOpenCloseEventHandlers() {
+    const modalOpenButton = this.shadowRoot.querySelector('#modalOpenButton');
+    modalOpenButton.addEventListener('click', this._onOpenModal.bind(this));
+
+    const modalCloseButton = this.shadowRoot.querySelector('#modalCloseButton');
+    modalCloseButton.addEventListener('click', this._onCloseModal.bind(this));
+  }
+
+  /**
+   * Replaces the placeholder with a thumbnail image and play icon.
+   * @private
+   */
+  _replacePlaceholderWithThumbnail() {
     const playerContainer = this.shadowRoot.querySelector(
       'div.video-placehold',
     );
@@ -67,20 +97,6 @@ class VideoPlayer extends HTMLElement {
     playIcon.classList.add('play-icon');
     playerContainer.appendChild(playIcon);
     playerContainer.classList.remove('video-placehold');
-
-    const modalOpenButton = this.shadowRoot.querySelector('#modalOpenButton');
-    modalOpenButton.addEventListener('click', this._onOpenModal.bind(this));
-
-    const modalCloseButton = this.shadowRoot.querySelector('#modalCloseButton');
-    modalCloseButton.addEventListener('click', this._onCloseModal.bind(this));
-
-    const videoPlayerLabel = this.shadowRoot.querySelector(
-      '#videoPlayerModalLabel',
-    );
-    videoPlayerLabel.textContent = this.getAttribute('title');
-
-    const videoId = this.getAttribute('video-id');
-    this._loadVideo(videoId);
   }
 
   disconnectedCallback() {
@@ -88,6 +104,10 @@ class VideoPlayer extends HTMLElement {
     this.removeEventListener('click', this._onCloseModal.bind(this));
   }
 
+  /**
+   * Opens the video player modal.
+   * @private
+   */
   _onOpenModal() {
     const videoModal = this.shadowRoot.querySelector('#videoPlayerModal');
     videoModal.classList.add('show');
@@ -95,10 +115,13 @@ class VideoPlayer extends HTMLElement {
     videoModal.removeAttribute('aria-hidden');
     videoModal.setAttribute('aria-modal', 'true');
     videoModal.setAttribute('role', 'modal');
-    // TODO: Use onAutoplayBlocked event to disable autoplay if configured by browser.
     this.player?.playVideo();
   }
 
+  /**
+   * Closes the video player modal and performs necessary cleanup actions.
+   * @private
+   */
   _onCloseModal() {
     const videoModal = this.shadowRoot.querySelector('#videoPlayerModal');
     videoModal.classList.remove('show');
@@ -109,6 +132,13 @@ class VideoPlayer extends HTMLElement {
     this.player?.pauseVideo();
   }
 
+  /**
+   * Loads the video with the specified videoId.
+   * If the YouTube API is already loaded, it creates the player immediately.
+   * Otherwise, it loads the YouTube API and creates the player once it's ready.
+   *
+   * @param {string} videoId - The ID of the video to load.
+   */
   _loadVideo(videoId) {
     if (window.YT) {
       this._createPlayer(videoId);
@@ -124,12 +154,16 @@ class VideoPlayer extends HTMLElement {
     }
   }
 
+  /**
+   * Creates a YouTube player instance and initializes it with the specified video.
+   *
+   * @param {string} videoId - The ID of the YouTube video to be played.
+   * @returns {void}
+   */
   _createPlayer(videoId) {
     // YT is defined by youtube iFrame API 3rd party script.
     // eslint-disable-next-line no-undef
     this.player = new YT.Player(this.playerContainer, {
-      height: '360',
-      width: '640',
       videoId: videoId,
       events: {},
     });
