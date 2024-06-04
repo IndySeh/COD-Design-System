@@ -1,3 +1,19 @@
+# v1.0.22 (Tues June 04 2024)
+
+#### 🚀 Enhancement
+
+- Create a video player component [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/223)
+
+#### 🏠 Internal
+
+- Add GH action for GH pages deployment [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/225)
+
+#### Authors: 1
+
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.21...1.0.22
+
 # v1.0.21 (Tues May 14 2024)
 
 #### 🚀 Enhancement
