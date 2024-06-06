@@ -1,3 +1,15 @@
+# v1.0.23 (Thurs June 06 2024)
+
+#### 🐛 Bug Fix
+
+- Add video player component to build index by @maxatdetroit
+
+#### Authors: 1
+
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.22...1.0.23
+
 # v1.0.22 (Tues June 04 2024)
 
 #### 🚀 Enhancement
