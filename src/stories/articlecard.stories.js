@@ -29,8 +29,10 @@ export default {
   },
   args: {
     src: 'https://placehold.co/300x400',
-    title: '<h3 class="text-center text-light" style="text-transform: uppercase; font-weight: 900;">The Great Money Transfer</h3>',
-    subTitle: '<h5 class="text-center text-success" style="text-transform: uppercase; font-weight: 900;">The Power of Generational Wealth</h4>',
+    title:
+      '<h3 class="text-center text-light" style="text-transform: uppercase; font-weight: 900;">The Great Money Transfer</h3>',
+    subTitle:
+      '<h5 class="text-center text-success" style="text-transform: uppercase; font-weight: 900;">The Power of Generational Wealth</h4>',
     color: 'primary',
     href: 'https://www.example.com',
     target: '_blank',
@@ -48,7 +50,6 @@ function _createElementFromHTML(htmlString) {
   // Change this to div.childNodes to support multiple top-level nodes.
   return div.firstChild;
 }
-
 
 function _createArticleCard(args) {
   const articleCardElt1 = document.createElement('cod-article-card');
@@ -113,4 +114,3 @@ const Template = (args) => {
 };
 
 export const Primary = Template.bind({});
-

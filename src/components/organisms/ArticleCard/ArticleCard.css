@@ -17,7 +17,9 @@
   height: 20%;
   bottom: 0;
   left: 0;
-  transition: padding-top 0.2s, height 0.2s ease-in-out;
+  transition:
+    padding-top 0.2s,
+    height 0.2s ease-in-out;
 }
 
 .card-container:hover .text-container {
@@ -26,13 +28,13 @@
   padding-top: 40%;
 }
 
-.subtitle-container { 
+.subtitle-container {
   margin-top: 2em;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
 
-.card-container:hover .subtitle-container { 
+.card-container:hover .subtitle-container {
   margin-top: 2em;
   opacity: 1;
 }
