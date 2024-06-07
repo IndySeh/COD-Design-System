@@ -39,7 +39,28 @@ class ArticleCard extends HTMLElement {
 
   connectedCallback() {
     this._replaceImgPlacehold();
+    this._setColor();
+    this._wrapWithLink();
+  }
 
+  /**
+   * Wraps the .card-container element in an 'a' element with an href attribute.
+   */
+  _wrapWithLink() {
+    const target = this.getAttribute('target');
+    const href = this.getAttribute('href');
+    const cardContainer = this.shadowRoot.querySelector('.card-container');
+    const link = document.createElement('a');
+    link.setAttribute('href', href);
+    link.setAttribute('target', target);
+    cardContainer.parentNode.insertBefore(link, cardContainer);
+    link.appendChild(cardContainer);
+  }
+
+  /**
+   * Sets the color of the article card.
+   */
+  _setColor() {
     const color = this.getAttribute('color');
     const textContainer = this.shadowRoot.querySelector('.text-container');
     textContainer.classList.add(`bg-${color}`);

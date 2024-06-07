@@ -4,6 +4,15 @@ import { COMMON_STORY_ARGS } from '../shared/js/storybook/args-utils';
 export default {
   title: 'Components/Organisms/ArticleCard',
   argTypes: {
+    href: {
+      control: { type: 'text' },
+      description: 'The URL of where the card will link to.',
+    },
+    target: {
+      control: { type: 'select' },
+      options: ['_self', '_blank', '_parent', '_top'],
+      description: 'The URL of where the card will link to.',
+    },
     src: {
       control: { type: 'text' },
       description: 'The source of the article card image.',
@@ -23,6 +32,8 @@ export default {
     title: 'The Great Money Transfer',
     subTitle: 'The Power of Generational Wealth',
     color: 'primary',
+    href: 'https://www.example.com',
+    target: '_blank',
   },
 };
 
@@ -43,6 +54,8 @@ function _createArticleCard(args) {
   const articleCardElt1 = document.createElement('cod-article-card');
   articleCardElt1.setAttribute('src', args.src);
   articleCardElt1.setAttribute('color', args.color);
+  articleCardElt1.setAttribute('href', args.href);
+  articleCardElt1.setAttribute('target', args.target);
   if (_containsHTMLTags(args.title)) {
     const title = _createElementFromHTML(args.title);
     title.slot = 'title';
