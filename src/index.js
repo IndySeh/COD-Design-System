@@ -58,6 +58,7 @@ import './components/organisms/Navbar/cod-navbar';
 import './components/organisms/Offcanvas/cod-offcanvas';
 import './components/organisms/ImgSlider/cod-img-slider';
 import './components/organisms/Table/cod-table';
+import './components/organisms/VideoPlayer/cod-videoplayer';
 
 // Import molecules
 import './components/molecules/Accordion/cod-accordion';
