@@ -29,8 +29,8 @@ export default {
   },
   args: {
     src: 'https://placehold.co/300x400',
-    title: 'The Great Money Transfer',
-    subTitle: 'The Power of Generational Wealth',
+    title: '<h3 class="text-center text-light" style="text-transform: uppercase; font-weight: 900;">The Great Money Transfer</h3>',
+    subTitle: '<h5 class="text-center text-success" style="text-transform: uppercase; font-weight: 900;">The Power of Generational Wealth</h4>',
     color: 'primary',
     href: 'https://www.example.com',
     target: '_blank',

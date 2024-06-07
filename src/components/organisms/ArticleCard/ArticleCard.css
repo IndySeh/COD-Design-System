@@ -27,10 +27,12 @@
 }
 
 .subtitle-container { 
+  margin-top: 2em;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
 
 .card-container:hover .subtitle-container { 
+  margin-top: 2em;
   opacity: 1;
 }
