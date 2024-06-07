@@ -4,11 +4,13 @@ import bootstrapStyles from '!!raw-loader!../../../shared/themed-bootstrap.css';
 
 const template = document.createElement('template');
 template.innerHTML = `
-<div class="container-fluid px-0">
+<div class="card-container container-fluid px-0">
   <div class="img-placeholder"></div>
   <div class="text-container">
     <slot name="title"></slot>
-    <slot name="subtitle"></slot>
+    <div class="subtitle-container">
+      <slot name="subtitle"></slot>
+    </div>
   </div>
 </div>
 `;
@@ -37,6 +39,10 @@ class ArticleCard extends HTMLElement {
 
   connectedCallback() {
     this._replaceImgPlacehold();
+
+    const color = this.getAttribute('color');
+    const textContainer = this.shadowRoot.querySelector('.text-container');
+    textContainer.classList.add(`bg-${color}`);
   }
 
   /**

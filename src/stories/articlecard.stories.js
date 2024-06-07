@@ -42,6 +42,7 @@ function _createElementFromHTML(htmlString) {
 function _createArticleCard(args) {
   const articleCardElt1 = document.createElement('cod-article-card');
   articleCardElt1.setAttribute('src', args.src);
+  articleCardElt1.setAttribute('color', args.color);
   if (_containsHTMLTags(args.title)) {
     const title = _createElementFromHTML(args.title);
     title.slot = 'title';
