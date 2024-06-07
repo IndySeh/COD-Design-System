@@ -1,3 +1,15 @@
+# v1.0.24 (Fri June 07 2024)
+
+#### 🚀 Enhancement
+
+- Create an Article Card component [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/228)
+
+#### Authors: 1
+
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.23...1.0.24
+
 # v1.0.23 (Thurs June 06 2024)
 
 #### 🐛 Bug Fix

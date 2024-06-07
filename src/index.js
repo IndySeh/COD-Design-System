@@ -48,6 +48,7 @@ import './components/atoms/ActionButton/cod-action-button';
 import './components/atoms/InfoButton/cod-info-button';
 
 // Importing organisms
+import './components/organisms/ArticleCard/cod-article-card';
 import './components/organisms/Card/cod-card';
 import './components/organisms/Carousel/cod-carousel';
 import './components/organisms/Form/cod-form';
