@@ -1,3 +1,15 @@
+# v1.0.25 (Tues June 11 2024)
+
+#### 🚀 Enhancement
+
+* Add new detroit legacy button component [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/230)
+
+#### Authors: 1
+
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.24...1.0.25
+
 # v1.0.24 (Fri June 07 2024)
 
 #### 🚀 Enhancement
