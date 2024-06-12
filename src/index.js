@@ -24,6 +24,7 @@ import './components/atoms/FormLabel/cod-formlabel';
 import './components/atoms/FormSelect/cod-formselect';
 import './components/atoms/Icon/cod-icon';
 import './components/atoms/Image/cod-image';
+import './components/atoms/LegacyButton/cod-legacy-button';
 import './components/atoms/ListGroupItem/cod-listgroup-item';
 import './components/atoms/Loader/cod-loader';
 import './components/atoms/ModalBody/cod-modal-body';
