@@ -30,9 +30,9 @@ export default {
   args: {
     src: 'https://placehold.co/300x400',
     title:
-      '<h3 class="text-center text-light" style="text-transform: uppercase; font-weight: 900;">The Great Money Transfer</h3>',
+      '<h2 class="text-center text-light" style="text-transform: uppercase; font-weight: 900; font-size: 42px;">The Great Money Transfer</h2>',
     subTitle:
-      '<h5 class="text-center text-success" style="text-transform: uppercase; font-weight: 900;">The Power of Generational Wealth</h4>',
+      '<h3 class="text-center text-success" style="text-transform: uppercase; font-weight: 700; font-size: 26px; line-height: 116%;">The Power of Generational Wealth</h3>',
     color: 'primary',
     href: 'https://www.example.com',
     target: '_blank',
@@ -62,7 +62,7 @@ function _createArticleCard(args) {
     title.slot = 'title';
     articleCardElt1.appendChild(title);
   } else {
-    const title = document.createElement('h3');
+    const title = document.createElement('h2');
     title.innerText = args.title;
     title.classList.add('text-center');
     title.slot = 'title';
@@ -74,7 +74,7 @@ function _createArticleCard(args) {
     subTitle.slot = 'subtitle';
     articleCardElt1.appendChild(subTitle);
   } else {
-    const subTitle = document.createElement('h4');
+    const subTitle = document.createElement('h3');
     subTitle.innerText = args.subTitle;
     subTitle.classList.add('text-center');
     subTitle.slot = 'subtitle';
