@@ -1,3 +1,15 @@
+# v1.0.26 (Mon June 17 2024)
+
+#### 🚀 Enhancement
+
+* Update article card styles given feedback [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/232)
+
+#### Authors: 1
+
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.25...1.0.26
+
 # v1.0.25 (Tues June 11 2024)
 
 #### 🚀 Enhancement
