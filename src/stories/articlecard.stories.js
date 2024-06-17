@@ -30,9 +30,9 @@ export default {
   args: {
     src: 'https://placehold.co/300x400',
     title:
-      '<h2 class="text-center text-light" style="text-transform: uppercase; font-weight: 900; font-size: 42px;">The Great Money Transfer</h2>',
+      '<h2 class="text-center text-light" style="text-transform: uppercase; font-weight: 900; font-size: 2.625rem;">The Great Money Transfer</h2>',
     subTitle:
-      '<h3 class="text-center text-success" style="text-transform: uppercase; font-weight: 700; font-size: 26px; line-height: 116%;">The Power of Generational Wealth</h3>',
+      '<h3 class="text-center text-success" style="text-transform: uppercase; font-weight: 700; font-size: 1.625rem; line-height: 116%;">The Power of Generational Wealth</h3>',
     color: 'primary',
     href: 'https://www.example.com',
     target: '_blank',
