@@ -1,3 +1,15 @@
+# v1.0.27 (Mon June 24 2024)
+
+#### 🚀 Enhancement
+
+* Introduce legacy icon component [by @maxatdetroit](https://github.com/CityOfDetroit/COD-Design-System/pull/234)
+
+#### Authors: 1
+
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.26...1.0.27
+
 # v1.0.26 (Mon June 17 2024)
 
 #### 🚀 Enhancement
