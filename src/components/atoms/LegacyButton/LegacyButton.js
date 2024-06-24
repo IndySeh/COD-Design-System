@@ -6,9 +6,6 @@ const template = document.createElement('template');
 template.innerHTML = `
 <div class="btn-container d-inline-flex flex-column align-items-center">
   <div class="icon-container mb-4">
-    <div class="outline"></div>
-    <div class="ellipse-shadow"></div>
-    <div class="icon"></div>
   </div>
   <slot name="label"></slot>
 </div>
@@ -43,22 +40,16 @@ class LegacyButton extends HTMLElement {
   }
 
   connectedCallback() {
-    const outlineElement = this.shadowRoot.querySelector('.outline');
-    outlineElement.innerHTML = `
-      <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="90" cy="90" r="89" stroke="black" stroke-width="2"/>
-      </svg>
-      `;
-
-    const shadowElement = this.shadowRoot.querySelector('.ellipse-shadow');
-    shadowElement.innerHTML = `
-      <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="90" cy="90" r="90" fill="#9FD5B3"/>
-      </svg>
-      `;
-
-    const iconElement = this.shadowRoot.querySelector('.icon');
-    iconElement.innerHTML = this._getIconInnerHTML(this.getAttribute('icon'));
+    // Place the icon in the icon container.
+    const icon = this.getAttribute('icon');
+    const iconOutlineColor = this.getAttribute('outline-color');
+    const iconElement = document.createElement('cod-legacy-icon');
+    iconElement.setAttribute('icon', icon);
+    if (iconOutlineColor) {
+      iconElement.setAttribute('outline-color', iconOutlineColor);
+    }
+    const iconContainer = this.shadowRoot.querySelector('.icon-container');
+    iconContainer.appendChild(iconElement);
 
     const btnContainer = this.shadowRoot.querySelector('.btn-container');
     const href = this.getAttribute('href');
