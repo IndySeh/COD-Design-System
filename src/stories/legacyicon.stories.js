@@ -45,16 +45,13 @@ export const IconGrid = () => {
   return html`
     <div class="row">
       <div class="col px-0 d-flex justify-content-center">
-        <cod-legacy-icon icon="neighborhoods">
-        </cod-legacy-icon>
+        <cod-legacy-icon icon="neighborhoods"> </cod-legacy-icon>
       </div>
       <div class="col px-0 d-flex justify-content-center">
-        <cod-legacy-icon icon="people">
-        </cod-legacy-icon>
+        <cod-legacy-icon icon="people"> </cod-legacy-icon>
       </div>
       <div class="col px-0 d-flex justify-content-center">
-        <cod-legacy-icon icon="sustainability">
-        </cod-legacy-icon>
+        <cod-legacy-icon icon="sustainability"> </cod-legacy-icon>
       </div>
     </div>
   `;
