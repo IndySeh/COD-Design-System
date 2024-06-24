@@ -4,10 +4,6 @@ import { html } from 'lit-html';
 export default {
   title: 'Components/Atoms/LegacyButton',
   argTypes: {
-    label: {
-      control: { type: 'text' },
-      description: 'The label of the button. Custom markdown is supported.',
-    },
     icon: {
       control: { type: 'select' },
       options: [
@@ -20,6 +16,14 @@ export default {
       ],
       description: 'The type of icon to use for the button.',
     },
+    outlineColor: {
+      control: { type: 'text' },
+      description: 'The color to be used as the outline of the icon.',
+    },
+    label: {
+      control: { type: 'text' },
+      description: 'The label of the button. Custom markdown is supported.',
+    },
     href: {
       control: { type: 'text' },
       description: 'The URL of where the button will link to.',
@@ -31,9 +35,10 @@ export default {
     },
   },
   args: {
+    icon: 'neighborhoods',
+    outlineColor: 'black',
     label:
       '<h3 class="text-center" style="text-transform: uppercase; font-weight: 500;">Neighborhoods</h3>',
-    icon: 'neighborhoods',
     href: 'https://www.example.com',
     target: '_blank',
   },
@@ -65,6 +70,7 @@ function _createLegacyButton(args) {
     legacyButtonElt.appendChild(label);
   }
   legacyButtonElt.setAttribute('icon', args.icon);
+  legacyButtonElt.setAttribute('outline-color', args.outlineColor);
   legacyButtonElt.setAttribute('href', args.href);
   legacyButtonElt.setAttribute('target', args.target);
   return legacyButtonElt;

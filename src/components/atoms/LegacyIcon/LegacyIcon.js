@@ -1,23 +1,23 @@
-import styles from '!!raw-loader!./LegacyButton.css';
+import styles from '!!raw-loader!./LegacyIcon.css';
 import varStyles from '!!raw-loader!../../../shared/variables.css';
 import bootstrapStyles from '!!raw-loader!../../../shared/themed-bootstrap.css';
 
 const template = document.createElement('template');
 template.innerHTML = `
-<div class="btn-container d-inline-flex flex-column align-items-center">
-  <div class="icon-container mb-4">
+  <div class="icon-container d-inline-flex flex-column align-items-center">
+    <div class="outline"></div>
+    <div class="ellipse-shadow"></div>
+    <div class="icon"></div>
   </div>
-  <slot name="label"></slot>
-</div>
 `;
 
 /**
- * Represents a button custom element for use on the Detroit Legacy website.
+ * Represents a custom web component for rendering legacy icons.
  *
- * @class LegacyButton
+ * @class LegacyIcon
  * @extends HTMLElement
  */
-class LegacyButton extends HTMLElement {
+class LegacyIcon extends HTMLElement {
   static observedAttributes = [];
 
   constructor() {
@@ -40,25 +40,25 @@ class LegacyButton extends HTMLElement {
   }
 
   connectedCallback() {
-    // Place the icon in the icon container.
-    const icon = this.getAttribute('icon');
-    const iconOutlineColor = this.getAttribute('outline-color');
-    const iconElement = document.createElement('cod-legacy-icon');
-    iconElement.setAttribute('icon', icon);
-    if (iconOutlineColor) {
-      iconElement.setAttribute('outline-color', iconOutlineColor);
-    }
-    const iconContainer = this.shadowRoot.querySelector('.icon-container');
-    iconContainer.appendChild(iconElement);
+    const outlineColor = this.getAttribute('outline-color');
+    const outlineElement = this.shadowRoot.querySelector('.outline');
+    outlineElement.innerHTML = `
+      <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="90" cy="90" r="89" stroke="${
+        outlineColor ?? 'black'
+      }" stroke-width="2"/>
+      </svg>
+      `;
 
-    const btnContainer = this.shadowRoot.querySelector('.btn-container');
-    const href = this.getAttribute('href');
-    const target = this.getAttribute('target');
-    const linkElement = document.createElement('a');
-    linkElement.href = href;
-    linkElement.target = target;
-    linkElement.appendChild(btnContainer);
-    this.shadowRoot.appendChild(linkElement);
+    const shadowElement = this.shadowRoot.querySelector('.ellipse-shadow');
+    shadowElement.innerHTML = `
+      <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="90" cy="90" r="90" fill="#9FD5B3"/>
+      </svg>
+      `;
+
+    const iconElement = this.shadowRoot.querySelector('.icon');
+    iconElement.innerHTML = this._getIconInnerHTML(this.getAttribute('icon'));
   }
 
   /**
@@ -113,4 +113,4 @@ class LegacyButton extends HTMLElement {
   }
 }
 
-export { LegacyButton as default };
+export { LegacyIcon as default };
