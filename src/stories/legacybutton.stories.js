@@ -36,7 +36,7 @@ export default {
   },
   args: {
     icon: 'neighborhoods',
-    outlineColor: 'black',
+    outlineColor: '#18252A',
     label:
       '<h3 class="text-center" style="text-transform: uppercase; font-weight: 500;">Neighborhoods</h3>',
     href: 'https://www.example.com',
@@ -78,7 +78,7 @@ function _createLegacyButton(args) {
 
 // Template
 const Template = (args) => {
-  return _createLegacyButton(args);
+  return html` <div class="w-50 h-50">${_createLegacyButton(args)}</div> `;
 };
 
 export const Primary = Template.bind({});
@@ -86,50 +86,62 @@ export const Primary = Template.bind({});
 export const ButtonGrid = () => {
   return html`
     <div class="row">
-      <div class="col px-0 d-flex justify-content-center">
-        <cod-legacy-button
-          icon="neighborhoods"
-          href="https://www.example.com"
-          target="_blank"
-        >
-          <h3
-            class="text-center"
-            style="text-transform: uppercase; font-weight: 500;"
-            slot="label"
+      <div
+        class="col-lg-4 col-sm-12 col-md-6 px-0 d-flex justify-content-center align-items-center"
+      >
+        <div class="w-75 h-75">
+          <cod-legacy-button
+            icon="neighborhoods"
+            href="https://www.example.com"
+            target="_blank"
           >
-            Neighborhoods
-          </h3>
-        </cod-legacy-button>
+            <h3
+              class="text-center"
+              style="text-transform: uppercase; font-weight: 500;"
+              slot="label"
+            >
+              Neighborhoods
+            </h3>
+          </cod-legacy-button>
+        </div>
       </div>
-      <div class="col px-0 d-flex justify-content-center">
-        <cod-legacy-button
-          icon="people"
-          href="https://www.example.com"
-          target="_blank"
-        >
-          <h3
-            class="text-center"
-            style="text-transform: uppercase; font-weight: 500;"
-            slot="label"
+      <div
+        class="col-lg-4 col-sm-12 col-md-6 px-0 d-flex justify-content-center align-items-center"
+      >
+        <div class="w-75 h-75">
+          <cod-legacy-button
+            icon="people"
+            href="https://www.example.com"
+            target="_blank"
           >
-            People
-          </h3>
-        </cod-legacy-button>
+            <h3
+              class="text-center"
+              style="text-transform: uppercase; font-weight: 500;"
+              slot="label"
+            >
+              People
+            </h3>
+          </cod-legacy-button>
+        </div>
       </div>
-      <div class="col px-0 d-flex justify-content-center">
-        <cod-legacy-button
-          icon="sustainability"
-          href="https://www.example.com"
-          target="_blank"
-        >
-          <h3
-            class="text-center"
-            style="text-transform: uppercase; font-weight: 500;"
-            slot="label"
+      <div
+        class="col-lg-4 col-sm-12 col-md-6 px-0 d-flex justify-content-center align-items-center"
+      >
+        <div class="w-75 h-75">
+          <cod-legacy-button
+            icon="sustainability"
+            href="https://www.example.com"
+            target="_blank"
           >
-            Sustainability
-          </h3>
-        </cod-legacy-button>
+            <h3
+              class="text-center"
+              style="text-transform: uppercase; font-weight: 500;"
+              slot="label"
+            >
+              Sustainability
+            </h3>
+          </cod-legacy-button>
+        </div>
       </div>
     </div>
   `;

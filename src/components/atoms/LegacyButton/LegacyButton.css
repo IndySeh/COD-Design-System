@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+:host *:not(style) {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
