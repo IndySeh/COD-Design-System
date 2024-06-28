@@ -6,6 +6,7 @@
   z-index: 2;
 }
 
-.carousel-control-prev,.carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
   z-index: 3;
 }
