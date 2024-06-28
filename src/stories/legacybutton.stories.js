@@ -78,11 +78,7 @@ function _createLegacyButton(args) {
 
 // Template
 const Template = (args) => {
-  return html`
-    <div class="w-50 h-50">
-      ${_createLegacyButton(args)}
-    </div>
-  `;
+  return html` <div class="w-50 h-50">${_createLegacyButton(args)}</div> `;
 };
 
 export const Primary = Template.bind({});
@@ -90,7 +86,9 @@ export const Primary = Template.bind({});
 export const ButtonGrid = () => {
   return html`
     <div class="row">
-      <div class="col-lg-4 col-sm-12 col-md-6 px-0 d-flex justify-content-center align-items-center">
+      <div
+        class="col-lg-4 col-sm-12 col-md-6 px-0 d-flex justify-content-center align-items-center"
+      >
         <div class="w-75 h-75">
           <cod-legacy-button
             icon="neighborhoods"
@@ -107,7 +105,9 @@ export const ButtonGrid = () => {
           </cod-legacy-button>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-12 col-md-6 px-0 d-flex justify-content-center align-items-center">
+      <div
+        class="col-lg-4 col-sm-12 col-md-6 px-0 d-flex justify-content-center align-items-center"
+      >
         <div class="w-75 h-75">
           <cod-legacy-button
             icon="people"
@@ -124,7 +124,9 @@ export const ButtonGrid = () => {
           </cod-legacy-button>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-12 col-md-6 px-0 d-flex justify-content-center align-items-center">
+      <div
+        class="col-lg-4 col-sm-12 col-md-6 px-0 d-flex justify-content-center align-items-center"
+      >
         <div class="w-75 h-75">
           <cod-legacy-button
             icon="sustainability"
