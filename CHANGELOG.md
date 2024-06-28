@@ -1,3 +1,19 @@
+# v1.0.28 (Fri June 28 2024)
+
+#### 🚀 Enhancement
+
+* Allow legacy icons and buttons to scale responsively with parent container by @maxatdetroit in https://github.com/CityOfDetroit/COD-Design-System/pull/238
+
+#### 🐛 Bug Fix
+
+* Fix carousel transition animations on 'next' by @maxatdetroit in https://github.com/CityOfDetroit/COD-Design-System/pull/236
+
+#### Authors: 1
+
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.27...1.0.28
+
 # v1.0.27 (Mon June 24 2024)
 
 #### 🚀 Enhancement
