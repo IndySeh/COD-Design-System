@@ -1,0 +1,12 @@
+.carousel-item {
+  z-index: 1;
+}
+
+.carousel-item.active {
+  z-index: 2;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 3;
+}
