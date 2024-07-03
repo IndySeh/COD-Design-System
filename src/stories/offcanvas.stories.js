@@ -74,8 +74,8 @@ export const Basic = () => html`
     <cod-offcanvas-body>
       <p>
         Some text as placeholder. In real life you can have the elements you
-        have chosen. Like, text, images, lists, etc. Here's an example of a 
-        very long list.
+        have chosen. Like, text, images, lists, etc. Here's an example of a very
+        long list.
       </p>
       <ol>
         <li>1</li>
