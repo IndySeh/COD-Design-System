@@ -1,3 +1,7 @@
+:host(:not([data-expand])) {
+  overflow-y: auto;
+}
+
 .navbar-expand-xs.offcanvas-body {
   display: flex;
   flex-grow: 0;

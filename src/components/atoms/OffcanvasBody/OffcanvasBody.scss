@@ -2,6 +2,10 @@
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins/breakpoints';
 
+:host(:not([data-expand])) {
+  overflow-y: auto;
+}
+
 @each $breakpoint-name, $_ in $grid-breakpoints {
   @include media-breakpoint-up($breakpoint-name) {
     .navbar-expand-#{$breakpoint-name}.offcanvas-body {
