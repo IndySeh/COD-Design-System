@@ -38,10 +38,10 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.card-container:hover,
-.card-container .text-container.show {
-  .subtitle-container {
-    margin-top: 2em;
-    opacity: 1;
-  }
+.card-container:hover .subtitle-container,
+.card-container .text-container.show .subtitle-container {
+  margin-top: 2em;
+  opacity: 1;
 }
+
+/*# sourceMappingURL=ArticleCard.css.map */
