@@ -45,8 +45,7 @@ class ArticleCard extends HTMLElement {
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
-      case ('show'): 
-      {
+      case 'show': {
         const textContainer = this.shadowRoot.querySelector('.text-container');
         if (newValue !== null) {
           textContainer?.classList.add('show');
