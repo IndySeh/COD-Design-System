@@ -26,6 +26,10 @@ export default {
       description: 'The subtitle of the article. Custom markdown is supported.',
     },
     color: COMMON_STORY_ARGS.bootstrapColor,
+    show: {
+      control: { type: 'boolean' },
+      description: 'Toggle to show or hide the article card title text.',
+    },
   },
   args: {
     src: 'https://placehold.co/300x400',
@@ -36,6 +40,7 @@ export default {
     color: 'primary',
     href: 'https://www.example.com',
     target: '_blank',
+    show: false,
   },
 };
 
@@ -57,6 +62,9 @@ function _createArticleCard(args) {
   articleCardElt1.setAttribute('color', args.color);
   articleCardElt1.setAttribute('href', args.href);
   articleCardElt1.setAttribute('target', args.target);
+  if (args.show) {
+    articleCardElt1.setAttribute('show', 'show');
+  }
   if (_containsHTMLTags(args.title)) {
     const title = _createElementFromHTML(args.title);
     title.slot = 'title';
