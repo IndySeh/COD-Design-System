@@ -627,69 +627,59 @@ progress {
 }
 
 .display-1 {
-  font-size: calc(1.625em + 4.5vw);
+  font-size: calc(1.4em + 1.8vw);
   font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-1 {
-    font-size: 5em;
+    font-size: 2.75em;
   }
 }
 
 .display-2 {
-  font-size: calc(1.575em + 3.9vw);
+  font-size: calc(1.3625em + 1.35vw);
   font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-2 {
-    font-size: 4.5em;
+    font-size: 2.375em;
   }
 }
 
 .display-3 {
-  font-size: calc(1.525em + 3.3vw);
+  font-size: calc(1.3125em + 0.75vw);
   font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-3 {
-    font-size: 4em;
+    font-size: 1.875em;
   }
 }
 
 .display-4 {
-  font-size: calc(1.475em + 2.7vw);
+  font-size: calc(1.275em + 0.3vw);
   font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-4 {
-    font-size: 3.5em;
+    font-size: 1.5em;
   }
 }
 
 .display-5 {
-  font-size: calc(1.425em + 2.1vw);
+  font-size: 1.25em;
   font-weight: 300;
   line-height: 1.2;
-}
-@media (min-width: 1200px) {
-  .display-5 {
-    font-size: 3em;
-  }
 }
 
 .display-6 {
-  font-size: calc(1.375em + 1.5vw);
+  font-size: 1em;
   font-weight: 300;
   line-height: 1.2;
-}
-@media (min-width: 1200px) {
-  .display-6 {
-    font-size: 2.5em;
-  }
 }
 
 .list-unstyled {
