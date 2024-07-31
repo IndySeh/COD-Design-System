@@ -6,6 +6,16 @@
 
 $prefix: bs-;
 
+// Define default display sizes
+$display-font-sizes: (
+  1: 2.75rem,
+  2: 2.375rem,
+  3: 1.875rem,
+  4: 1.5rem,
+  5: 1.25rem,
+  6: 1rem,
+);
+
 // Override aspect ratios array to add more ratios.
 $aspect-ratios: (
   '1x1': 100%,
@@ -28,12 +38,12 @@ $font-size-sm: $font-size-base;
 $font-size-lg: $font-size-base * 1.25;
 
 // Override the default headings font sizes.
-$h1-font-size: $font-size-base * 2.75;
-$h2-font-size: $font-size-base * 2.375;
-$h3-font-size: $font-size-base * 1.875;
-$h4-font-size: $font-size-base * 1.5;
-$h5-font-size: $font-size-base * 1.25;
-$h6-font-size: $font-size-base;
+$h1-font-size: map-get($display-font-sizes, 1);
+$h2-font-size: map-get($display-font-sizes, 2);
+$h3-font-size: map-get($display-font-sizes, 3);
+$h4-font-size: map-get($display-font-sizes, 4);
+$h5-font-size: map-get($display-font-sizes, 5);
+$h6-font-size: map-get($display-font-sizes, 6);
 
 // Disable rounded corners on all elements.
 $enable-rounded: false;

@@ -16,7 +16,7 @@ template.innerHTML = `
 `;
 
 class ArticleCard extends HTMLElement {
-  static observedAttributes = [];
+  static observedAttributes = ['show'];
 
   constructor() {
     // Always call super first in constructor
@@ -41,6 +41,19 @@ class ArticleCard extends HTMLElement {
     this._replaceImgPlacehold();
     this._setColor();
     this._wrapWithLink();
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case 'show': {
+        const textContainer = this.shadowRoot.querySelector('.text-container');
+        if (newValue !== null) {
+          textContainer?.classList.add('show');
+        } else {
+          textContainer?.classList.remove('show');
+        }
+      }
+    }
   }
 
   /**

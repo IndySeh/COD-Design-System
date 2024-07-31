@@ -1,3 +1,20 @@
+# v1.0.29 (Mon July 29 2024)
+
+#### 🚀 Enhancement
+
+
+* Support attribute-based animations on article card by @maxatdetroit in https://github.com/CityOfDetroit/COD-Design-System/pull/249
+
+#### 🐛 Bug Fix
+
+* Support long content in offcanvas body by @maxatdetroit in https://github.com/CityOfDetroit/COD-Design-System/pull/240
+
+#### Authors: 1
+
+- Max Morgan ([@maxatdetroit](https://github.com/maxatdetroit))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.28...1.0.29
+
 # v1.0.28 (Fri June 28 2024)
 
 #### 🚀 Enhancement
