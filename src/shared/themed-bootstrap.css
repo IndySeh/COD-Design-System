@@ -129,7 +129,7 @@
   --bs-box-shadow-lg: 0 1em 3em rgba(0, 0, 0, 0.175);
   --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   --bs-focus-ring-width: 0.25em;
-  --bs-focus-ring-opacity: 0.25;
+  --bs-focus-ring-opacity: 1;
   --bs-focus-ring-color: blue;
   --bs-form-valid-color: #9fd5b3;
   --bs-form-valid-border-color: #9fd5b3;
@@ -2777,7 +2777,7 @@ textarea.form-control-lg {
 .was-validated .form-control:valid:focus,
 .form-control.is-valid:focus {
   border-color: var(--bs-form-valid-border-color);
-  box-shadow: 0 0 0 0.25em rgba(var(--bs-success-rgb), 0.25);
+  box-shadow: 0 0 0 0.25em rgba(var(--bs-success-rgb), 1);
 }
 
 .was-validated textarea.form-control:valid,
@@ -2807,7 +2807,7 @@ textarea.form-control.is-valid {
 .was-validated .form-select:valid:focus,
 .form-select.is-valid:focus {
   border-color: var(--bs-form-valid-border-color);
-  box-shadow: 0 0 0 0.25em rgba(var(--bs-success-rgb), 0.25);
+  box-shadow: 0 0 0 0.25em rgba(var(--bs-success-rgb), 1);
 }
 
 .was-validated .form-control-color:valid,
@@ -2825,7 +2825,7 @@ textarea.form-control.is-valid {
 }
 .was-validated .form-check-input:valid:focus,
 .form-check-input.is-valid:focus {
-  box-shadow: 0 0 0 0.25em rgba(var(--bs-success-rgb), 0.25);
+  box-shadow: 0 0 0 0.25em rgba(var(--bs-success-rgb), 1);
 }
 .was-validated .form-check-input:valid ~ .form-check-label,
 .form-check-input.is-valid ~ .form-check-label {
@@ -2885,7 +2885,7 @@ textarea.form-control.is-valid {
 .was-validated .form-control:invalid:focus,
 .form-control.is-invalid:focus {
   border-color: var(--bs-form-invalid-border-color);
-  box-shadow: 0 0 0 0.25em rgba(var(--bs-danger-rgb), 0.25);
+  box-shadow: 0 0 0 0.25em rgba(var(--bs-danger-rgb), 1);
 }
 
 .was-validated textarea.form-control:invalid,
@@ -2915,7 +2915,7 @@ textarea.form-control.is-invalid {
 .was-validated .form-select:invalid:focus,
 .form-select.is-invalid:focus {
   border-color: var(--bs-form-invalid-border-color);
-  box-shadow: 0 0 0 0.25em rgba(var(--bs-danger-rgb), 0.25);
+  box-shadow: 0 0 0 0.25em rgba(var(--bs-danger-rgb), 1);
 }
 
 .was-validated .form-control-color:invalid,
@@ -2933,7 +2933,7 @@ textarea.form-control.is-invalid {
 }
 .was-validated .form-check-input:invalid:focus,
 .form-check-input.is-invalid:focus {
-  box-shadow: 0 0 0 0.25em rgba(var(--bs-danger-rgb), 0.25);
+  box-shadow: 0 0 0 0.25em rgba(var(--bs-danger-rgb), 1);
 }
 .was-validated .form-check-input:invalid ~ .form-check-label,
 .form-check-input.is-invalid ~ .form-check-label {
@@ -12512,8 +12512,6 @@ fieldset:disabled .btn {
   --bs-tertiary-color-rgb: 33, 37, 41;
   --bs-tertiary-bg: #f8f9fa;
   --bs-tertiary-bg-rgb: 248, 249, 250;
-  --bs-btn-focus-box-shadow: 0 0 0 0.25em blue;
-  --bs-btn-focus-shadow-rgb: rgb(0, 0, 255);
   --bs-link-color: #004445;
   --bs-link-color-rgb: 0, 68, 69;
   --bs-link-decoration: underline;
@@ -12537,7 +12535,7 @@ fieldset:disabled .btn {
   --bs-box-shadow-lg: 0 1em 3em rgba(0, 0, 0, 0.175);
   --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   --bs-focus-ring-width: 0.25em;
-  --bs-focus-ring-opacity: 0.25;
+  --bs-focus-ring-opacity: 1;
   --bs-focus-ring-color: blue;
   --bs-form-valid-color: #9fd5b3;
   --bs-form-valid-border-color: #9fd5b3;
@@ -12611,6 +12609,55 @@ h6,
 .h5,
 .h6 {
   font-weight: 900;
+}
+
+.btn {
+  --bs-btn-focus-box-shadow: 0 0 0 0.25em
+    rgba(var(--bs-btn-focus-shadow-rgb), 1);
+}
+
+.btn:focus-visible {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-primary {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-secondary {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-success {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-info {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-warning {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-danger {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-light {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-dark {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-accent-primary {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+.btn-accent-secondary {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
 }
 
 b,
