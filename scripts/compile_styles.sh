@@ -99,7 +99,7 @@ compile_components() {
 
 replace_rem_w_em () {
     echo "Replacing REMs with EMs..."
-    sed -i -r "s|([0-9])rem|\1em|g" "$1" 
+    sed -i.bak -E "s|([0-9])rem|\1em|g" "$1" && rm "$1.bak"
     if [ $? -ne 0 ]; then
         echo "Failed to replace REMs with EMs in $1... Aborting."
         exit 1
