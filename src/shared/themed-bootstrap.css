@@ -12512,6 +12512,8 @@ fieldset:disabled .btn {
   --bs-tertiary-color-rgb: 33, 37, 41;
   --bs-tertiary-bg: #f8f9fa;
   --bs-tertiary-bg-rgb: 248, 249, 250;
+  --bs-btn-focus-box-shadow: 0 0 0 0.25em blue;
+  --bs-btn-focus-shadow-rgb: rgb(0, 0, 255);
   --bs-link-color: #004445;
   --bs-link-color-rgb: 0, 68, 69;
   --bs-link-decoration: underline;
