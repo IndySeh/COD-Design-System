@@ -1,3 +1,15 @@
+# v1.0.30 (Fri Aug 02 2024)
+
+#### 🐛 Bug Fix
+
+- Update display fonts to match headers [#251](https://github.com/CityOfDetroit/COD-Design-System/pull/251) ([@sreidthomas](https://github.com/sreidthomas))
+
+#### Authors: 1
+
+- Shakira Reid-Thomas ([@sreidthomas](https://github.com/sreidthomas))
+
+---
+
 # v1.0.29 (Mon July 29 2024)
 
 #### 🚀 Enhancement
