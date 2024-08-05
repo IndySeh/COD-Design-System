@@ -19,3 +19,20 @@ h6,
 .h6 {
   font-weight: 900;
 }
+
+.btn {
+  --bs-btn-focus-box-shadow: 0 0 0 0.25em
+    rgba(var(--bs-btn-focus-shadow-rgb), 1);
+}
+
+.btn:focus-visible {
+  --bs-btn-focus-shadow-rgb: 0, 0, 255;
+}
+
+// Define focus box-shadow for buttons
+@each $color, $value in $theme-colors {
+  $focus-shadow-rgb: to-rgb($focus-ring-color);
+  .btn-#{$color} {
+    --#{$prefix}btn-focus-shadow-rgb: #{$focus-shadow-rgb};
+  }
+}
