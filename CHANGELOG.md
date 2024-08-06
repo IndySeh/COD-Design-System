@@ -1,3 +1,15 @@
+# v1.0.31 (Tues Aug 06 2024)
+
+#### 🐛 Bug Fix
+
+- Fix focus visibility in theme settings by [@sreidthomas](https://github.com/CityOfDetroit/COD-Design-System/pull/245)
+
+#### Authors: 1
+
+- Shakira Reid-Thomas ([@sreidthomas](https://github.com/sreidthomas))
+
+**Full Changelog**: https://github.com/CityOfDetroit/COD-Design-System/compare/1.0.30...1.0.31
+
 # v1.0.30 (Fri Aug 02 2024)
 
 #### 🐛 Bug Fix
