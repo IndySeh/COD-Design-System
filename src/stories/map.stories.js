@@ -8,7 +8,7 @@ export default {
 export const Location = () =>
   html`<cod-map
     data-location='{"address":"1104 Military St, Detroit, MI, 48209","location":{"x":-83.103111,"y":42.31103400000001}}'
-    data-map-state="loaded"
+    data-map-state="init"
   ></cod-map>`;
 
 export const CustomCenter = () =>
