@@ -168,6 +168,8 @@ export default class Map extends HTMLElement {
               let popupStructure;
               let popupLayers = tempMap.getAttribute('data-popup-layers');
               popupLayers = popupLayers !== null ? JSON.parse(popupLayers) : [];
+              let zoomLayers = tempMap.getAttribute('data-zoom-layers');
+              zoomLayers = zoomLayers !== null ? JSON.parse(zoomLayers) : [];
               if (popupLayers.includes(e.features[0].layer.id)) {
                 popupStructure = JSON.parse(
                   tempMap.getAttribute('data-popup-structure'),
@@ -178,6 +180,12 @@ export default class Map extends HTMLElement {
                   tempMap,
                   e,
                 );
+              }else if(zoomLayers.includes(e.features[0].layer.id)){
+                const zoom = tempMap.map.getZoom() + 1;
+                tempMap.map.easeTo({
+                  center: e.features[0].geometry.coordinates,
+                  zoom
+                });
               } else {
                 const parentComponentName = tempMap.getAttribute(
                   'data-parent-component',
