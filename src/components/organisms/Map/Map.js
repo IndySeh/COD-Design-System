@@ -332,6 +332,8 @@ export default class Map extends HTMLElement {
       case 'line':
         tmpLayer.type = layer.type;
         tmpLayer.source = layer.source;
+        layer.minZoom ? (tmpLayer.minzoom = layer.minZoom) : 0;
+        layer.maxZoom ? (tmpLayer.maxzoom = layer.maxZoom) : 0;
         layer.active
           ? (tmpLayer.layout = { visibility: 'visible' })
           : (tmpLayer.layout = { visibility: 'none' });
@@ -346,6 +348,8 @@ export default class Map extends HTMLElement {
       case 'text':
         tmpLayer.type = 'symbol';
         tmpLayer.source = layer.source;
+        layer.minZoom ? (tmpLayer.minzoom = layer.minZoom) : 0;
+        layer.maxZoom ? (tmpLayer.maxzoom = layer.maxZoom) : 0;
         layer.filter ? (tmpLayer.filter = layer.filter) : 0;
         layer.active
           ? (tmpLayer.layout = {
@@ -368,6 +372,8 @@ export default class Map extends HTMLElement {
         tmpLayer.type = layer.type;
         tmpLayer.source = layer.source;
         tmpLayer.clickable = layer.clickable;
+        layer.minZoom ? (tmpLayer.minzoom = layer.minZoom) : 0;
+        layer.maxZoom ? (tmpLayer.maxzoom = layer.maxZoom) : 0;
         layer.filter ? (tmpLayer.filter = layer.filter) : 0;
         layer.active
           ? (tmpLayer.layout = { visibility: 'visible' })
@@ -385,6 +391,8 @@ export default class Map extends HTMLElement {
         tmpLayer.type = layer.type;
         tmpLayer.source = layer.source;
         tmpLayer.clickable = layer.clickable;
+        layer.minZoom ? (tmpLayer.minzoom = layer.minZoom) : 0;
+        layer.maxZoom ? (tmpLayer.maxzoom = layer.maxZoom) : 0;
         layer.filter ? (tmpLayer.filter = layer.filter) : 0;
         layer.active
           ? (tmpLayer.layout = { visibility: 'visible' })
