@@ -101,10 +101,19 @@ export default class Map extends HTMLElement {
 
             const mapData = JSON.parse(this.getAttribute('data-map-data'));
             if (mapData) {
-              this.map.addSource('data-points', {
-                type: 'geojson',
-                data: mapData.source,
-              });
+              const tempSource = { type: 'geojson' };
+              mapData.source ? (tempSource.data = mapData.source) : 0;
+              mapData.sourceCluster
+                ? (tempSource.cluster = mapData.sourceCluster)
+                : 0;
+              mapData.sourceClusterMaxZoom
+                ? (tempSource.clusterMaxZoom = mapData.sourceClusterMaxZoom)
+                : 0;
+              mapData.sourceClusterRadius
+                ? (tempSource.clusterRadius = mapData.sourceClusterRadius)
+                : 0;
+              this.map.addSource('data-points', tempSource);
+
               mapData.layers.forEach((layer) => {
                 const tmpLayer = this.buildLayer(layer);
                 this.map.addLayer(tmpLayer);
@@ -165,6 +174,8 @@ export default class Map extends HTMLElement {
               let popupStructure;
               let popupLayers = tempMap.getAttribute('data-popup-layers');
               popupLayers = popupLayers !== null ? JSON.parse(popupLayers) : [];
+              let zoomLayers = tempMap.getAttribute('data-zoom-layers');
+              zoomLayers = zoomLayers !== null ? JSON.parse(zoomLayers) : [];
               if (popupLayers.includes(e.features[0].layer.id)) {
                 popupStructure = JSON.parse(
                   tempMap.getAttribute('data-popup-structure'),
@@ -175,6 +186,12 @@ export default class Map extends HTMLElement {
                   tempMap,
                   e,
                 );
+              } else if (zoomLayers.includes(e.features[0].layer.id)) {
+                const zoom = tempMap.map.getZoom() + 1;
+                tempMap.map.easeTo({
+                  center: e.features[0].geometry.coordinates,
+                  zoom,
+                });
               } else {
                 const parentComponentName = tempMap.getAttribute(
                   'data-parent-component',
@@ -246,10 +263,19 @@ export default class Map extends HTMLElement {
           this.map.on('style.load', () => {
             sources = JSON.parse(sources);
             sources.forEach((source) => {
-              tmpMap.addSource(source.name, {
-                type: 'geojson',
-                data: source.source,
-              });
+              const tempSource = { type: 'geojson' };
+              source.source ? (tempSource.data = source.source) : 0;
+              source.sourceCluster
+                ? (tempSource.cluster = source.sourceCluster)
+                : 0;
+              source.sourceClusterMaxZoom
+                ? (tempSource.clusterMaxZoom = source.sourceClusterMaxZoom)
+                : 0;
+              source.sourceClusterRadius
+                ? (tempSource.clusterRadius = source.sourceClusterRadius)
+                : 0;
+              tmpMap.addSource(source.name, tempSource);
+
               source.layers.forEach((layer) => {
                 const tmpLayer = this.buildLayer(layer);
                 this.map.addLayer(tmpLayer);
@@ -301,67 +327,78 @@ export default class Map extends HTMLElement {
   }
 
   buildLayer(layer) {
+    const tmpLayer = { id: layer.name };
     switch (layer.type) {
       case 'line':
-        return {
-          id: layer.name,
-          type: layer.type,
-          source: layer.source,
-          layout: layer.active
-            ? { visibility: 'visible' }
-            : { visibility: 'none' },
-          paint: layer.width
-            ? { 'line-color': layer.color, 'line-width': layer.width }
-            : { 'line-color': layer.color },
-        };
+        tmpLayer.type = layer.type;
+        tmpLayer.source = layer.source;
+        layer.active
+          ? (tmpLayer.layout = { visibility: 'visible' })
+          : (tmpLayer.layout = { visibility: 'none' });
+        layer.width
+          ? (tmpLayer.paint = {
+              'line-color': layer.color,
+              'line-width': layer.width,
+            })
+          : (tmpLayer.paint = { 'line-color': layer.color });
+        return tmpLayer;
 
       case 'text':
-        return {
-          id: layer.name,
-          type: 'symbol',
-          source: layer.source,
-          layout: layer.active
-            ? {
-                visibility: 'visible',
-                'text-field': ['get', layer.text],
-                'text-font': ['Arial Unicode MS Regular'],
-              }
-            : {
-                visibility: 'none',
-                'text-field': ['get', layer.text],
-                'text-font': ['Arial Unicode MS Regular'],
-              },
-        };
+        tmpLayer.type = 'symbol';
+        tmpLayer.source = layer.source;
+        layer.filter ? (tmpLayer.filter = layer.filter) : 0;
+        layer.active
+          ? (tmpLayer.layout = {
+              visibility: 'visible',
+              'text-field': layer.textVariable
+                ? layer.text
+                : ['get', layer.text],
+              'text-font': ['Arial Unicode MS Regular'],
+            })
+          : (tmpLayer.layout = {
+              visibility: 'none',
+              'text-field': layer.textVariable
+                ? layer.text
+                : ['get', layer.text],
+              'text-font': ['Arial Unicode MS Regular'],
+            });
+        return tmpLayer;
 
       case 'circle':
-        return {
-          id: layer.name,
-          type: layer.type,
-          clickable: layer.clickable,
-          source: layer.source,
-          layout: layer.active
-            ? { visibility: 'visible' }
-            : { visibility: 'none' },
-          'fill-sort-key': layer.sort ? layer.sort : 1,
-          paint: {
-            'circle-radius': layer.radius ? layer.radius : 5,
-            'circle-color': layer.color,
-          },
+        tmpLayer.type = layer.type;
+        tmpLayer.source = layer.source;
+        tmpLayer.clickable = layer.clickable;
+        layer.filter ? (tmpLayer.filter = layer.filter) : 0;
+        layer.active
+          ? (tmpLayer.layout = { visibility: 'visible' })
+          : (tmpLayer.layout = { visibility: 'none' });
+        layer.sort
+          ? (tmpLayer['fill-sort-key'] = layer.sort)
+          : (tmpLayer['fill-sort-key'] = 1);
+        tmpLayer.paint = {
+          'circle-radius': layer.radius ? layer.radius : 5,
+          'circle-color': layer.color,
         };
+        return tmpLayer;
 
       case 'fill':
-        return {
-          id: layer.name,
-          type: layer.type,
-          clickable: layer.clickable,
-          source: layer.source,
-          layout: layer.active
-            ? { visibility: 'visible' }
-            : { visibility: 'none' },
-          paint: layer.opacity
-            ? { 'fill-color': layer.color, 'fill-opacity': layer.opacity }
-            : { 'fill-color': layer.color },
-        };
+        tmpLayer.type = layer.type;
+        tmpLayer.source = layer.source;
+        tmpLayer.clickable = layer.clickable;
+        layer.filter ? (tmpLayer.filter = layer.filter) : 0;
+        layer.active
+          ? (tmpLayer.layout = { visibility: 'visible' })
+          : (tmpLayer.layout = { visibility: 'none' });
+        layer.sort
+          ? (tmpLayer['fill-sort-key'] = layer.sort)
+          : (tmpLayer['fill-sort-key'] = 1);
+        layer.opacity
+          ? (tmpLayer.paint = {
+              'fill-color': layer.color,
+              'fill-opacity': layer.opacity,
+            })
+          : (tmpLayer.paint = { 'fill-color': layer.color });
+        return tmpLayer;
 
       default:
         break;

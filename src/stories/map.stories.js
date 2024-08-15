@@ -8,7 +8,7 @@ export default {
 export const Location = () =>
   html`<cod-map
     data-location='{"address":"1104 Military St, Detroit, MI, 48209","location":{"x":-83.103111,"y":42.31103400000001}}'
-    data-map-state="loaded"
+    data-map-state="init"
   ></cod-map>`;
 
 export const CustomCenter = () =>
@@ -16,6 +16,13 @@ export const CustomCenter = () =>
     data-center="-83.103111,42.31103400000001"
     data-zoom="12"
     data-map-state="loaded"
+  ></cod-map>`;
+
+export const Cluster = () =>
+  html`<cod-map
+    data-map-state="loaded"
+    data-zoom-layers='["clusters"]'
+    data-map-layers='[{"name":"multi-family","layers":[{"name":"clusters","type":"circle","filter": ["has", "point_count"],"clickable":true,"radius":["step",["get", "point_count"],20,10,30,20,40],"color":["step",["get", "point_count"],"#51bbd6",10,"#f1f075",20,"#f28cb1"],"active":true,"source":"multi-family"},{"name":"cluster-count","type":"text","filter": ["has", "point_count"],"color":"#004445","opacity":null,"width":null,"active":true,"size":12,"textVariable":true,"text":"{point_count_abbreviated}","source":"multi-family"}],"sourceCluster":true,"sourceClusterMaxZoom":14,"sourceClusterRadius":50,"source":"https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Multifamily_Housing_One_Billion_Dollar_Construction_Sites/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"}]'
   ></cod-map>`;
 
 export const Layers = () =>
