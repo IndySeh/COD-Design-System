@@ -64,6 +64,21 @@ export default class Map extends HTMLElement {
 
         if (newValue === 'init') {
           this.map.addControl(new maplibregl.NavigationControl());
+          this.map.on('load', () => {
+            const mapImgs = JSON.parse(this.getAttribute('data-map-images'));
+            if (mapImgs) {
+              // Load an image from an external URL.
+              mapImgs.forEach((img) => {
+                this.map.loadImage(img.source, (error, image) => {
+                  if (error) throw error;
+                  // Add the image to the map style.
+                  if (!this.map.hasImage(img.id)) {
+                    this.map.addImage(img.id, image);
+                  }
+                });
+              });
+            }
+          });
           this.map.on('style.load', () => {
             this.map.resize();
 
@@ -365,6 +380,25 @@ export default class Map extends HTMLElement {
                 ? layer.text
                 : ['get', layer.text],
               'text-font': ['Arial Unicode MS Regular'],
+            });
+        return tmpLayer;
+
+      case 'image':
+        tmpLayer.type = 'symbol';
+        tmpLayer.source = layer.source;
+        layer.minZoom ? (tmpLayer.minzoom = layer.minZoom) : 0;
+        layer.maxZoom ? (tmpLayer.maxzoom = layer.maxZoom) : 0;
+        layer.filter ? (tmpLayer.filter = layer.filter) : 0;
+        layer.active
+          ? (tmpLayer.layout = {
+              visibility: 'visible',
+              'icon-image': layer.img,
+              'icon-size': layer.imgSize,
+            })
+          : (tmpLayer.layout = {
+              visibility: 'none',
+              'icon-image': layer.img,
+              'icon-size': layer.imgSize,
             });
         return tmpLayer;
 
